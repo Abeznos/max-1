@@ -2,6 +2,7 @@
     <div class="content">
         {{ getUserFromTg }}
         {{ getUrlParams }}
+        {{ tgInitData }}
     </div>
 </template>
 <script>
@@ -15,7 +16,8 @@ export default {
     }),
     computed: {
         ...mapGetters({
-            getUserFromTg: 'tgData/getUserFromTg'
+            getUserFromTg: 'tgData/getUserFromTg',
+            tgInitData: 'tgData/tgInitData'
         }),
 
         getUrlParams() {

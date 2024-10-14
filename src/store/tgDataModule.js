@@ -5,6 +5,10 @@ export const tgDataModule = {
     getters: {
         getUserFromTg(state) {
             return state.tg.initDataUnsafe?.user
+        },
+
+        tgInitData(state) {
+            return state.tg.initData
         }
     },
     namespaced: true
