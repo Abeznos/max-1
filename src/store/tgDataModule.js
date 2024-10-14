@@ -3,9 +3,9 @@ export const tgDataModule = {
         tg: window.Telegram.WebApp
     }),
     getters: {
-        getUser(state) {
-            return tg.initDataUnsafe?.user
+        getUserFromTg(state) {
+            return state.tg.initDataUnsafe?.user
         }
     },
-    namespaced: true    
+    namespaced: true
 }
