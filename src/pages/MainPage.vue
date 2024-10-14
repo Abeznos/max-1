@@ -1,9 +1,9 @@
 <template>
-    <div class="content">
+    <main>
         {{ getUserFromTg }}
         {{ getUrlParams }}
         {{ tgInitData }}
-    </div>
+    </main>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
@@ -33,5 +33,12 @@ export default {
 }
 </script>
 <style>
-
+    main {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+    }
 </style>

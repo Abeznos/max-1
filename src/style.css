@@ -13,6 +13,7 @@ body {
 }
 
 #app {
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
