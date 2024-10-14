@@ -1,8 +1,8 @@
 <template>
     <main>
-        {{ getUserFromTg }}
-        {{ getUrlParams }}
-        {{ tgInitData }}
+        <p>{{ getUserFromTg }}</p>
+        <p>{{ getUrlParams }}</p>
+        <p>{{ tgInitData }}</p>
     </main>
 </template>
 <script>
