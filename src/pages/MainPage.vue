@@ -16,7 +16,12 @@ export default {
         ...mapGetters({
             getUserFromTg: 'tgData/getUserFromTg'
         })
-    }
+    },
+
+    beforeCreate() {
+        const pageUrl = new URL(window.location.href)
+        console.log(pageUrl)
+    },
 }
 </script>
 <style>
