@@ -1,6 +1,7 @@
 <template>
     <div class="content">
         {{ getUserFromTg }}
+        {{ getUrlParams }}
     </div>
 </template>
 <script>
@@ -15,12 +16,17 @@ export default {
     computed: {
         ...mapGetters({
             getUserFromTg: 'tgData/getUserFromTg'
-        })
+        }),
+
+        getUrlParams() {
+            const pageUrl = new URL(window.location.href)
+            console.log(pageUrl)
+            return pageUrl
+        }
     },
 
     beforeCreate() {
         const pageUrl = new URL(window.location.href)
-        console.log(pageUrl)
     },
 }
 </script>
