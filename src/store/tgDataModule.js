@@ -8,7 +8,7 @@ export const tgDataModule = {
         },
 
         tgInitData(state) {
-            return state.tg.initData
+            return state.tg.initData.id
         }
     },
     namespaced: true
