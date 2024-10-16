@@ -1,7 +1,7 @@
 <template>
-  <div class="app-container">
+  <v-container>
     <RouterView />
-  </div>
+  </v-container>
 </template>
 <script>
 export default {
@@ -10,13 +10,7 @@ export default {
 </script>
 <style>
   .app-container {
-    position: relative;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: flex-start;
     width: 100%;
-    height: 100%;
-    overflow-y: scroll;
+    padding: 1rem;
   }
 </style>
