@@ -8,9 +8,14 @@ export const appStateModule = {
         }
     },
     mutations: {
-        loadingToggle(state) {
+        setLoading(state) {
             state.loading = !state.loading
         }
     },
+    actions: {
+        loadingToggle({ commit }) {
+            commit('setLoading')
+        }
+    },
     namespaced: true
-}    
+}

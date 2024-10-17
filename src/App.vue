@@ -1,19 +1,35 @@
 <template>
+  <loader
+    v-if="getLoading"
+  />
   <v-container class="pb-16">
     <RouterView />
-
     <v-layout
       v-if="showBottomNavigation"
       class="overflow-visible" style="height: 3.5rem"
     >
       <v-bottom-navigation
+
         active
+        color="deep-purple-accent-4"
       >
           <v-btn
             data-link="homeLink"
             @click="pushToPage"
           >
-            <v-icon>mdi-history</v-icon>
+            <v-icon icon="$home"></v-icon>
+          </v-btn>
+          <v-btn
+            data-link="locationLink"
+            @click="pushToPage"
+          >
+            <v-icon icon="$location"></v-icon>
+          </v-btn>
+          <v-btn
+            data-link="accountLink"
+            @click="pushToPage"
+          >
+            <v-icon icon="$account"></v-icon>
           </v-btn>
           <v-btn
             data-link="regLink"
@@ -27,13 +43,14 @@
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
-
+import loader from '@/components/ui/Loader.vue'
 
 export default {
   name: 'App',
   data: () => ({
 
   }),
+  components: {loader},
   methods: {
     ...mapActions({
       setBotId: 'userData/setBotId',
@@ -45,10 +62,16 @@ export default {
     pushToPage(event) {
       switch (event.currentTarget.dataset.link) {
         case 'homeLink':
-          this.$router.push('/')
+          this.$router.push(`/?bot_id=${this.getUserBotId}&chat_id=${this.getUserChatId}`)
           break
         case'regLink':
-          this.$router.push('/registration')
+          this.$router.push(`/registration/?bot_id=${this.getUserBotId}&chat_id=${this.getUserChatId}`)
+          break
+        case'accountLink':
+          this.$router.push(`/account/?bot_id=${this.getUserBotId}&chat_id=${this.getUserChatId}`)
+          break
+        case'locationLink':
+          this.$router.push(`/location/?bot_id=${this.getUserBotId}&chat_id=${this.getUserChatId}`)
           break
         default:
           break
@@ -57,7 +80,10 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getUserFromTg: 'tgData/getUserFromTg'
+      getUserFromTg: 'tgData/getUserFromTg',
+      getLoading: 'appState/getLoading',
+      getUserChatId: 'userData/getUserChatId',
+      getUserBotId: 'userData/getBotId',
     }),
 
     showBottomNavigation() {
@@ -83,7 +109,5 @@ export default {
 }
 </script>
 <style>
-  .v-container {
 
-  }
 </style>

@@ -17,11 +17,11 @@
             </v-avatar>
         </v-col>
         <v-col class="v-col-4 pa-0">
-            {{ userPersData.name }}
+            {{ getUserPersData.name }}
         </v-col>
         <v-col
-            class="v-col-6 pa-0">
-            {{ userPersData.group_name }}
+            class="v-col-6 pa-0 text-right">
+            {{ getUserPersData.group_name }}
         </v-col>
     </v-row>
     <v-row class="ma-0 mt-4">
@@ -32,13 +32,13 @@
             height="150"
             color="#ff0000"
         ></v-skeleton-loader>
-        <v-col 
+        <v-col
             v-else
             class="v-col-12 pa-0"
         >
             <v-card
                 subtitle="Баланс"
-                :text="userPersData.balance"
+                :text="getUserPersData.balance"
                 variant="tonal"
                 height="150"
             >
@@ -58,11 +58,11 @@
                 class="v-col pa-0 "
                 height="80"
                 color="#ff0000"
-            ></v-skeleton-loader>            
+            ></v-skeleton-loader>
             <v-card
                 v-else
                 class="order-code"
-                :text="getOrderCode"
+                :text="getUserPersData.order_code"
                 variant="tonal"
                 height="80"
             ></v-card>
@@ -74,7 +74,7 @@
                 class="v-col pa-0 "
                 height="80"
                 color="#ff0000"
-            ></v-skeleton-loader>            
+            ></v-skeleton-loader>
             <v-card
                 v-else
                 class="order-code d-flex justify-center align-center"
@@ -83,7 +83,8 @@
                 width="80"
             >
                 <v-btn
-                    icon="mdi-qr_code_2"
+                    class="qr-button"
+                    icon="$qr"
                     size="large"
                     variant="flat"
                     color="#000000"
@@ -95,8 +96,8 @@
         <v-col class="pa-0">
             Акции
         </v-col>
-        <v-col class="pa-0 text-right">
-            Ещё
+        <v-col class="pa-0 text-right promotion-link">
+            <RouterLink to="/promotion">Ещё</RouterLink>
         </v-col>
     </v-row>
     <v-slide-group class="mt-2">
@@ -128,6 +129,9 @@
             </v-btn>
         </v-col>
     </v-row>
+<!--
+<div v-html="getUserPersData.qr"></div>
+-->
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
@@ -139,10 +143,7 @@ export default {
         avatar: true
     }),
     methods: {
-        getUrlParams() {
-            const pageUrl = new URL(window.location.href)
-            return pageUrl
-        }
+
     },
     computed: {
         ...mapGetters({
@@ -152,7 +153,7 @@ export default {
             getUserChatId: 'userData/getUserChatId',
             getUserChatId: 'userData/geBotId',
             getLoading: 'appState/getLoading',
-            userPersData: 'userData/userPersData'
+            getUserPersData: 'userData/getUserPersData'
         }),
     }
 }
@@ -187,5 +188,17 @@ export default {
     .order-code .v-card-text {
         font-size: 2.5rem;
         text-align: center;
+    }
+
+    .qr-button i.v-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .promotion-link a {
+        text-decoration: none!important;
+        text-transform: unset!important;
+        color: #3F51B5;
+        font-weight: 500;
     }
 </style>

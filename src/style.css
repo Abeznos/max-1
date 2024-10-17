@@ -2,8 +2,10 @@
 
 :root {
   --font: Ubuntu, sans-serif;
-
+  /*Colors*/
+  --surface-color: azure;
   font-family: var(--font);
+  font-size: 16px;
 }
 
 
@@ -36,7 +38,7 @@ html, body {
   width: 100%;
   max-width: 480px;
   min-height: inherit;
-  overflow: hidden;
+  overflow: hidden scroll;
   background-color: azure;
 }
 

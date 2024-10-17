@@ -14,7 +14,7 @@ export const userDataModule = {
         getOrderCode(state) {
             return state.userPersData.orderCode
         },
-        geBotId(state) {
+        getBotId(state) {
             return state.botId
         },
         getUserChatId(state) {
@@ -22,7 +22,7 @@ export const userDataModule = {
         },
         getUserPersData(state) {
             return state.userPersData
-        }      
+        }
     },
     mutations: {
         setBotId(state, id) {
@@ -32,8 +32,8 @@ export const userDataModule = {
             state.userChatId = id;
         },
         userPersData(state, data) {
-            state.userData = data
-        }     
+            state.userPersData = data
+        }
     },
     actions: {
         async setBotId({state, commit, dispatch}, id) {
@@ -43,12 +43,13 @@ export const userDataModule = {
             commit('setUserChatId', id)
         },
         async login({state, commit, getters, dispatch}) {
+            dispatch('appState/loadingToggle', null, { root: true })
             try{
-                const userData = await api.post('/user/login', { botId: getters.geBotId, chatId: getters.getUserChatId})
+                const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
                 if(userData.data) {
                     commit('userPersData', userData.data)
                 }
-                console.log(userData.data)
+                dispatch('appState/loadingToggle', null, { root: true })
             } catch(error) {
                 console.log(error)
             }
