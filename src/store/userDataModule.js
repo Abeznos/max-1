@@ -42,7 +42,7 @@ export const userDataModule = {
             try{
                 const userData = await api.post('/', {chatId: getters.geBotId, botId: getters.getUserChatId})
                 console.log(userData.data)
-            } catch {
+            } catch(error) {
                 console.log(error)
             }
         }
