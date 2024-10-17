@@ -25,37 +25,50 @@
   </v-container>
 </template>
 <script>
+import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
   name: 'App',
   methods: {
+    ...mapActions({
+      setBotId: 'userData/setBotId',
+      setUserChatId: 'setUserChatId'
+    }),
+
     pushToPage(event) {
       switch (event.currentTarget.dataset.link) {
         case 'homeLink':
           this.$router.push('/')
-          console.log(event.currentTarget)
           break
         case'regLink':
           this.$router.push('/registration')
-          console.log(event.currentTarget)
           break
         default:
-          console.log('Unhandled link click')
           break
       }
     }
   },
   computed: {
+    ...mapGetters({
+      getUserFromTg: 'tgData/getUserFromTg'
+    }),
+
     showBottomNavigation() {
       const path = this.$route.fullPath
-      return path !== '/registration' ? true : false
+      return path != '/registration' ? true : false
     }
   },
-  beforeCreate() {
-    console.log(this.$route)
-    console.log(this.$route.params)
-  }
+  beforeMount() {
+    let searchParams = window.location.search.substr(1).split('&');
+    let queryParams = {};
 
+    for (let param of searchParams) {
+      const [key, value] = param.split('=')
+      queryParams[key] = decodeURIComponent(value) ?? ''
+    }
+    this.setBotId(queryParams.botId)
+    this.setUserChatId(this.getUserFromTg)
+  }
 }
 </script>
 <style>

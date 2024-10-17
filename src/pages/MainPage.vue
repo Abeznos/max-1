@@ -1,128 +1,126 @@
 <template>
-        <v-row class="ma-0 align-center flex-nowrap w-100">
-            <v-col
-                class="pa-0"
-                cols="2"
-                md="2"
-                sm="2"
+    <v-row class="ma-0 align-center flex-nowrap w-100">
+        <v-col
+            class="pa-0"
+            cols="2"
+            md="2"
+            sm="2"
+        >
+            <v-avatar
+                size="36px"
             >
-                <v-avatar
-                    size="36px"
-                >
-                    <v-img
-                        v-if="avatar"
-                        alt="Avatar"
-                        src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
-                    ></v-img>
-                    <v-icon
-                        v-else
-                        color="#000000"
-                        icon="mdi-account_circle"
-                    ></v-icon>
-                </v-avatar>
-            </v-col>
-            <v-col
-                class="pa-0"
-                cols="4"
-                md="4"
-                sm="4"
+                <v-img
+                    v-if="avatar"
+                    alt="Avatar"
+                    src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
+                ></v-img>
+                <v-icon
+                    v-else
+                    color="#000000"
+                    icon="mdi-account_circle"
+                ></v-icon>
+            </v-avatar>
+        </v-col>
+        <v-col
+            class="pa-0"
+            cols="4"
+            md="4"
+            sm="4"
+        >
+            Иван
+        </v-col>
+        <v-col
+            class="pa-0"
+            cols="6"
+            md="6"
+            sm="6"
+        >
+            Стандартная группа 10%
+        </v-col>
+    </v-row>
+    <v-row class="ma-0 mt-4">
+        <v-col cols="12" md="12" class="pa-0">
+            <v-card
+                subtitle="Баланс"
+                :text="getUserBalance"
+                variant="tonal"
+                height="150"
             >
-                Иван
-            </v-col>
-            <v-col
-                class="pa-0"
-                cols="6"
-                md="6"
-                sm="6"
+            </v-card>
+        </v-col>
+    </v-row>
+    <v-row class="ma-0 mt-4 pa-0">
+        <v-col class="text-left pa-0">
+            Код покупателя
+        </v-col>
+    </v-row>
+    <v-row class="ma-0 mt-2 flex-nowrap w-100 ga-4">
+        <v-col class="pa-0">
+            <v-card
+                class="order-code"
+                :text="getOrderCode"
+                variant="tonal"
+                height="80"
+            ></v-card>
+        </v-col>
+        <v-col class="col order-code pa-0">
+            <v-card
+                class="order-code d-flex justify-center align-center"
+                variant="tonal"
+                height="80"
+                width="80"
             >
-                Стандартная группа 10%
-            </v-col>
-        </v-row>
-        <v-row class="ma-0 mt-4">
-            <v-col cols="12" md="12" class="pa-0">
-                <v-card
-                    subtitle="Баланс"
-                    :text="getUserBalance"
-                    variant="tonal"
-                    height="150"
-                >
-                </v-card>
-            </v-col>
-        </v-row>
-        <v-row class="ma-0 mt-4 pa-0">
-            <v-col class="text-left pa-0">
-                Код покупателя
-            </v-col>
-        </v-row>
-        <v-row class="ma-0 mt-2 flex-nowrap w-100 ga-4">
-            <v-col class="pa-0">
-                <v-card
-                    class="order-code"
-                    :text="getOrderCode"
-                    variant="tonal"
-                    height="80"
-                ></v-card>
-            </v-col>
-            <v-col class="col order-code pa-0">
-                <v-card
-                    class="order-code d-flex justify-center align-center"
-                    variant="tonal"
-                    height="80"
-                    width="80"
-                >
-                    <v-btn
-                        icon="mdi-qr_code_2"
-                        size="large"
-                        variant="flat"
-                        color="#000000"
-                    ></v-btn>
-                </v-card>
-            </v-col>
-        </v-row>
-        <v-row class="ma-0 mt-4 flex-nowrap w-100 ga-4">
-            <v-col class="pa-0">
-                Акции
-            </v-col>
-            <v-col class="pa-0 text-right">
-                Ещё
-            </v-col>
-        </v-row>
-        <v-slide-group class="mt-2">
-            <v-slide-group-item
-                v-for="n in 4"
-                :key="n"
-            >
-                <v-card
-                    class="mr-4"
-                    subtitle="Баланс"
-                    :text="getUserBalance"
-                    variant="tonal"
-                    width="320"
-                    height="180"
-                >
-                </v-card>
-            </v-slide-group-item>
-        </v-slide-group>
-        <v-row class="mt-4">
-            <v-col class="text-left">
                 <v-btn
-                    block
-                    prepend-icon="$vuetify"
+                    icon="mdi-qr_code_2"
+                    size="large"
                     variant="flat"
-                    color="#ffffff"
-                    height="56"
-                >
-                    Пригласить друга
-                </v-btn>
-            </v-col>
+                    color="#000000"
+                ></v-btn>
+            </v-card>
+        </v-col>
+    </v-row>
+    <v-row class="ma-0 mt-4 flex-nowrap w-100 ga-4">
+        <v-col class="pa-0">
+            Акции
+        </v-col>
+        <v-col class="pa-0 text-right">
+            Ещё
+        </v-col>
+    </v-row>
+    <v-slide-group class="mt-2">
+        <v-slide-group-item
+            v-for="n in 4"
+            :key="n"
+        >
+            <v-card
+                class="mr-4"
+                subtitle="Баланс"
+                :text="getUserBalance"
+                variant="tonal"
+                width="320"
+                height="180"
+            >
+            </v-card>
+        </v-slide-group-item>
+    </v-slide-group>
+    <v-row class="mt-4">
+        <v-col class="text-left">
+            <v-btn
+                block
+                prepend-icon="$vuetify"
+                variant="flat"
+                color="#ffffff"
+                height="56"
+            >
+                Пригласить друга
+            </v-btn>
+        </v-col>
 
-        </v-row>
+    </v-row>
 
-  </template>
+</template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
-
-let tg = window.Telegram.WebApp
 
 export default {
     name: 'MainPage',
@@ -144,11 +142,6 @@ export default {
             getUserBalance: 'userData/getUserBalance',
             getOrderCode: 'userData/getOrderCode'
         }),
-    },
-
-    beforeCreate() {
-        //const pageUrl = new URL(window.location.href)
-        console.log(this.getUrlParams)
     }
 }
 </script>

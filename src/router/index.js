@@ -5,11 +5,11 @@ import RegistrationPage from '@/pages/RegistrationPage.vue'
 
 const routes = [
     {
-        path: "/:botId",
+        path: "/",
         component: MainPage
     },
     {
-        path: "/registration/:botId",
+        path: "/registration/",
         component: RegistrationPage
     }
 ]
