@@ -2,6 +2,8 @@
     <div>
         <div>Регистрация</div>
         <div>{{ getUserFromTg }}</div>
+        <div>{{ geBotId }}</div>
+        <div>{{ getUserChatId }}</div>
     </div>
 </template>
 <script>
@@ -16,7 +18,8 @@ export default {
             getUserFromTg: 'tgData/getUserFromTg',
             getUserBalance: 'userData/getUserBalance',
             getOrderCode: 'userData/getOrderCode',
-            getUserChatId: 'userData/getUserChatId'
+            getUserChatId: 'userData/getUserChatId',
+            geBotId: 'userData/geBotId'
         }),
     }
 }
