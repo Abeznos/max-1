@@ -36,11 +36,14 @@ export const userDataModule = {
         async setUserChatId({state, commit, dispatch}, id) {
             commit('setUserChatId', id)
         },
-        async login({state, commit, dispatch}) {
-            try{
-                const userData = await api.post('/', )
-            } catch {
+        async login({state, commit, getters, dispatch}) {
+            console.log({chatId: getters.geBotId, botId: getters.getUserChatId})
 
+            try{
+                const userData = await api.post('/', {chatId: getters.geBotId, botId: getters.getUserChatId})
+                console.log(userData.data)
+            } catch {
+                console.log(error.message)
             }
         }
     },

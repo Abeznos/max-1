@@ -38,7 +38,8 @@ export default {
     ...mapActions({
       setBotId: 'userData/setBotId',
       setUserChatId: 'userData/setUserChatId',
-      expandApp: 'tgData/expandApp'
+      expandApp: 'tgData/expandApp',
+      login: 'userData/login'
     }),
 
     pushToPage(event) {
@@ -75,8 +76,9 @@ export default {
 
     this.setBotId(queryParams.bot_id)
     this.setUserChatId(queryParams.chat_id)
+    this.login()
     this.expandApp
-    console.log(queryParams)
+    //console.log(queryParams)
   }
 }
 </script>
