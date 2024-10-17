@@ -24,7 +24,7 @@ html, body {
   height: 100svh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: hidden scroll;
 }
 
 #app {

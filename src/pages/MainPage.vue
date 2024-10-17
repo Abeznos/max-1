@@ -1,11 +1,6 @@
 <template>
     <v-row class="ma-0 align-center flex-nowrap w-100">
-        <v-col
-            class="pa-0"
-            cols="2"
-            md="2"
-            sm="2"
-        >
+        <v-col class="v-col-2 pa-0">
             <v-avatar
                 size="36px"
             >
@@ -21,20 +16,11 @@
                 ></v-icon>
             </v-avatar>
         </v-col>
-        <v-col
-            class="pa-0"
-            cols="4"
-            md="4"
-            sm="4"
-        >
-            {{ getUserChatId }}
+        <v-col class="v-col-4 pa-0">
+            {{ getUserFromTg }}
         </v-col>
         <v-col
-            class="pa-0"
-            cols="6"
-            md="6"
-            sm="6"
-        >
+            class="v-col-6 pa-0">
             Стандартная группа 10%
         </v-col>
     </v-row>
@@ -115,9 +101,7 @@
                 Пригласить друга
             </v-btn>
         </v-col>
-
     </v-row>
-
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
