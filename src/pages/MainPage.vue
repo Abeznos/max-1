@@ -17,11 +17,11 @@
             </v-avatar>
         </v-col>
         <v-col class="v-col-4 pa-0">
-            {{  }}
+            {{ userPersData.name }}
         </v-col>
         <v-col
             class="v-col-6 pa-0">
-            Стандартная группа 10%
+            {{ userPersData.group_name }}
         </v-col>
     </v-row>
     <v-row class="ma-0 mt-4">
@@ -38,7 +38,7 @@
         >
             <v-card
                 subtitle="Баланс"
-                :text="getUserBalance"
+                :text="userPersData.balance"
                 variant="tonal"
                 height="150"
             >
@@ -151,7 +151,8 @@ export default {
             getOrderCode: 'userData/getOrderCode',
             getUserChatId: 'userData/getUserChatId',
             getUserChatId: 'userData/geBotId',
-            getLoading: 'appState/getLoading'
+            getLoading: 'appState/getLoading',
+            userPersData: 'userData/userPersData'
         }),
     }
 }
