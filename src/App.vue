@@ -1,7 +1,7 @@
 <template>
   <v-container class="pb-14 h-100">
     <RouterView />
-    <div>{{ initDataUnsafe }}</div>
+    <div>{{ tg.initDataUnsafe }}</div>
     <v-layout
       v-if="showBottomNavigation"
       class="overflow-visible" style="height: 3.5rem"
