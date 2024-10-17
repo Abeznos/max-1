@@ -42,7 +42,7 @@ export const userDataModule = {
                 if(userData.Data) {
 
                 }
-                console.log(userData.Data)
+                console.log(userData.data)
             } catch(error) {
                 console.log(error)
             }
