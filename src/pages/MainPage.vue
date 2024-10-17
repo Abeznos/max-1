@@ -1,6 +1,7 @@
 <template>
-        <v-row align="center">
+        <v-row class="ma-0 align-center flex-nowrap w-100">
             <v-col
+                class="pa-0"
                 cols="2"
                 md="2"
                 sm="2"
@@ -18,9 +19,10 @@
                         color="#000000"
                         icon="mdi-account_circle"
                     ></v-icon>
-                </v-avatar>            
+                </v-avatar>
             </v-col>
             <v-col
+                class="pa-0"
                 cols="4"
                 md="4"
                 sm="4"
@@ -28,6 +30,7 @@
                 Иван
             </v-col>
             <v-col
+                class="pa-0"
                 cols="6"
                 md="6"
                 sm="6"
@@ -46,29 +49,29 @@
                 </v-card>
             </v-col>
         </v-row>
-        <v-row class="mt-4">
-            <v-col class="text-left">
+        <v-row class="ma-0 mt-4 pa-0">
+            <v-col class="text-left pa-0">
                 Код покупателя
             </v-col>
         </v-row>
-        <v-row class="mt-4">
-            <v-col>
+        <v-row class="ma-0 mt-2 flex-nowrap w-100 ga-4">
+            <v-col class="pa-0">
                 <v-card
                     class="order-code"
                     :text="getOrderCode"
                     variant="tonal"
-                    height="80"                    
+                    height="80"
                 ></v-card>
             </v-col>
-            <v-col cols="4">
+            <v-col class="col order-code pa-0">
                 <v-card
                     class="order-code d-flex justify-center align-center"
                     variant="tonal"
                     height="80"
                     width="80"
                 >
-                    <v-btn 
-                        icon="mdi-qr_code_2" 
+                    <v-btn
+                        icon="mdi-qr_code_2"
                         size="large"
                         variant="flat"
                         color="#000000"
@@ -76,15 +79,15 @@
                 </v-card>
             </v-col>
         </v-row>
-        <v-row class="mt-4">
-            <v-col cols="6" md="6">
+        <v-row class="ma-0 mt-4 flex-nowrap w-100 ga-4">
+            <v-col class="pa-0">
                 Акции
             </v-col>
-            <v-col cols="6" md="6" class="text-right">
+            <v-col class="pa-0 text-right">
                 Ещё
             </v-col>
         </v-row>
-        <v-slide-group>
+        <v-slide-group class="mt-2">
             <v-slide-group-item
                 v-for="n in 4"
                 :key="n"
@@ -97,45 +100,24 @@
                     width="320"
                     height="180"
                 >
-                </v-card>                
+                </v-card>
             </v-slide-group-item>
         </v-slide-group>
-        <v-row class="mt-4">        
-            <v-btn 
-                block
-                prepend-icon="$vuetify"
-                variant="flat"
-                color="#ffffff"
-                height="56"
-            >
-                Пригласить друга
-            </v-btn>
+        <v-row class="mt-4">
+            <v-col class="text-left">
+                <v-btn
+                    block
+                    prepend-icon="$vuetify"
+                    variant="flat"
+                    color="#ffffff"
+                    height="56"
+                >
+                    Пригласить друга
+                </v-btn>
+            </v-col>
+
         </v-row>
-        <v-layout class="overflow-visible" style="height: 56px;">
-<v-bottom-navigation
-    v-model="value"
-    color="primary"
-    active
->
-    <v-btn>
-        <v-icon>mdi-history</v-icon>
 
-        Recents
-    </v-btn>
-
-    <v-btn>
-        <v-icon>mdi-heart</v-icon>
-
-        Favorites
-    </v-btn>
-
-    <v-btn>
-        <v-icon>mdi-map-marker</v-icon>
-
-        <span>Nearby</span>
-    </v-btn>
-</v-bottom-navigation>         
-        </v-layout>
   </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
@@ -148,6 +130,13 @@ export default {
         loading: false,
         avatar: true
     }),
+    methods: {
+        getUrlParams() {
+            const pageUrl = new URL(window.location.href)
+            console.log(pageUrl)
+            return pageUrl
+        }
+    },
     computed: {
         ...mapGetters({
             getUserFromTg: 'tgData/getUserFromTg',
@@ -155,17 +144,12 @@ export default {
             getUserBalance: 'userData/getUserBalance',
             getOrderCode: 'userData/getOrderCode'
         }),
-
-        getUrlParams() {
-            const pageUrl = new URL(window.location.href)
-            console.log(pageUrl)
-            return pageUrl
-        }
     },
 
     beforeCreate() {
-        const pageUrl = new URL(window.location.href)
-    },
+        //const pageUrl = new URL(window.location.href)
+        console.log(this.getUrlParams)
+    }
 }
 </script>
 <style>
@@ -183,12 +167,16 @@ export default {
 
     .v-card-subtitle {
         font-size: 1rem;
-        text-align: center;     
+        text-align: center;
     }
-    
+
     .v-card-text {
         font-size: 3.5rem;
         text-align: center;
+    }
+
+    .v-col.order-code {
+        max-width: 5rem!important;
     }
 
     .order-code .v-card-text {

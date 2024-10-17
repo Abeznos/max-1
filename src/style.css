@@ -6,9 +6,14 @@
   font-family: var(--font);
 }
 
-  
+
 * {
   box-sizing: border-box;
+}
+
+a {
+  font-style: normal;
+  text-transform: lowercase !important;
 }
 
 html, body {
