@@ -1,6 +1,7 @@
 <template>
   <v-container class="pb-14 h-100">
     <RouterView />
+    {{ getUserFromTg }}
     <v-layout
       v-if="showBottomNavigation"
       class="overflow-visible" style="height: 3.5rem"
@@ -67,7 +68,7 @@ export default {
       queryParams[key] = decodeURIComponent(value) ?? ''
     }
     this.setBotId(queryParams.botId)
-    this.setUserChatId(this.getUserFromTg)
+    //this.setUserChatId(this.getUserFromTg)
   }
 }
 </script>

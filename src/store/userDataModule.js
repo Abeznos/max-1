@@ -37,16 +37,11 @@ export const userDataModule = {
             commit('setBotId', id)
         },
         async login({state, commit, dispatch}) {
-            const pageUrl = new URL(window.location.href)
-            console.log(pageUrl)
-            return pageUrl
-            //const botId = $route.params.botId
+            try{
+                const userData = await api.post('/', )
+            } catch {
 
-            //try {
-            //    const userData = await api.post('/user',)
-            //} catch (error) {
-//
-            //}
+            }
         }
     },
     namespaced: true

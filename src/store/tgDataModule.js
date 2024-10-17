@@ -4,11 +4,11 @@ export const tgDataModule = {
     }),
     getters: {
         getUserFromTg(state) {
-            return state.tg.initDataUnsafe?.user
+            return state.tg.initDataUnsafe
         },
 
         tgInitData(state) {
-            return state.tg.initData.id
+            return state.tg.initData
         }
     },
     namespaced: true
