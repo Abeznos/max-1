@@ -7,5 +7,10 @@ export const tgDataModule = {
             return state.tg.initDataUnsafe
         }
     },
+    actions: {
+        expandApp({state, commit, dispatch}) {
+            tg.expand()
+        }
+    },
     namespaced: true
 }
