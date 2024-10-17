@@ -13,7 +13,13 @@ export const userDataModule = {
         },
         getOrderCode(state) {
             return state.orderCode
-        }
+        },
+        geBotId(state) {
+            return state.botId
+        },
+        getUserChatId(state) {
+            return state.userChatId
+        },        
     },
     mutations: {
         setBotId(state, id) {

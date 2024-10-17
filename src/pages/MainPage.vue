@@ -27,7 +27,7 @@
             md="4"
             sm="4"
         >
-            Иван
+            {{ getUserChatId }}
         </v-col>
         <v-col
             class="pa-0"
@@ -138,9 +138,9 @@ export default {
     computed: {
         ...mapGetters({
             getUserFromTg: 'tgData/getUserFromTg',
-            tgInitData: 'tgData/tgInitData',
             getUserBalance: 'userData/getUserBalance',
-            getOrderCode: 'userData/getOrderCode'
+            getOrderCode: 'userData/getOrderCode',
+            getUserChatId: 'userData/getUserChatId'
         }),
     }
 }
