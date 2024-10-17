@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pb-14 h-100">
+  <v-container class="pb-16">
     <RouterView />
 
     <v-layout
@@ -72,7 +72,7 @@ export default {
       const [key, value] = param.split('=')
       queryParams[key] = decodeURIComponent(value) ?? ''
     }
-    
+
     this.setBotId(queryParams.bot_id)
     this.setUserChatId(queryParams.chat_id)
     this.expandApp

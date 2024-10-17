@@ -102,7 +102,6 @@
             </v-btn>
         </v-col>
     </v-row>
-    {{ getUserChatId }}
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
