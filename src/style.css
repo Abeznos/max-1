@@ -39,3 +39,8 @@ html, body {
   overflow: hidden;
   background-color: azure;
 }
+
+.v-skeleton-loader,
+.v-skeleton-loader__image {
+  border-radius: 1rem !important;
+}

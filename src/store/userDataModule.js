@@ -39,7 +39,10 @@ export const userDataModule = {
         async login({state, commit, getters, dispatch}) {
             try{
                 const userData = await api.post('/user/login', { botId: getters.geBotId, chatId: getters.getUserChatId})
-                return userData.data
+                if(userData.Data) {
+
+                }
+                console.log(userData.Data)
             } catch(error) {
                 console.log(error)
             }

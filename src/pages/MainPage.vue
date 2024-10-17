@@ -25,7 +25,17 @@
         </v-col>
     </v-row>
     <v-row class="ma-0 mt-4">
-        <v-col cols="12" md="12" class="pa-0">
+        <v-skeleton-loader
+            v-if="getLoading"
+            type="image"
+            class="v-col-12 pa-0 "
+            height="150"
+            color="#ff0000"
+        ></v-skeleton-loader>
+        <v-col 
+            v-else
+            class="v-col-12 pa-0"
+        >
             <v-card
                 subtitle="Баланс"
                 :text="getUserBalance"
@@ -42,7 +52,15 @@
     </v-row>
     <v-row class="ma-0 mt-2 flex-nowrap w-100 ga-4">
         <v-col class="pa-0">
+            <v-skeleton-loader
+                v-if="getLoading"
+                type="image"
+                class="v-col pa-0 "
+                height="80"
+                color="#ff0000"
+            ></v-skeleton-loader>            
             <v-card
+                v-else
                 class="order-code"
                 :text="getOrderCode"
                 variant="tonal"
@@ -50,7 +68,15 @@
             ></v-card>
         </v-col>
         <v-col class="col order-code pa-0">
+            <v-skeleton-loader
+                v-if="getLoading"
+                type="image"
+                class="v-col pa-0 "
+                height="80"
+                color="#ff0000"
+            ></v-skeleton-loader>            
             <v-card
+                v-else
                 class="order-code d-flex justify-center align-center"
                 variant="tonal"
                 height="80"
@@ -124,7 +150,8 @@ export default {
             getUserBalance: 'userData/getUserBalance',
             getOrderCode: 'userData/getOrderCode',
             getUserChatId: 'userData/getUserChatId',
-            getUserChatId: 'userData/geBotId'
+            getUserChatId: 'userData/geBotId',
+            getLoading: 'appState/getLoading'
         }),
     }
 }
