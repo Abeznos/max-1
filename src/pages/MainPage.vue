@@ -102,6 +102,7 @@
             </v-btn>
         </v-col>
     </v-row>
+    {{ getUserChatId }}
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
@@ -123,7 +124,8 @@ export default {
             getUserFromTg: 'tgData/getUserFromTg',
             getUserBalance: 'userData/getUserBalance',
             getOrderCode: 'userData/getOrderCode',
-            getUserChatId: 'userData/getUserChatId'
+            getUserChatId: 'userData/getUserChatId',
+            getUserChatId: 'userData/geBotId'
         }),
     }
 }
