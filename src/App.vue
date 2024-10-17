@@ -1,7 +1,7 @@
 <template>
   <v-container class="pb-14 h-100">
     <RouterView />
-    <div>{{ tg.initDataUnsafe }}</div>
+
     <v-layout
       v-if="showBottomNavigation"
       class="overflow-visible" style="height: 3.5rem"
@@ -27,12 +27,12 @@
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
-const tg = window.Telegram.WebApp
+
 
 export default {
   name: 'App',
   data: () => ({
-      tg: {}
+
   }),
   methods: {
     ...mapActions({
@@ -71,9 +71,8 @@ export default {
       const [key, value] = param.split('=')
       queryParams[key] = decodeURIComponent(value) ?? ''
     }
-    this.setBotId(queryParams.botId)
-    this.tg = tg
-    console.log(tg)
+    this.setBotId(queryParams.bot_id)
+    
     //this.setUserChatId(this.getUserFromTg)
   }
 }

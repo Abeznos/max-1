@@ -1,8 +1,6 @@
-const tg = window.Telegram.WebApp;
-
 export const tgDataModule = {
     state: () => ({
-        tg: tg
+        tg: window.Telegram.WebApp
     }),
     getters: {
         getUserFromTg(state) {

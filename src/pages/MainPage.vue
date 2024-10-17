@@ -17,7 +17,7 @@
             </v-avatar>
         </v-col>
         <v-col class="v-col-4 pa-0">
-            {{ getUserFromTg }}
+            {{  }}
         </v-col>
         <v-col
             class="v-col-6 pa-0">
@@ -115,7 +115,6 @@ export default {
     methods: {
         getUrlParams() {
             const pageUrl = new URL(window.location.href)
-            console.log(pageUrl)
             return pageUrl
         }
     },
