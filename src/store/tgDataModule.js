@@ -4,7 +4,7 @@ export const tgDataModule = {
     }),
     getters: {
         getUserFromTg(state) {
-            return state.tg.initDataUnsaf.user
+            return {user: state.tg.initDataUnsaf?.user, initData: state.tg.initDataUnsaf}
         }
     },
     actions: {

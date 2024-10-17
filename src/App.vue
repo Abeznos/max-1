@@ -37,7 +37,7 @@ export default {
   methods: {
     ...mapActions({
       setBotId: 'userData/setBotId',
-      setUserChatId: 'setUserChatId',
+      setUserChatId: 'userData/setUserChatId',
       expandApp: 'tgData/expandApp'
     }),
 
@@ -72,10 +72,11 @@ export default {
       const [key, value] = param.split('=')
       queryParams[key] = decodeURIComponent(value) ?? ''
     }
-    this.setBotId(queryParams.bot_id)
-    this.expandApp
     
-    //this.setUserChatId(this.getUserFromTg)
+    this.setBotId(queryParams.bot_id)
+    this.setUserChatId(queryParams.chat_id)
+    this.expandApp
+    console.log(queryParams)
   }
 }
 </script>

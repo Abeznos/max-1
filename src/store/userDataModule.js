@@ -34,7 +34,7 @@ export const userDataModule = {
             commit('setBotId', id)
         },
         async setUserChatId({state, commit, dispatch}, id) {
-            commit('setBotId', id)
+            commit('setUserChatId', id)
         },
         async login({state, commit, dispatch}) {
             try{
