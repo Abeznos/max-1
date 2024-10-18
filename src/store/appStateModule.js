@@ -35,6 +35,10 @@ export const appStateModule = {
                     items: [
                         'Санкт-Петербург',
                         'Казань'
+                    ],
+                    citys: [
+                        {name: 'Санкт-Петербург', id: '152ed6ac-8bd4-b7aa-88ff-33571ba99c2a'},
+                        {name: 'Казань', id: '152ed6ac-8bd4-b7aa-88ff-33571ba99c2a'},
                     ]
                 }                                            
             }
@@ -56,6 +60,9 @@ export const appStateModule = {
     actions: {
         loadingToggle({ commit }) {
             commit('setLoading')
+        },
+        async getDItyId({state, commit, getters, dispatch}, city) {
+            return getters.getFormFields.city.citys.filter(city => city.name == city)
         }
     },
     namespaced: true

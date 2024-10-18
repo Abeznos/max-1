@@ -53,6 +53,23 @@ export const userDataModule = {
             } catch(error) {
                 console.log(error)
             }
+        },
+        async registrationUser({state, commit, getters, dispatch}, data){
+            const formData = data
+
+            if(formData.birth_date) {
+                formData.birth_date = formData.birth_date.toISOString().slice(0, 10)
+            }
+
+            if(formData.city) {
+                const citys = await dispatch('appState/getDItyId', formData.city , { root: true })
+                
+                console.log(citys)
+            }
+
+            
+            console.log(formData)
+            
         }
     },
     namespaced: true

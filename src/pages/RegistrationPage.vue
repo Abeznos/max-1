@@ -79,11 +79,11 @@
                     ></v-select>                                                        
                     <v-btn 
                         class="mt-2"
-                        type="submit"
                         block
                         size="large"
                         variant="flat"
-                        color="deep-purple-accent-4"
+                        color="deep-purple-accent-4"                        
+                        @click="registrationUser(userData)"
                     >
                         Далее
                     </v-btn>
@@ -107,6 +107,11 @@ export default {
         personaldataSend: false,
         userData: {}
     }),
+    methods: {
+        ...mapActions({
+            registrationUser: 'userData/registrationUser'
+        })
+    },
     computed: {
         ...mapGetters({
             getUserFromTg: 'tgData/getUserFromTg',
