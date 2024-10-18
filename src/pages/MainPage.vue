@@ -145,6 +145,8 @@
             </template>
             <v-card class="mlm-code pa-8">
                 {{ getUserFromTg }}
+                {{ initData }}
+                {{ getChatInstance }}
             </v-card>
         </v-dialog>
 
@@ -172,7 +174,9 @@ export default {
             getUserChatId: 'userData/getUserChatId',
             getUserChatId: 'userData/geBotId',
             getLoading: 'appState/getLoading',
-            getUserPersData: 'userData/getUserPersData'
+            getUserPersData: 'userData/getUserPersData',
+            initData: 'tgData/initData',
+            getChatInstance: 'tgData/getChatInstance'
         }),
     }
 }

@@ -5,6 +5,12 @@ export const tgDataModule = {
     getters: {
         getUserFromTg(state) {
             return state.tg.initDataUnsafe?.user
+        },
+        initData(state) {
+            return state.tg?.initData
+        },
+        getChatInstance(state) {
+            return state.tg?.chat_instance
         }
     },
     actions: {
