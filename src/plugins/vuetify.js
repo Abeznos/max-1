@@ -2,7 +2,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
-import { mdiHome, mdiAccount, mdiBarcode, mdiQrcode, mdiMapMarker } from '@mdi/js'
+import { mdiHome, mdiAccount, mdiBarcode, mdiQrcode, mdiMapMarker, mdiClose } from '@mdi/js'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
@@ -18,6 +18,7 @@ export default createVuetify({
             barcode: mdiBarcode,
             qr: mdiQrcode,
             location: mdiMapMarker,
+            close: mdiClose
           },
         sets: {
             mdi

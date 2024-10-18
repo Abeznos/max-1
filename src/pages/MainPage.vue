@@ -12,7 +12,7 @@
                 <v-icon
                     v-else
                     color="#000000"
-                    icon="mdi-account_circle"
+                    icon="$account"
                 ></v-icon>
             </v-avatar>
         </v-col>
@@ -25,15 +25,7 @@
         </v-col>
     </v-row>
     <v-row class="ma-0 mt-4">
-        <v-skeleton-loader
-            v-if="getLoading"
-            type="image"
-            class="v-col-12 pa-0 "
-            height="150"
-            color="#ff0000"
-        ></v-skeleton-loader>
         <v-col
-            v-else
             class="v-col-12 pa-0"
         >
             <v-card
@@ -52,15 +44,7 @@
     </v-row>
     <v-row class="ma-0 mt-2 flex-nowrap w-100 ga-4">
         <v-col class="pa-0">
-            <v-skeleton-loader
-                v-if="getLoading"
-                type="image"
-                class="v-col pa-0 "
-                height="80"
-                color="#ff0000"
-            ></v-skeleton-loader>
             <v-card
-                v-else
                 class="order-code"
                 :text="getUserPersData.order_code"
                 variant="tonal"
@@ -68,28 +52,43 @@
             ></v-card>
         </v-col>
         <v-col class="col order-code pa-0">
-            <v-skeleton-loader
-                v-if="getLoading"
-                type="image"
-                class="v-col pa-0 "
-                height="80"
-                color="#ff0000"
-            ></v-skeleton-loader>
-            <v-card
-                v-else
-                class="order-code d-flex justify-center align-center"
-                variant="tonal"
-                height="80"
-                width="80"
+            <v-dialog
+                v-model="dialog"
+                transition="dialog-bottom-transition"
             >
-                <v-btn
-                    class="qr-button"
-                    icon="$qr"
-                    size="large"
-                    variant="flat"
-                    color="#000000"
-                ></v-btn>
-            </v-card>
+                <template v-slot:activator="{ props: activatorProps }">
+                    <v-card
+                        class="order-code d-flex justify-center align-center"
+                        variant="tonal"
+                        height="80"
+                        width="80"
+                    >
+                        <v-btn
+                            class="qr-button"
+                            icon="$qr"
+                            size="large"
+                            variant="flat"
+                            color="#000000"
+                            v-bind="activatorProps"
+                        ></v-btn>
+                    </v-card>
+                </template>
+                <v-card>
+                    <v-card>
+                        <v-col v-html="getUserPersData.qr"/>
+                        <template v-slot:actions>
+                            <v-btn
+                                class="ms-auto"
+                                text="Закрыть"
+                                block
+                                variant="flat"
+                                color="deep-purple-accent-4"
+                                @click="dialog = false"
+                            ></v-btn>
+                        </template>                        
+                    </v-card>
+                </v-card>
+            </v-dialog>
         </v-col>
     </v-row>
     <v-row class="ma-0 mt-4 flex-nowrap w-100 ga-4">
@@ -129,9 +128,6 @@
             </v-btn>
         </v-col>
     </v-row>
-<!--
-<div v-html="getUserPersData.qr"></div>
--->
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
@@ -140,7 +136,8 @@ export default {
     name: 'MainPage',
     data: () => ({
         loading: false,
-        avatar: true
+        avatar: false,
+        dialog: false,
     }),
     methods: {
 
@@ -187,6 +184,7 @@ export default {
 
     .order-code .v-card-text {
         font-size: 2.5rem;
+        line-height: 1.25;
         text-align: center;
     }
 
