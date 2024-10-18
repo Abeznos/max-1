@@ -1,5 +1,5 @@
 <template>
-    <v-container class="pb-16">
+    <v-container class="h-100">
         <v-row class="ma-0 align-center flex-nowrap w-100">
             <v-col class="v-col-2 pa-0">
                 <v-avatar

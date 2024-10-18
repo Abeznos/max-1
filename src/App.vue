@@ -2,41 +2,43 @@
   <loader
     v-if="getLoading"
   />
-  <RouterView />
-  <v-layout
-    v-if="showBottomNavigation"
-    class="overflow-visible" style="height: 3.5rem"
-  >
-    <v-bottom-navigation
-      active
-      color="deep-purple-accent-4"
+  <v-container class="pa-0 pb-16">
+    <RouterView />
+    <v-layout
+      v-if="showBottomNavigation"
+      class="overflow-visible" style="height: 3.5rem"
     >
-        <v-btn
-          data-link="homeLink"
-          @click="pushToPage"
-        >
-          <v-icon icon="$home"></v-icon>
-        </v-btn>
-        <v-btn
-          data-link="locationLink"
-          @click="pushToPage"
-        >
-          <v-icon icon="$location"></v-icon>
-        </v-btn>
-        <v-btn
-          data-link="accountLink"
-          @click="pushToPage"
-        >
-          <v-icon icon="$account"></v-icon>
-        </v-btn>
-        <v-btn
-          data-link="regLink"
-          @click="pushToPage"
-        >
-          <v-icon>md-history</v-icon>
-        </v-btn>
-    </v-bottom-navigation>
-  </v-layout>
+      <v-bottom-navigation
+        active
+        color="deep-purple-accent-4"
+      >
+          <v-btn
+            data-link="homeLink"
+            @click="pushToPage"
+          >
+            <v-icon icon="$home"></v-icon>
+          </v-btn>
+          <v-btn
+            data-link="locationLink"
+            @click="pushToPage"
+          >
+            <v-icon icon="$location"></v-icon>
+          </v-btn>
+          <v-btn
+            data-link="accountLink"
+            @click="pushToPage"
+          >
+            <v-icon icon="$account"></v-icon>
+          </v-btn>
+          <v-btn
+            data-link="regLink"
+            @click="pushToPage"
+          >
+            <v-icon>md-history</v-icon>
+          </v-btn>
+      </v-bottom-navigation>
+    </v-layout>
+  </v-container>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'

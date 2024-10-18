@@ -40,7 +40,8 @@ export const appStateModule = {
                         {name: 'Санкт-Петербург', id: '152ed6ac-8bd4-b7aa-88ff-33571ba99c2a'},
                         {name: 'Казань', id: '152ed6ac-8bd4-b7aa-88ff-33571ba99c2a'},
                     ]
-                }                                            
+                },
+                                                        
             }
         }
     }),
@@ -62,7 +63,8 @@ export const appStateModule = {
             commit('setLoading')
         },
         async getDItyId({state, commit, getters, dispatch}, city) {
-            return getters.getFormFields.city.citys.filter(city => city.name == city)
+            const cityId = getters.getFormFields.city.citys.filter(el => el.name == city)
+            return cityId[0].id
         }
     },
     namespaced: true

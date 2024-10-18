@@ -1,5 +1,5 @@
 <template>
-    <v-container class="pb-16 h-100 ">
+    <v-container class="h-100">
         <v-row 
             v-if="!personaldataSend"
             class="h-100"
@@ -8,7 +8,7 @@
                 <v-form class="w-100">
                     <v-text-field
                         v-if="getFormFields.nameField.display"
-                        class="pb-text-field"
+                        class="pb-text-field rounded-lg"
                         v-model="userData.name"
                         variant="outlined"
                         :label="getFormFields.nameField.label"
@@ -76,7 +76,18 @@
                         variant="outlined"
                         :items="getFormFields.city.items"
                         :label="getFormFields.city.label"
-                    ></v-select>                                                        
+                    ></v-select>
+                    <v-checkbox v-model="userData.advertizing" color="deep-purple-accent-4">
+                        <template v-slot:label>
+                            <a
+                                href="https://vuetifyjs.com"
+                                target="_blank"
+                                @click.stop
+                            >
+                                Хочу получать реклманые сообщения
+                            </a>
+                        </template>
+                    </v-checkbox>                                        
                     <v-btn 
                         class="mt-2"
                         block
@@ -125,5 +136,7 @@ export default {
 }
 </script>
 <style>
-
+    .pb-text-field .v-field--variant-outlined {
+        border-radius: 1rem;        
+    }
 </style>
