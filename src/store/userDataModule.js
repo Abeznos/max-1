@@ -49,6 +49,7 @@ export const userDataModule = {
                 if(userData.data) {
                     commit('userPersData', userData.data)
                 }
+                dispatch('tgData/appReady', null, { root: true })
                 dispatch('tgData/expandApp', null, { root: true })
                 dispatch('appState/loadingToggle', null, { root: true })
             } catch(error) {

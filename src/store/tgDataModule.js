@@ -4,12 +4,15 @@ export const tgDataModule = {
     }),
     getters: {
         getUserFromTg(state) {
-            return {user: state.tg.initDataUnsaf?.user, initData: state.tg.initDataUnsaf}
+            return {user: state.tg.initDataUnsaf?.user}
         }
     },
     actions: {
         expandApp({state, commit, dispatch}) {
             state.tg.expand()
+        },
+        appReady({state, commit, dispatch}) {
+            state.tg.ready()
         }
     },
     namespaced: true

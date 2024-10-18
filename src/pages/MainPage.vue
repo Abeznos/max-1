@@ -144,10 +144,10 @@
                 </v-row>
             </template>
             <v-card class="mlm-code pa-8">
-                
+                {{ getUserFromTg }}
             </v-card>
         </v-dialog>
-        
+
     </v-container>
 </template>
 <script>
