@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import MainPage from '@/pages/MainPage.vue'
 import RegistrationPage from '@/pages/RegistrationPage.vue'
+import AccountPage from '@/pages/AccountPage.vue'
+import LocationPage from '@/pages/LocationPage.vue'
+import PromotionPage from '@/pages/PromotionPage.vue'
 
 const routes = [
     {
@@ -9,8 +12,20 @@ const routes = [
         component: MainPage
     },
     {
-        path: "/registration/",
+        path: "/registration",
         component: RegistrationPage
+    },
+    {
+        path: "/account",
+        component: AccountPage
+    },
+    {
+        path: "/location",
+        component: LocationPage
+    },
+    {
+        path: "/promotion",
+        component: PromotionPage
     }
 ]
 

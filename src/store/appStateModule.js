@@ -41,7 +41,11 @@ export const appStateModule = {
                         {name: 'Казань', id: '152ed6ac-8bd4-b7aa-88ff-33571ba99c2a'},
                     ]
                 },
-                                                        
+                birthDate: {
+                    display: true,
+                    placeholder: 'дд.мм.гггг',
+                    label: 'Дата рождения'
+                },                                                        
             }
         }
     }),

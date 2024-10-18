@@ -49,6 +49,7 @@ export const userDataModule = {
                 if(userData.data) {
                     commit('userPersData', userData.data)
                 }
+                dispatch('tgData/expandApp', null, { root: true })
                 dispatch('appState/loadingToggle', null, { root: true })
             } catch(error) {
                 console.log(error)
@@ -63,7 +64,7 @@ export const userDataModule = {
 
             if(formData.city) {
                 const citys = await dispatch('appState/getDItyId', formData.city , { root: true })
-                
+
                 console.log(citys)
             }
 

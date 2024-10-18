@@ -38,29 +38,14 @@
                         <v-radio label="Мужчина" value="male" color="deep-purple-accent-4"></v-radio>
                         <v-radio label="Женщина" value="female" color="deep-purple-accent-4"></v-radio>                        
                     </v-radio-group>
-                    <v-date-input 
+                    <v-text-field
+                        v-if="getFormFields.birthDate.display"
                         class="pb-text-field"
                         v-model="userData.birth_date"
                         variant="outlined"
-                        prepend-icon=""
-                        label="Date input"
-                    ></v-date-input>
-                    <!--
-                    <v-btn-toggle
-                        v-model="userData.gender"
-                        color="deep-purple-accent-3"
-                        rounded="0"
-                        group
-                    >
-                        <v-btn value="male">
-                            Мужчина
-                        </v-btn>
-
-                        <v-btn value="female">
-                            Женщина
-                        </v-btn>
-                    </v-btn-toggle>
-                    -->     
+                        :label="getFormFields.birthDate.label"
+                        :placeholder="getFormFields.birthDate.placeholder"
+                    ></v-text-field>   
                     <v-text-field
                         v-if="getFormFields.email.display"
                         class="pb-text-field"

@@ -9,7 +9,7 @@ export const tgDataModule = {
     },
     actions: {
         expandApp({state, commit, dispatch}) {
-            tg.expand()
+            state.tg.expand()
         }
     },
     namespaced: true
