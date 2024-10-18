@@ -4,7 +4,7 @@ export const tgDataModule = {
     }),
     getters: {
         getUserFromTg(state) {
-            return {user: state.tg.initDataUnsaf?.user}
+            return state.tg.initDataUnsafe?.user
         }
     },
     actions: {
