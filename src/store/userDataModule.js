@@ -51,9 +51,10 @@ export const userDataModule = {
                 }
                 dispatch('tgData/appReady', null, { root: true })
                 dispatch('tgData/expandApp', null, { root: true })
-                dispatch('appState/loadingToggle', null, { root: true })
             } catch(error) {
                 console.log(error)
+            } finally {
+                dispatch('appState/loadingToggle', null, { root: true })                
             }
         },
         async registrationUser({state, commit, getters, dispatch}, data){
