@@ -113,6 +113,6 @@ export default {
 </script>
 <style>
   .main-container {
-    height: 100svh;
+    height: var(--tg-viewport-stable-height);
   }
 </style>
