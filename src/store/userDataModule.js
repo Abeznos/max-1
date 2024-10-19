@@ -48,14 +48,15 @@ export const userDataModule = {
             commit('setBotId', id)
         },
         async login({state, commit, getters, dispatch}) {
+            const { appReady, expandApp } = tgService()
             dispatch('appState/loadingToggle', null, { root: true })
             try{
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
                 if(userData.data) {
                     commit('userPersData', userData.data)
                 }
-                tgService().appReady
-                tgService().expandApp
+                appReady
+                expandApp
 
                 //dispatch('tgData/appReady', null, { root: true })
                 //dispatch('tgData/expandApp', null, { root: true })
