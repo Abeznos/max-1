@@ -10,7 +10,7 @@ export function tgService() {
         tg.expand()
     }
 
-    const setBackgroundColor = () => {
+    const setBackgroundColor = (color) => {
         tg.setBackgroundColor(color)
     }
 
