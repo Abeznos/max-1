@@ -6,6 +6,8 @@
         {{ botId }}
         <p>chat ID</p>
         <p>{{ getUserChatId }}</p>
+        <p>tg initData unsafe</p>
+        <p>{{ tg.initDataUnsafe?.user }}</p>
     </v-sheet>
     <VBtn> Тестовая кнопка </VBtn>
 </template>
@@ -16,7 +18,8 @@ import {tgService} from '@/services/tgService.js'
 export default {
     name: 'MainPage',
     data: () => ({
-        botId: ''
+        botId: '',
+        tg: window.Telegram.WebApp,
         //loading: false,
         //avatar: false,
         //qrDialog: false,
