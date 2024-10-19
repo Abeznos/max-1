@@ -92,8 +92,10 @@ export default {
       return path != '/registration' ? true : false
     }
   },
-  created() {
+  beforeMount() {
 
+    const {setBackgroundColor} = tgService()
+    setBackgroundColor('#F1F3F9')
 
     //let searchParams = window.location.search.substr(1).split('&');
     //let queryParams = {};
@@ -112,7 +114,5 @@ export default {
 }
 </script>
 <style>
-  .main-container {
-    height: var(--tg-viewport-stable-height);
-  }
+
 </style>

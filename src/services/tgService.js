@@ -10,6 +10,10 @@ export function tgService() {
         tg.expand()
     }
 
+    const setBackgroundColor = () => {
+        tg.setBackgroundColor(color)
+    }
+
     const ab = () => {
         console.log('ab')
     }
@@ -17,6 +21,7 @@ export function tgService() {
     return {
         test: 'test',
         ab,
+        setBackgroundColor,
         appReady,
         expandApp,
         user: tg.initDataUnsafe?.user

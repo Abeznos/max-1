@@ -3,7 +3,7 @@
 :root {
   --font: Ubuntu, sans-serif;
   /*Colors*/
-  --surface-color: azure;
+  --surface-color: rgb(241, 243, 249);
   --primary-color: #00aaaa;
 
   font-family: var(--font);
