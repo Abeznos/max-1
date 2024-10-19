@@ -1,6 +1,6 @@
 <template>
-    <v-container class="h-100">
-        
+    <v-container>
+
     </v-container>
 </template>
 <script>
@@ -9,5 +9,5 @@ export default {
 }
 </script>
 <style>
-    
+
 </style>

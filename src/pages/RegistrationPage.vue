@@ -1,6 +1,6 @@
 <template>
-    <v-container class="h-100">
-        <v-row 
+    <v-container>
+        <v-row
             v-if="!personaldataSend"
             class="h-100"
         >
@@ -30,13 +30,13 @@
                         :label="getFormFields.middleName.label"
                         :placeholder="getFormFields.middleName.placeholder"
                     ></v-text-field>
-                    <v-radio-group 
+                    <v-radio-group
                         v-if="getFormFields.gender.display"
                         v-model="userData.gender"
                         inline
                     >
                         <v-radio label="Мужчина" value="male" color="deep-purple-accent-4"></v-radio>
-                        <v-radio label="Женщина" value="female" color="deep-purple-accent-4"></v-radio>                        
+                        <v-radio label="Женщина" value="female" color="deep-purple-accent-4"></v-radio>
                     </v-radio-group>
                     <v-text-field
                         v-if="getFormFields.birthDate.display"
@@ -45,7 +45,7 @@
                         variant="outlined"
                         :label="getFormFields.birthDate.label"
                         :placeholder="getFormFields.birthDate.placeholder"
-                    ></v-text-field>   
+                    ></v-text-field>
                     <v-text-field
                         v-if="getFormFields.email.display"
                         class="pb-text-field"
@@ -72,13 +72,13 @@
                                 Хочу получать реклманые сообщения
                             </a>
                         </template>
-                    </v-checkbox>                                        
-                    <v-btn 
+                    </v-checkbox>
+                    <v-btn
                         class="mt-2"
                         block
                         size="large"
                         variant="flat"
-                        color="deep-purple-accent-4"                        
+                        color="deep-purple-accent-4"
                         @click="registrationUser(userData)"
                     >
                         Далее
@@ -86,12 +86,12 @@
                 </v-form>
             </v-col>
         </v-row>
-        <v-row 
+        <v-row
             v-if="personaldataSend"
             class="h-100"
         >
 
-        </v-row>        
+        </v-row>
     </v-container>
 </template>
 <script>
@@ -122,6 +122,6 @@ export default {
 </script>
 <style>
     .pb-text-field .v-field--variant-outlined {
-        border-radius: 1rem;        
+        border-radius: 1rem;
     }
 </style>

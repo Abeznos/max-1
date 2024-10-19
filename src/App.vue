@@ -94,7 +94,8 @@ export default {
   },
   beforeMount() {
 
-    const {setBackgroundColor} = tgService()
+    const {setBackgroundColor, disableVerticalSwipes} = tgService()
+    disableVerticalSwipes()
     setBackgroundColor('#F1F3F9')
 
     //let searchParams = window.location.search.substr(1).split('&');

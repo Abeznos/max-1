@@ -14,6 +14,10 @@ export function tgService() {
         tg.setBackgroundColor(color)
     }
 
+    const disableVerticalSwipes = () => {
+        tg.disableVerticalSwipes()
+    }
+
     const ab = () => {
         console.log('ab')
     }
@@ -21,6 +25,7 @@ export function tgService() {
     return {
         test: 'test',
         ab,
+        disableVerticalSwipes,
         setBackgroundColor,
         appReady,
         expandApp,
