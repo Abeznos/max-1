@@ -53,11 +53,7 @@ export default {
   components: {loader},
   methods: {
     ...mapActions({
-      setBotId: 'userData/setBotId',
-      setUserChatId: 'userData/setUserChatId',
-      expandApp: 'tgData/expandApp',
-      login: 'userData/login',
-      defineUser: 'userData/defineUser'
+      loadingToggle: 'appState/loadingToggle'
     }),
 
     pushToPage(event) {
@@ -81,10 +77,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getUserFromTg: 'tgData/getUserFromTg',
-      getLoading: 'appState/getLoading',
-      getUserChatId: 'userData/getUserChatId',
-      getUserBotId: 'userData/getBotId',
+      getLoading: 'appState/getLoading'
     }),
 
     showBottomNavigation() {
@@ -93,7 +86,7 @@ export default {
     }
   },
   beforeMount() {
-
+    this.loadingToggle
     const {setBackgroundColor, disableVerticalSwipes} = tgService()
     disableVerticalSwipes()
     setBackgroundColor('#F1F3F9')

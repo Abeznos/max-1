@@ -1,6 +1,6 @@
 export const appStateModule = {
     state: () => ({
-        loading: false,
+        loading: true,
         settings: {
             registrationForm: {
                 nameField: {
@@ -45,7 +45,7 @@ export const appStateModule = {
                     display: true,
                     placeholder: 'дд.мм.гггг',
                     label: 'Дата рождения'
-                },                                                        
+                },
             }
         }
     }),
