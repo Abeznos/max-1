@@ -3,6 +3,7 @@
     v-if="getLoading"
   />
   <v-container class="main-container pa-4">
+    <div>{{ viewportStableHeight }}</div>
     <RouterView />
     <v-layout
       v-if="showBottomNavigation"
@@ -48,7 +49,7 @@ import loader from '@/components/ui/Loader.vue'
 export default {
   name: 'App',
   data: () => ({
-
+    viewportStableHeight: tgService.viewportStableHeight,
   }),
   components: {loader},
   methods: {
@@ -87,7 +88,8 @@ export default {
   },
   beforeMount() {
     this.loadingToggle
-    const {setBackgroundColor, disableVerticalSwipes} = tgService()
+    const {setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
+    setHeaderColor('#4527A0')
     disableVerticalSwipes()
     setBackgroundColor('#F1F3F9')
 

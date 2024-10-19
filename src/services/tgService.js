@@ -14,6 +14,10 @@ export function tgService() {
         tg.setBackgroundColor(color)
     }
 
+    const setHeaderColor = (color) => {
+        tg.setHeaderColor(color)
+    }
+
     const disableVerticalSwipes = () => {
         tg.disableVerticalSwipes()
     }
@@ -27,6 +31,8 @@ export function tgService() {
         ab,
         disableVerticalSwipes,
         setBackgroundColor,
+        setHeaderColor,
+        viewportStableHeight: tg.viewportStableHeight,
         appReady,
         expandApp,
         user: tg.initDataUnsafe?.user
