@@ -2,12 +2,20 @@ const tg = window.Telegram.WebApp
 
 export function tgService() {
 
-    const chatId = () => {
+    const ready = () => {
+        tg.ready()
+    }
 
+    const expandApp = () => {
+        tg.expand()
+    }
+
+    const user = () => {
+        return tg.initDataUnsafe.user ? tg.initDataUnsafe.user : ''
     }
 
     return {
         test: '12',
-        user: tg.initDataUnsafe?.user
+        user
     }
 }

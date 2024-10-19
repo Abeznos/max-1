@@ -8,8 +8,8 @@
         <p>{{ getUserChatId }}</p>
         <p>tg initData unsafe</p>
         <p>{{ tg.initDataUnsafe?.user }}</p>
-        <p>{{ tg.initDataUnsafe?.user.id }}</p>
-        <p>{{ tg.initDataUnsafe?.user.username }}</p>
+        <p>{{ tg.initDataUnsafe?.user?.id }}</p>
+        <p>{{ tg.initDataUnsafe?.user?.username }}</p>
     </v-sheet>
     <VBtn> Тестовая кнопка </VBtn>
 </template>
@@ -39,7 +39,7 @@ export default {
     },
     beforeMount() {
         const { user } = tgService()
-        this.setChatId(user.id)
+        this.setChatId(user)
         this.botId = this.$route.params.id
     }
 }
