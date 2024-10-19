@@ -55,8 +55,8 @@ export const userDataModule = {
                 if(userData.data) {
                     commit('userPersData', userData.data)
                 }
-                appReady
-                expandApp
+                appReady()
+                expandApp()
 
                 //dispatch('tgData/appReady', null, { root: true })
                 //dispatch('tgData/expandApp', null, { root: true })

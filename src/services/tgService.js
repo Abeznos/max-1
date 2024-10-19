@@ -10,8 +10,13 @@ export function tgService() {
         tg.expand()
     }
 
+    const ab = () => {
+        console.log('ab')
+    }
+
     return {
         test: 'test',
+        ab,
         appReady,
         expandApp,
         user: tg.initDataUnsafe?.user

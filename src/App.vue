@@ -2,7 +2,7 @@
   <loader
     v-if="getLoading"
   />
-  <v-container class="pa-4 h-100">
+  <v-container class="main-container pa-4">
     <RouterView />
     <v-layout
       v-if="showBottomNavigation"
@@ -112,5 +112,7 @@ export default {
 }
 </script>
 <style>
-
+  .main-container {
+    height: 100svh;
+  }
 </style>
