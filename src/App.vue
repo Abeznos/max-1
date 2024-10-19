@@ -2,7 +2,7 @@
   <loader
     v-if="getLoading"
   />
-  <v-container class="pa-0 pb-16">
+  <v-container class="pa-4 h-100">
     <RouterView />
     <v-layout
       v-if="showBottomNavigation"
@@ -92,7 +92,7 @@ export default {
       return path != '/registration' ? true : false
     }
   },
-  beforeMount() {
+  created() {
 
 
     //let searchParams = window.location.search.substr(1).split('&');

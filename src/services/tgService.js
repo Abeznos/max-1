@@ -2,7 +2,7 @@ const tg = window.Telegram.WebApp
 
 export function tgService() {
 
-    const ready = () => {
+    const appReady = () => {
         tg.ready()
     }
 
@@ -11,7 +11,9 @@ export function tgService() {
     }
 
     return {
-        test: '12',
+        test: 'test',
+        appReady,
+        expandApp,
         user: tg.initDataUnsafe?.user
     }
 }

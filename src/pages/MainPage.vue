@@ -18,7 +18,6 @@ export default {
     name: 'MainPage',
     data: () => ({
         botId: '',
-        tg: window.Telegram.WebApp,
         //loading: false,
         //avatar: false,
         //qrDialog: false,
@@ -26,8 +25,8 @@ export default {
     }),
     methods: {
         ...mapActions ({
-            setChatId: 'userData/setChatId',
-            defineUser: 'userData/defineUser'
+            defineUser: 'userData/defineUser',
+            login: 'userData/login'
         })
     },
     computed: {
@@ -39,7 +38,12 @@ export default {
     beforeMount() {
         const { user } = tgService()
         const bot = this.$route.params.id
-        this.defineUser({chatId: user?.id, botId: bot})
+        //this.defineUser({chatId: user?.id, botId: bot})
+        this.defineUser({chatId: '268451766', botId: bot})
+
+        if(this.getBotId && this.getUserChatId) {
+            this.login()
+        }
         //const { user } = tgService()
         //this.setChatId(user?.id)
         //this.botId = this.$route.params.id

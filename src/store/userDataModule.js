@@ -1,5 +1,5 @@
 import api from '@/http';
-//import tgService from '@/services/tgService.js'
+import {tgService} from '@/services/tgService.js'
 
 export const userDataModule = {
     state: () => ({
@@ -54,8 +54,11 @@ export const userDataModule = {
                 if(userData.data) {
                     commit('userPersData', userData.data)
                 }
-                dispatch('tgData/appReady', null, { root: true })
-                dispatch('tgData/expandApp', null, { root: true })
+                tgService().appReady
+                tgService().expandApp
+
+                //dispatch('tgData/appReady', null, { root: true })
+                //dispatch('tgData/expandApp', null, { root: true })
             } catch(error) {
                 console.log(error)
             } finally {
