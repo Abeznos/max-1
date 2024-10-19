@@ -12,19 +12,19 @@ const routes = [
         component: MainPage
     },
     {
-        path: "/registration",
+        path: "/registration/:id",
         component: RegistrationPage
     },
     {
-        path: "/account",
+        path: "/account/:id",
         component: AccountPage
     },
     {
-        path: "/location",
+        path: "/location/:id",
         component: LocationPage
     },
     {
-        path: "/promotion",
+        path: "/promotion/:id",
         component: PromotionPage
     }
 ]
