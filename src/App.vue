@@ -49,7 +49,7 @@ import loader from '@/components/ui/Loader.vue'
 export default {
   name: 'App',
   data: () => ({
-    viewportStableHeight: tgService.viewportStableHeight,
+    viewportStableHeight: tgService().viewportStableHeight,
   }),
   components: {loader},
   methods: {
