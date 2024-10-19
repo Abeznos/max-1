@@ -39,7 +39,6 @@ html, body {
   justify-content: flex-start;
   width: 100%;
   max-width: 480px;
-  min-height: inherit;
   overflow: hidden scroll;
   background-color: azure;
 }
