@@ -8,7 +8,7 @@ import PromotionPage from '@/pages/PromotionPage.vue'
 
 const routes = [
     {
-        path: "/",
+        path: "/:id",
         component: MainPage
     },
     {

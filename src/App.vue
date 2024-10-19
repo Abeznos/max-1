@@ -34,7 +34,7 @@
             data-link="regLink"
             @click="pushToPage"
           >
-            <v-icon>md-history</v-icon>
+            <v-icon></v-icon>
           </v-btn>
       </v-bottom-navigation>
     </v-layout>
@@ -91,18 +91,18 @@ export default {
     }
   },
   beforeMount() {
-    let searchParams = window.location.search.substr(1).split('&');
-    let queryParams = {};
-
-    for (let param of searchParams) {
-      const [key, value] = param.split('=')
-      queryParams[key] = decodeURIComponent(value) ?? ''
-    }
-
-    this.setBotId(queryParams.bot_id)
-    this.setUserChatId(queryParams.chat_id)
-    this.login()
-    this.expandApp
+    //let searchParams = window.location.search.substr(1).split('&');
+    //let queryParams = {};
+//
+    //for (let param of searchParams) {
+    //  const [key, value] = param.split('=')
+    //  queryParams[key] = decodeURIComponent(value) ?? ''
+    //}
+//
+    //this.setBotId(queryParams.bot_id)
+    //this.setUserChatId(queryParams.chat_id)
+    //this.login()
+    //this.expandApp
     //console.log(queryParams)
   }
 }

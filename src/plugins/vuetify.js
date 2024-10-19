@@ -6,11 +6,18 @@ import { mdiHome, mdiAccount, mdiBarcode, mdiQrcode, mdiMapMarker, mdiClose } fr
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { VDateInput } from 'vuetify/labs/VDateInput'
+import { VBtn } from 'vuetify/components'
 
 export default createVuetify({
     components: {
         ...components,
         VDateInput
+    },
+    defaults: {
+        VBtn: {
+            variant: 'flat',
+            color: 'var(--primary-color)'
+        }
     },
     directives,
     icons: {
