@@ -19,7 +19,7 @@ export const userDataModule = {
             return state.botId
         },
         getUserChatId(state) {
-            return state.userChatId
+            return state.chatId
         },
         getUserPersData(state) {
             return state.userPersData

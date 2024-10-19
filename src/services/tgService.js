@@ -10,12 +10,8 @@ export function tgService() {
         tg.expand()
     }
 
-    const user = () => {
-        return tg.initDataUnsafe.user ? tg.initDataUnsafe.user : ''
-    }
-
     return {
         test: '12',
-        user
+        user: tg.initDataUnsafe?.user
     }
 }
