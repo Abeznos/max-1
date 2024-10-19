@@ -8,6 +8,8 @@
         <p>{{ getUserChatId }}</p>
         <p>tg initData unsafe</p>
         <p>{{ tg.initDataUnsafe?.user }}</p>
+        <p>{{ tg.initDataUnsafe?.user.id }}</p>
+        <p>{{ tg.initDataUnsafe?.user.username }}</p>
     </v-sheet>
     <VBtn> Тестовая кнопка </VBtn>
 </template>
