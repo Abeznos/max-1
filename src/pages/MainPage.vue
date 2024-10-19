@@ -3,6 +3,7 @@
         color="var(--primary-color)"
     >
         {{ botId }}
+        {{  tg.initDataUnsafe?.user }}
     </v-sheet>
     <VBtn> Тестовая кнопка </VBtn>
 </template>
@@ -12,6 +13,7 @@ import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
     name: 'MainPage',
     data: () => ({
+        tg: window.Telegram.WebApp,
         botId: ''
         //loading: false,
         //avatar: false,

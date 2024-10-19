@@ -16,7 +16,8 @@ export default createVuetify({
     defaults: {
         VBtn: {
             variant: 'flat',
-            color: 'var(--primary-color)'
+            class: 'pb-primary-btn',
+            size: "large"
         }
     },
     directives,

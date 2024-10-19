@@ -48,3 +48,8 @@ html, body {
 .v-skeleton-loader__image {
   border-radius: 1rem !important;
 }
+
+.pb-primary-btn {
+  background-color: var(--primary-color) !important;
+  border-radius: .5rem !important;
+}
