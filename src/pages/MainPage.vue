@@ -39,7 +39,7 @@ export default {
     },
     beforeMount() {
         const { user } = tgService()
-        this.setChatId(user)
+        this.setChatId(user.id)
         this.botId = this.$route.params.id
     }
 }
