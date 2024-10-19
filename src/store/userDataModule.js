@@ -1,10 +1,10 @@
 import api from '@/http';
-import tgService from '@/services/tgService.js'
+//import tgService from '@/services/tgService.js'
 
 export const userDataModule = {
     state: () => ({
         botId: '',
-        userChatId: '',
+        chatId: '',
         userPersData: {},
         orderCode: '123456'
     }),
@@ -29,17 +29,16 @@ export const userDataModule = {
         setBotId(state, id) {
             state.botId = id
         },
-        setUserChatId(state, id) {
-            state.userChatId = id;
+        setChatId(state, id) {
+            state.chatId = id;
         },
         userPersData(state, data) {
             state.userPersData = data
         }
     },
     actions: {
-        async setBotId({state, commit, dispatch}) {
-            const chatId = await tgService.getBotId()
-            commit('setBotId', chatId)
+        async setChatId({state, commit, dispatch}, id) {
+            commit('setChatId', id)
         },
         async setUserChatId({state, commit, dispatch}, id) {
             commit('setUserChatId', id)

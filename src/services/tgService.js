@@ -1,11 +1,13 @@
-const tg = window.Telegram.WebApp
+const tg = window.Telegram.WebApp;
 
-export default class tgService {
-    static async getChatIds() {
-        return tg.initDataUnsafe?.user.id
+export function tgService() {
+
+    const chatId = () => {
+
     }
 
-    static async getData() {
-        return tg.initDataUnsafe?.user
+    return {
+        test: '12',
+        user: tg.initDataUnsafe?.user?.id
     }
 }

@@ -2,21 +2,20 @@
     <v-sheet
         color="var(--primary-color)"
     >
+        <p>Bot ID</p>
         {{ botId }}
-        {{  tg.initDataUnsafe?.user }}
-
-        <p>chat id</p>
-        <p>{{ getBotId }}</p>
+        <p>chat ID</p>
+        <p>{{ getUserChatId }}</p>
     </v-sheet>
     <VBtn> Тестовая кнопка </VBtn>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+import {tgService} from '@/services/tgService.js'
 
 export default {
     name: 'MainPage',
     data: () => ({
-        tg: window.Telegram.WebApp,
         botId: ''
         //loading: false,
         //avatar: false,
@@ -25,18 +24,18 @@ export default {
     }),
     methods: {
         ...mapActions ({
-            setBotId: 'userData/setBotId'
+            setChatId: 'userData/setChatId'
         })
     },
     computed: {
         ...mapGetters ({
-            getBotId: 'userData/getBotId'
+            getUserChatId: 'userData/getUserChatId'
         })
     },
     beforeMount() {
-        this.setBotId
+        const { user } = tgService()
+        this.setChatId(user)
         this.botId = this.$route.params.id
-        console.log(this.$route.params.id)
     }
 }
 </script>
