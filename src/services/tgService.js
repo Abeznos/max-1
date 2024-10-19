@@ -8,6 +8,6 @@ export function tgService() {
 
     return {
         test: '12',
-        user: tg.initDataUnsafe?.user?.id
+        user: tg.initDataUnsafe?.user
     }
 }
