@@ -1,4 +1,5 @@
 import api from '@/http';
+import tgService from '@/services/tgService.js'
 
 export const userDataModule = {
     state: () => ({
@@ -26,7 +27,7 @@ export const userDataModule = {
     },
     mutations: {
         setBotId(state, id) {
-            state.botId = id;
+            state.botId = id
         },
         setUserChatId(state, id) {
             state.userChatId = id;
@@ -36,8 +37,9 @@ export const userDataModule = {
         }
     },
     actions: {
-        async setBotId({state, commit, dispatch}, id) {
-            commit('setBotId', id)
+        async setBotId({state, commit, dispatch}) {
+            const chatId = await tgService.getBotId()
+            commit('setBotId', chatId)
         },
         async setUserChatId({state, commit, dispatch}, id) {
             commit('setUserChatId', id)
@@ -54,7 +56,7 @@ export const userDataModule = {
             } catch(error) {
                 console.log(error)
             } finally {
-                dispatch('appState/loadingToggle', null, { root: true })                
+                dispatch('appState/loadingToggle', null, { root: true })
             }
         },
         async registrationUser({state, commit, getters, dispatch}, data){
@@ -70,9 +72,9 @@ export const userDataModule = {
                 console.log(citys)
             }
 
-            
+
             console.log(formData)
-            
+
         }
     },
     namespaced: true

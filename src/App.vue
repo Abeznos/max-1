@@ -91,6 +91,7 @@ export default {
     }
   },
   beforeMount() {
+
     //let searchParams = window.location.search.substr(1).split('&');
     //let queryParams = {};
 //

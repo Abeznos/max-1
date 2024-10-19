@@ -4,6 +4,9 @@
     >
         {{ botId }}
         {{  tg.initDataUnsafe?.user }}
+
+        <p>chat id</p>
+        <p>{{ getBotId }}</p>
     </v-sheet>
     <VBtn> Тестовая кнопка </VBtn>
 </template>
@@ -21,12 +24,17 @@ export default {
         //mlmDialog: false
     }),
     methods: {
-
+        ...mapActions ({
+            setBotId: 'userData/setBotId'
+        })
     },
     computed: {
-
+        ...mapGetters ({
+            getBotId: 'userData/getBotId'
+        })
     },
     beforeMount() {
+        this.setBotId
         this.botId = this.$route.params.id
         console.log(this.$route.params.id)
     }
