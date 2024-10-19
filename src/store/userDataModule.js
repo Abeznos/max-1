@@ -37,11 +37,15 @@ export const userDataModule = {
         }
     },
     actions: {
+        async defineUser ({state, commit, dispatch}, data) {
+            commit('setChatId', data.chatId)
+            commit('setBotId', data.botId)
+        },
         async setChatId({state, commit, dispatch}, id) {
             commit('setChatId', id)
         },
-        async setUserChatId({state, commit, dispatch}, id) {
-            commit('setUserChatId', id)
+        async setBotId({state, commit, dispatch}, id) {
+            commit('setBotId', id)
         },
         async login({state, commit, getters, dispatch}) {
             dispatch('appState/loadingToggle', null, { root: true })

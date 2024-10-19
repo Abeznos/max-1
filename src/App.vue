@@ -42,6 +42,7 @@
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+import {tgService} from '@/services/tgService.js'
 import loader from '@/components/ui/Loader.vue'
 
 export default {
@@ -55,7 +56,8 @@ export default {
       setBotId: 'userData/setBotId',
       setUserChatId: 'userData/setUserChatId',
       expandApp: 'tgData/expandApp',
-      login: 'userData/login'
+      login: 'userData/login',
+      defineUser: 'userData/defineUser'
     }),
 
     pushToPage(event) {
@@ -91,6 +93,7 @@ export default {
     }
   },
   beforeMount() {
+
 
     //let searchParams = window.location.search.substr(1).split('&');
     //let queryParams = {};

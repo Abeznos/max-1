@@ -3,13 +3,10 @@
         color="var(--primary-color)"
     >
         <p>Bot ID</p>
-        {{ botId }}
+        {{ getBotId }}
         <p>chat ID</p>
         <p>{{ getUserChatId }}</p>
-        <p>tg initData unsafe</p>
-        <p>{{ tg.initDataUnsafe?.user }}</p>
-        <p>{{ tg.initDataUnsafe?.user?.id }}</p>
-        <p>{{ tg.initDataUnsafe?.user?.username }}</p>
+
     </v-sheet>
     <VBtn> Тестовая кнопка </VBtn>
 </template>
@@ -29,18 +26,23 @@ export default {
     }),
     methods: {
         ...mapActions ({
-            setChatId: 'userData/setChatId'
+            setChatId: 'userData/setChatId',
+            defineUser: 'userData/defineUser'
         })
     },
     computed: {
         ...mapGetters ({
+            getBotId: 'userData/getBotId',
             getUserChatId: 'userData/getUserChatId'
         })
     },
     beforeMount() {
         const { user } = tgService()
-        this.setChatId(user?.id)
-        this.botId = this.$route.params.id
+        const bot = this.$route.params.id
+        this.defineUser({chatId: user?.id, botId: bot})
+        //const { user } = tgService()
+        //this.setChatId(user?.id)
+        //this.botId = this.$route.params.id
     }
 }
 </script>
