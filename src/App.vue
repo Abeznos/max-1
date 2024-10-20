@@ -115,7 +115,7 @@ export default {
 <style>
   .bottom-nav {
     position: fixed;
-    bottom: 0;
+    bottom: -32px;
     left: 0;
     background-color: #4527A0;
     height: 3.5rem;
