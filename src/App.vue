@@ -2,9 +2,11 @@
   <loader
     v-if="getLoading"
   />
-  <v-container class="main-container pa-4">
+  <v-container class="main-container pa-0">
     <div>{{ viewportStableHeight }}</div>
     <RouterView />
+    <div class="bottom-nav"></div>
+    <!--
     <v-layout
       v-if="showBottomNavigation"
       class="overflow-visible" style="height: 3.5rem"
@@ -39,6 +41,7 @@
           </v-btn>
       </v-bottom-navigation>
     </v-layout>
+    -->
   </v-container>
 </template>
 <script>
@@ -110,5 +113,12 @@ export default {
 }
 </script>
 <style>
-
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #4527A0;
+    height: 3.5rem;
+    width: 100%;
+  }
 </style>
