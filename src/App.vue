@@ -1,5 +1,47 @@
 <template>
-  <p>Тест</p>
+  <loader
+    v-if="getLoading"
+  />
+  <v-container class="main-container pa-0">
+    <div>{{ viewportStableHeight }}</div>
+    <RouterView />
+    <!--
+    <v-layout
+      v-if="showBottomNavigation"
+      class="overflow-visible" style="height: 3.5rem"
+    >
+      <v-bottom-navigation
+        active
+        color="deep-purple-accent-4"
+      >
+          <v-btn
+            data-link="homeLink"
+            @click="pushToPage"
+          >
+            <v-icon icon="$home"></v-icon>
+          </v-btn>
+          <v-btn
+            data-link="locationLink"
+            @click="pushToPage"
+          >
+            <v-icon icon="$location"></v-icon>
+          </v-btn>
+          <v-btn
+            data-link="accountLink"
+            @click="pushToPage"
+          >
+            <v-icon icon="$account"></v-icon>
+          </v-btn>
+          <v-btn
+            data-link="regLink"
+            @click="pushToPage"
+          >
+            <v-icon></v-icon>
+          </v-btn>
+      </v-bottom-navigation>
+    </v-layout>
+    -->
+  </v-container>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
@@ -66,6 +108,17 @@ export default {
     //this.login()
     //this.expandApp
     //console.log(queryParams)
+  },
+  mounted() {
+    const {isExpanded, viewportStableHeight} = tgService()
+    const body = document.querySelector('body')
+    console.log(body)
+
+    if(isExpanded) {
+      console.log(isExpanded)
+      body.style.height = `${viewportStableHeight}px`
+    }
+
   }
 }
 </script>

@@ -22,6 +22,10 @@ export function tgService() {
         tg.disableVerticalSwipes()
     }
 
+    const isExpanded = () => {
+        tg.isExpanded
+    }
+
     const ab = () => {
         console.log('ab')
     }
@@ -32,6 +36,7 @@ export function tgService() {
         disableVerticalSwipes,
         setBackgroundColor,
         setHeaderColor,
+        isExpanded: tg.isExpanded,
         viewportStableHeight: tg.viewportStableHeight,
         appReady,
         expandApp,
