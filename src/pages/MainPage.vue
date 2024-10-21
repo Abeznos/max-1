@@ -6,6 +6,7 @@
             <v-col class="v-col-12 d-flex flex-column align-center justify-center">
                 <v-card class="pb-alert-card pa-4">
                     <v-card-text>
+                        {{ getUserPersData }}
                         <p>Для корректной работы бота, поделитесь своим номером телефона</p>
                     </v-card-text>
                     <v-card-actions class="d-flex flex-column align-center justify-center">
@@ -16,10 +17,11 @@
                             Закрыть
                         </VBtn>
                         <VBtn
+                            :loading="loading"
                             block
                             @click="requestContact"
                         >
-                            Контакт
+                            Поделиться контактом
                         </VBtn>
                     </v-card-actions>
                 </v-card>
@@ -198,6 +200,7 @@ import {tgService} from '@/services/tgService.js'
 export default {
     name: 'MainPage',
     data: () => ({
+        loading: false,
         botId: '',
         //loading: false,
         //avatar: false,
@@ -219,8 +222,12 @@ export default {
             closeApp()
         },
         requestContact() {
+            this.loading = !this.loading
             const { requestContact } = tgService()
-            requestContact()
+            requestContact(() => {
+                login()
+            })
+
         }
     },
     computed: {
