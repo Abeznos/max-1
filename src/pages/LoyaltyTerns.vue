@@ -25,13 +25,13 @@ export default {
     name: 'LoyaltyTerns',
     methods: {
         back() {
-            const { backBtn } = tgService()
+            const { backButton } = tgService()
 
         }
     },
     beforeMount() {
         const { backButton } = tgService()
-        backButton.show
+        backButton.show()
         console.log(backButton)
     }
 }

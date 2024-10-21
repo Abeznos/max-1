@@ -45,7 +45,7 @@ export function tgService() {
         setBackgroundColor,
         setHeaderColor,
         openLink,
-        backButton,
+        backButton: tg.BackButton,
         isExpanded: tg.isExpanded,
         viewportStableHeight: tg.viewportStableHeight,
         appReady,
