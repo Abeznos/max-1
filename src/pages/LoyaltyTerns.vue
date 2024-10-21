@@ -26,7 +26,9 @@ export default {
     methods: {
         back() {
             const { backButton } = tgService()
-            backButton.onClick(() => alert('нажали назад'))//this.$router.go(-1))
+            backButton.onClick(function() { 
+                this.$router.go(-1)
+            })
         }
     },
     beforeMount() {

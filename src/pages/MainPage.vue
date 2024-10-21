@@ -200,7 +200,7 @@ export default {
         this.defineUser({chatId: '268451766', botId: bot})
 
         if(this.getBotId && this.getUserChatId) {
-            this.login()
+            //this.login()
         }
         //const { user } = tgService()
         //this.setChatId(user?.id)
