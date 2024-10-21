@@ -2,7 +2,7 @@
   <loader
     v-if="getLoading"
   />
-  <v-container class="main-container pa-0 h-100">
+  <v-container class="main-container pa-0 pb-8 h-100">
     <RouterView />
     <!--
     <v-layout
