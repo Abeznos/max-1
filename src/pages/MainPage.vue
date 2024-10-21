@@ -11,7 +11,7 @@
                     <v-card-actions>
                         <VBtn
                             block
-                            @v-clicl="closeApp"
+                            @click="closeApp"
                         >
                             Закрыть
                         </VBtn>
