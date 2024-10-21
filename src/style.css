@@ -46,7 +46,7 @@ html, body {
   justify-content: flex-start;
   width: 100%;
   max-width: 480px;
-  overflow: hidden;
+  overflow: hidden scroll;
   background-color: var(--surface-color);
 }
 

@@ -5,6 +5,7 @@ import RegistrationPage from '@/pages/RegistrationPage.vue'
 import AccountPage from '@/pages/AccountPage.vue'
 import LocationPage from '@/pages/LocationPage.vue'
 import PromotionPage from '@/pages/PromotionPage.vue'
+import LoyaltyTerns from '@/pages/LoyaltyTerns.vue'
 
 const routes = [
     {
@@ -26,7 +27,11 @@ const routes = [
     {
         path: "/promotion/:id",
         component: PromotionPage
-    }
+    },
+    {
+        path: "/loyalty-terms/:id",
+        component: LoyaltyTerns
+    }    
 ]
 
 const router = createRouter({

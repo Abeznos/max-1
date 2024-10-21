@@ -147,11 +147,20 @@
         </v-row>
         <v-row class="ma-0 mt-4 pa-0">
             <v-col class="text-left pa-0">
-                <VBtnOutline class="pb-text-bt" block>
-                    Условия программы лояльности
-                </VBtnOutline>                
+                <VBtnOutline class="pb-text-bt" block @click="openLink('https://yandex.ru/maps/213/moscow/chain/prostocvety/1893418102/filter/chain_id/1893418102/?ll=37.810359%2C55.756413&sctx=ZAAAAAgBEAAaKAoSCTmc%2BdUctkJAEa98lufB20tAEhIJOZojK78M1T8ROCwN%2FKiGuT8iBgABAgMEBSgKOABA1QFIAWIecmVsZXZfc2VydmljZV9hcmVhX3BlcmNlbnQ9MTAwagJydZ0BzcxMPaABAKgBAL0BnEuBScIBggGTpOTeBYf%2F8YbxAuOnkPvnApuj0asGsLmU2QSl7dfWBrWDx78Gh9Xs7QOou4rlsQO07MPoA7639bQGoODvxxym3tDMBN3W5KEFkbzG3Abm%2Fp7ZBLSQ84rmBtPi6JYFhp71hQSGufflJMn889wEm9y1zwT5%2FcCsRa%2FdmqO0A661vP8DggIZKChjaGFpbl9pZDooMTg5MzQxODEwMikpKYoCAJICAJoCDGRlc2t0b3AtbWFwc6oC8QExODkzNDE4MTAyLDE5ODc5MTYyMzE2Myw5MjIyNTExMDMxMSwxOTExOTU4OTk1ODAsMjYwMzQ4NTE5MiwxNTY4OTMwOTEyNzksMzg0MjMyMDAyMDAsMzQwMDM3NDU3NiwxNzA3NzUwOTAxNDksMzQ1Nzc3MjE1OTcsNzIwODY4NDU2NzMsMzc2Njg4NTMxMTgsMTM5MjIyOTk4NzgsMjMyNzk3ODM3MjgsMzExNzQwNTIzNTIsMzkwMjg3NjMyOTAsNTA1MzQ5MDY4MjMsMzUyOTA4NjM2NjIsMjIwOTg5MDgzMDUwLDU5OTU3MzIyMDU4sAIB&sll=37.810359%2C55.756413&source=serp_navig&sspn=1.279637%2C0.387543&z=11')">
+                    Адреса
+                </VBtnOutline>             
             </v-col>
-        </v-row>
+        </v-row>           
+        <v-row class="ma-0 mt-4 pa-0">
+            <v-col class="text-left pa-0">
+                <router-link :to="`loyalty-terms/${getBotId}`" class="pb-nav-link">
+                    <VBtnOutline class="pb-text-bt" block>
+                        Условия программы лояльности
+                    </VBtnOutline> 
+                </router-link>               
+            </v-col>
+        </v-row>     
     </v-container>
 </template>
 <script>
