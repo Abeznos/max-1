@@ -49,7 +49,7 @@ export const userDataModule = {
         },
         async login({state, commit, getters, dispatch}) {
             const { appReady, expandApp } = tgService()
-            //dispatch('appState/loadingToggle', null, { root: true })
+            dispatch('appState/loadingToggle', null, { root: true })
             try {
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
                 if(userData.data) {
