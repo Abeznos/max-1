@@ -1,5 +1,5 @@
 <template>
-    <v-container class="h-100">
+    <v-container class="pb-12">
         <v-row class="ma-0 align-center w-100">
             <v-col class="v-col-4 pa-0">
                 <router-link :to="`account/${getBotId}`" class="pb-nav-link">

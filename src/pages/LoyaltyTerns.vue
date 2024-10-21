@@ -30,8 +30,9 @@ export default {
         }
     },
     beforeMount() {
-        const { backBtn } = tgService()
-        backBtn.show()
+        const { backButton } = tgService()
+        backButton.show
+        console.log(backButton)
     }
 }
 </script>

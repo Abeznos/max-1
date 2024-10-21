@@ -35,7 +35,7 @@ export function tgService() {
     }
 
     const backButton = () => {
-        tg.BackButton.show
+        tg.BackButton
     }
 
     return {
@@ -45,6 +45,7 @@ export function tgService() {
         setBackgroundColor,
         setHeaderColor,
         openLink,
+        backButton,
         isExpanded: tg.isExpanded,
         viewportStableHeight: tg.viewportStableHeight,
         appReady,
