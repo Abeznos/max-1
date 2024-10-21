@@ -226,9 +226,12 @@ export default {
             this.loading = !this.loading
             const { requestContact } = tgService()
             requestContact(() => {
-                this.testText = 'Отправлено'
+                setTimeout(() => (this.testText = 'Отправлено'), 3000)
                 login()
             })
+
+
+            setTimeout(() => (login()), 3000)
 
         }
     },
