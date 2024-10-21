@@ -42,6 +42,10 @@ export function tgService() {
         tg.BackButton
     }
 
+    const requestContact = () => {
+        tg.requestContact()
+    }
+
     return {
         test: 'test',
         ab,
@@ -49,6 +53,7 @@ export function tgService() {
         setBackgroundColor,
         setHeaderColor,
         openLink,
+        requestContact,
         backButton: tg.BackButton,
         isExpanded: tg.isExpanded,
         viewportStableHeight: tg.viewportStableHeight,

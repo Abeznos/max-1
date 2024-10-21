@@ -8,12 +8,18 @@
                     <v-card-text>
                         <p>Для корректной работы бота, поделитесь своим номером телефона</p>
                     </v-card-text>
-                    <v-card-actions>
+                    <v-card-actions class="d-flex flex-column align-center justify-center">
                         <VBtn
                             block
                             @click="closeApp"
                         >
                             Закрыть
+                        </VBtn>
+                        <VBtn
+                            block
+                            @click="requestContact"
+                        >
+                            Контакт
                         </VBtn>
                     </v-card-actions>
                 </v-card>
@@ -211,6 +217,10 @@ export default {
         closeApp() {
             const { closeApp } = tgService()
             closeApp()
+        },
+        requestContact() {
+            const { requestContact } = tgService()
+            requestContact()
         }
     },
     computed: {
