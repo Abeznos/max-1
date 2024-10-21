@@ -38,6 +38,7 @@ export const userDataModule = {
     },
     actions: {
         async defineUser ({state, commit, dispatch}, data) {
+            //console.log(data)
             commit('setChatId', data.chatId)
             commit('setBotId', data.botId)
         },
@@ -52,14 +53,22 @@ export const userDataModule = {
             dispatch('appState/loadingToggle', null, { root: true })
             try {
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
-                if(userData.data) {
-                    commit('userPersData', userData.data)
+                
+                if(userData.data.success === false) {
+                    dispatch('appState/showAllertToggle', null, { root: true })
+                    console.log(userData.data.success)
                 }
-                appReady()
-                expandApp()
+                
+                return userData
 
-                dispatch('tgData/appReady', null, { root: true })
-                dispatch('tgData/expandApp', null, { root: true })
+                //if(userData.data) {
+                //    commit('userPersData', userData.data)
+                //}
+                //appReady()
+                //expandApp()
+//
+                //dispatch('tgData/appReady', null, { root: true })
+                //dispatch('tgData/expandApp', null, { root: true })
             } catch(error) {
                 console.log(error)
             } finally {

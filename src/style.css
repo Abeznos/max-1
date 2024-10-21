@@ -5,9 +5,9 @@
   /*Colors*/
   --surface-color: #f1f3f9;
   --on-surface-color: rgb(6,10,10);
-  --primary-color: rgb(239, 77, 100);
-  --on-primary-color: rgb(241, 243, 249);
-  --secondary-color: rgb(252, 228, 236);
+  --primary-color: #ef4d64;
+  --on-primary-color: #f1f3f9;
+  --secondary-color: #fce4ec;
 
   font-family: var(--font);
   font-size: 16px;

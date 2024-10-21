@@ -2,7 +2,17 @@
   <loader
     v-if="getLoading"
   />
+  <div 
+    v-if="getShowAlert"
+    class="alert-card"
+  >
+
+  </div>
   <v-container class="main-container pa-0 h-100">
+    <div>
+      <p>{{ getBotId }}</p>
+      <p>{{ getUserChatId }}</p>
+    </div>
     <RouterView />
     <v-layout
       v-if="getBackBtn"
@@ -28,58 +38,27 @@ export default {
   methods: {
     ...mapActions({
       loadingToggle: 'appState/loadingToggle',
-      setBackBtn: 'appState/setBackBtn'
+      setBackBtn: 'appState/setBackBtn',
+      defineUser: 'userData/defineUser'
     }),
 
     goBack() {
       this.$router.go(-1)
       this.setBackBtn()
-    },
-
-    pushToPage(event) {
-      switch (event.currentTarget.dataset.link) {
-        case 'homeLink':
-          this.$router.push(`/?bot_id=${this.getUserBotId}&chat_id=${this.getUserChatId}`)
-          break
-        case'regLink':
-          this.$router.push(`/registration/?bot_id=${this.getUserBotId}&chat_id=${this.getUserChatId}`)
-          break
-        case'accountLink':
-          this.$router.push(`/account/?bot_id=${this.getUserBotId}&chat_id=${this.getUserChatId}`)
-          break
-        case'locationLink':
-          this.$router.push(`/location/?bot_id=${this.getUserBotId}&chat_id=${this.getUserChatId}`)
-          break
-        default:
-          break
-      }
     }
   },
   computed: {
     ...mapGetters({
       getLoading: 'appState/getLoading',
-      getBackBtn: 'appState/getBackBtn'
+      getBackBtn: 'appState/getBackBtn',
+      getShowAlert: 'appState/getShowAlert'
     }),
   },
-  beforeMount() {
-    const {setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
+  mounted() {
+    const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
+    setBackgroundColor('var(--surface-color)')
     setHeaderColor('var(--primary-color)')
     disableVerticalSwipes()
-    setBackgroundColor('#F1F3F9')
-
-    //let searchParams = window.location.search.substr(1).split('&');
-    //let queryParams = {};
-//
-    //for (let param of searchParams) {
-    //  const [key, value] = param.split('=')
-    //  queryParams[key] = decodeURIComponent(value) ?? ''
-    //}
-//
-    //this.setBotId(queryParams.bot_id)
-    //this.setUserChatId(queryParams.chat_id)
-    //this.login()
-    //this.expandApp
-    //console.log(queryParams)
   }
 }
 </script>

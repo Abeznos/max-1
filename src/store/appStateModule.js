@@ -4,6 +4,7 @@ export const appStateModule = {
     state: () => ({
         loading: false,
         backBtn: false,
+        showAlert: false,
         settings: {
             registrationForm: {
                 nameField: {
@@ -113,6 +114,9 @@ export const appStateModule = {
         },
         getBackBtn(state) {
             return state.backBtn
+        },
+        getShowAlert(state) {
+            return state.showAlert
         }
     },
     mutations: {
@@ -121,6 +125,9 @@ export const appStateModule = {
         },
         backBtnToggle(state) {
             state.backBtn = !state.backBtn
+        },
+        setShowAllert(state) {
+            state.showAlert = !state.showAlert
         }
     },
     actions: {
@@ -133,6 +140,9 @@ export const appStateModule = {
         },
         setBackBtn({ commit }) {
             commit('backBtnToggle')
+        },
+        showAllertToggle({ commit }) {
+            commit('setShowAllert')
         }
     },
     namespaced: true

@@ -201,18 +201,21 @@ export default {
             getBackBtn: 'appState/getBackBtn'
         })
     },
-    beforeMount() {
-        const { user } = tgService()
-        const bot = this.$route.params.id
-        this.defineUser({chatId: user?.id, botId: bot})
-        //this.defineUser({chatId: '268451766', botId: bot})
+    async beforeMount() {
+        const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
+        const botId = this.$route.params.id
+        const chatId = user?.id || '' //Не забыть удалить тестовый chatId
+        this.defineUser({chatId, botId})
 
-        if(this.getBotId && this.getUserChatId) {
-            this.login()
-        }
-        //const { user } = tgService()
-        //this.setChatId(user?.id)
-        //this.botId = this.$route.params.id
+        const loginStatus = await this.login()
+        //console.log(loginStatus)
+        //if(this.getBotId && this.getUserChatId) {
+        //    this.login()
+        //}
+
+        setBackgroundColor('var(--surface-color)')
+        setHeaderColor('var(--primary-color)')
+        disableVerticalSwipes()
     },
     mounted() {
         if(this.getBackBtn) {
