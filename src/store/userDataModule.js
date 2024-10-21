@@ -58,8 +58,8 @@ export const userDataModule = {
                 appReady()
                 expandApp()
 
-                //dispatch('tgData/appReady', null, { root: true })
-                //dispatch('tgData/expandApp', null, { root: true })
+                dispatch('tgData/appReady', null, { root: true })
+                dispatch('tgData/expandApp', null, { root: true })
             } catch(error) {
                 console.log(error)
             } finally {

@@ -8,7 +8,7 @@
             >
                 <v-col cols="6">
                     <v-progress-linear
-                        color="deep-purple-accent-4"
+                        color="var(--primary-color)"
                         height="6"
                         indeterminate
                         rounded

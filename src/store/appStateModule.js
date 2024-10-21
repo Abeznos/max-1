@@ -2,7 +2,7 @@ import { ru } from "vuetify/locale"
 
 export const appStateModule = {
     state: () => ({
-        loading: false,
+        loading: true,
         settings: {
             registrationForm: {
                 nameField: {

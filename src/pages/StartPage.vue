@@ -44,7 +44,7 @@
             </v-col>
         </v-row>
         <v-row class="ma-0 mt-2 flex-nowrap w-100 ga-4">
-            <v-col class="pa-0">
+            <v-col class="v-col pa-0 pe-4">
                 <v-card
                     class="order-code"
                     :text="getUserPersData.order_code"
