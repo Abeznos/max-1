@@ -52,10 +52,16 @@ export const userDataModule = {
             const { appReady, expandApp } = tgService()
             dispatch('appState/loadingToggle', null, { root: true })
             try {
+                console.log({ botId: getters.getBotId, chatId: getters.getUserChatId})
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
 
-                if(userData.data.success === false) {
-                    dispatch('appState/showAllertToggle', null, { root: true })
+                if(userData.data.isBotUser === false) {
+                    dispatch('appState/showUserAllertToggle', null, { root: true })
+                    console.log(userData.data)
+                }
+
+                if(userData.data.isPbUser === false) {
+                    dispatch('appState/showPbUserAllertToggle', null, { root: true })
                     console.log(userData.data)
                 }
 

@@ -8,7 +8,7 @@
                 <div>
                     <p>{{ getUserChatId }}</p>
                     <p>{{ getBotId }}</p>
-                </div>                
+                </div>
                 <v-form class="w-100" validate-on="submit lazy" ref="form" @submit.prevent>
                     <v-text-field
                         v-if="getFormFields.nameField.display"
@@ -92,10 +92,9 @@
                         type="submit"
                         :loading="loading"
                         @click="sendForm"
-                    >
-                        Далее
-                    </VBtn>
-                </v-form>                
+                        text="Далее"
+                    ></VBtn>
+                </v-form>
             </v-col>
         </v-row>
         <v-row

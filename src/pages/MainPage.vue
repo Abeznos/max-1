@@ -1,32 +1,11 @@
 <template>
     <v-container class="pb-12">
-        <v-layout
-            class="alert w-100 h-100"
-        >
-            <v-col class="v-col-12 d-flex flex-column align-center justify-center">
-                <v-card class="pb-alert-card pa-4">
-                    <v-card-text>
-                        {{ showTestText }}
-                        <p>Для корректной работы бота, поделитесь своим номером телефона</p>
-                    </v-card-text>
-                    <v-card-actions class="d-flex flex-column align-center justify-center">
-                        <VBtn
-                            block
-                            @click="closeApp"
-                        >
-                            Закрыть
-                        </VBtn>
-                        <VBtn
-                            :loading="loading"
-                            block
-                            @click="requestContact"
-                        >
-                            Поделиться контактом
-                        </VBtn>
-                    </v-card-actions>
-                </v-card>
-            </v-col>
-        </v-layout>
+        <NotUserAlert
+            v-if="getBotUserAlert"
+        />
+        <NotPbUserAlert
+            v-if="getPbUserAlert"
+        />
         <v-row class="ma-0 align-center w-100">
             <v-col class="v-col-4 pa-0">
                 <router-link :to="`registration/${getBotId}`" class="pb-nav-link">
@@ -196,9 +175,12 @@
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 import {tgService} from '@/services/tgService.js'
+import NotUserAlert from '@/components/ui/NotUserAlert.vue'
+import NotPbUserAlert from '@/components/ui/NotPbUserAlert.vue'
 
 export default {
     name: 'MainPage',
+    components: {NotUserAlert, NotPbUserAlert},
     data: () => ({
         loading: false,
         botId: '',
@@ -217,22 +199,6 @@ export default {
         openLink(url) {
             const { openLink } = tgService()
             openLink(url)
-        },
-        closeApp() {
-            const { closeApp } = tgService()
-            closeApp()
-        },
-        requestContact() {
-            this.loading = !this.loading
-            const { requestContact } = tgService()
-            requestContact(() => {
-                setTimeout(() => (this.testText = 'Отправлено'), 3000)
-                login()
-            })
-
-
-            setTimeout(() => (login()), 3000)
-
         }
     },
     computed: {
@@ -241,7 +207,10 @@ export default {
             getUserChatId: 'userData/getUserChatId',
             getUserPersData: 'userData/getUserPersData',
             getBackBtn: 'appState/getBackBtn',
-            getColors: 'appState/getColors'
+            getColors: 'appState/getColors',
+            getBotUserAlert: 'appState/getBotUserAlert',
+            getPbUserAlert: 'appState/getPbUserAlert'
+
         }),
         showTestText() {
             return this.testText
@@ -250,7 +219,7 @@ export default {
     async beforeMount() {
         const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
         const botId = this.$route.params.id
-        const chatId = user?.id || '' //Не забыть удалить тестовый chatId
+        const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
 
         const loginStatus = await this.login()
@@ -308,7 +277,7 @@ export default {
 
     .order-code .v-card-text {
         font-size: 2.5rem;
-        line-height: 1.25;
+        line-height: 1.15;
         text-align: center;
     }
 
@@ -351,6 +320,6 @@ export default {
     }
 
     .alert .v-card-text {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
     }
 </style>

@@ -4,7 +4,8 @@ export const appStateModule = {
     state: () => ({
         loading: false,
         backBtn: false,
-        showAlert: false,
+        showBotUserAlert: false,
+        showPbUserAlert: false,
         settings: {
             registrationForm: {
                 nameField: {
@@ -99,7 +100,8 @@ export const appStateModule = {
         colors: {
             surface:'#f1f3f9',
             primary: '#ef4d64'
-        }
+        },
+        brand: 'Просто цветы'
     }),
     getters: {
         getLoading(state) {
@@ -119,11 +121,17 @@ export const appStateModule = {
         getBackBtn(state) {
             return state.backBtn
         },
-        getShowAlert(state) {
-            return state.showAlert
+        getBotUserAlert(state) {
+            return state.showBotUserAlert
+        },
+        getPbUserAlert(state) {
+            return state.showPbUserAlert
         },
         getColors(state) {
             return state.colors
+        },
+        getBrand(state) {
+            return state.brand
         }
     },
     mutations: {
@@ -133,8 +141,11 @@ export const appStateModule = {
         backBtnToggle(state) {
             state.backBtn = !state.backBtn
         },
-        setShowAllert(state) {
-            state.showAlert = !state.showAlert
+        setBotUserAlert(state) {
+            state.showBotUserAlert = !state.showBotUserAlert
+        },
+        setPbUserAlert(state) {
+            state.showPbUserAlert = !state.showPbUserAlert
         }
     },
     actions: {
@@ -148,8 +159,11 @@ export const appStateModule = {
         setBackBtn({ commit }) {
             commit('backBtnToggle')
         },
-        showAllertToggle({ commit }) {
-            commit('setShowAllert')
+        showUserAllertToggle({ commit }) {
+            commit('setBotUserAlert')
+        },
+        showPbUserAllertToggle({ commit }) {
+            commit('setPbUserAlert')
         }
     },
     namespaced: true
