@@ -102,17 +102,54 @@
             <v-col class="text-left pa-0">
                 <div>Действия</div>
                 <v-row class="ma-0 mt-2 pa-0">      
-                    <v-col class="v-col-6 pa-0 pe-4">
-                        <v-card class="pb-user-card" height="80" variant="flat">
-
+                    <v-col class="v-col-6 pa-0 pe-2 w-100">
+                        <v-card class="pb-user-card pb-action-card" height="80" variant="flat">
+                            <v-card-text>
+                                <v-row class="align-center flex-nowrap">
+                                    <v-col class="v-cols-2">
+                                        <v-icon icon="$account" size="24px"></v-icon>
+                                    </v-col>
+                                    <v-col class="v-cols-10">Подарить бонусы</v-col>
+                                </v-row>
+                                
+                            </v-card-text>                         
                         </v-card>
                     </v-col>
-                    <v-col class="v-col-6 pa-0  ps-4">
-                        <v-card class="pb-user-card" height="80" variant="flat">
-
+                    <v-col class="v-col-6 pa-0 ps-2">
+                        <v-card class="pb-user-card pb-action-card" height="80" variant="flat">
+                            <v-card-text>
+                                <v-row class="align-center flex-nowrap">
+                                    <v-col class="v-cols-2">
+                                        <v-icon icon="$account" size="24px"></v-icon>
+                                    </v-col>
+                                    <v-col class="v-cols-10">Пригласить друга</v-col>
+                                </v-row>
+                            </v-card-text>                         
                         </v-card>
                     </v-col>
                 </v-row>
+            </v-col>
+        </v-row>
+        <v-row class="ma-0 mt-4 pa-0">
+            <v-col class="text-left pa-0">
+                <v-card
+                    class="pb-user-card pb-action-card d-flex align-end" 
+                    height="150" 
+                    variant="flat"
+                    image="https://www.prostocvet.ru/upload/iblock/67e/ws7tjn7iehef8ufxlzwpgg3czl5leumm.jpg"
+                    @click="tgService().openLink('https://www.prostocvet.ru/')"
+                >
+                    <v-card-actions class="pa-4">
+                        <div>Заказать доставку</div>
+                    </v-card-actions>
+                </v-card>
+            </v-col>
+        </v-row>
+        <v-row class="ma-0 mt-4 pa-0">
+            <v-col class="text-left pa-0">
+                <VBtnOutline class="pb-text-bt" block>
+                    Условия программы лояльности
+                </VBtnOutline>                
             </v-col>
         </v-row>
     </v-container>
@@ -146,8 +183,8 @@ export default {
     beforeMount() {
         const { user } = tgService()
         const bot = this.$route.params.id
-        this.defineUser({chatId: user?.id, botId: bot})
-        //this.defineUser({chatId: '268451766', botId: bot})
+        //this.defineUser({chatId: user?.id, botId: bot})
+        this.defineUser({chatId: '268451766', botId: bot})
 
         if(this.getBotId && this.getUserChatId) {
             this.login()
@@ -209,5 +246,15 @@ export default {
         text-transform: unset!important;
         color: #3F51B5;
         font-weight: 500;
+    }
+
+    .pb-action-card .v-card-text {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .v-card-actions > div {
+        font-weight: 500;
+        color: #fff;
     }
 </style>

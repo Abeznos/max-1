@@ -56,6 +56,15 @@ html, body {
   color: var(--on-primary-color) !important;
 }
 
+.pb-text-bt {
+    border-radius: 1rem !important;
+    text-transform: none !important;
+    border-color: currentColor !important;
+    color: var(--primary-color) !important;
+}
+
+
+
 .pb-nav-link {
   text-decoration: none;
   font-weight: 500;

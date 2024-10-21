@@ -13,10 +13,19 @@ export default createVuetify({
         ...components,
         VDateInput
     },
+    aliases: {
+        VBtn: VBtn,
+        VBtnOutline: VBtn,
+      },    
     defaults: {
         VBtn: {
             variant: 'flat',
             class: 'pb-primary-btn',
+            size: "large"
+        },
+        VBtnOutline: {
+            variant: 'outlined',
+            class: 'pb-text-bt',
             size: "large"
         }
     },
