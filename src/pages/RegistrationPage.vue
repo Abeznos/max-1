@@ -179,8 +179,8 @@ export default {
     beforeMount() {
         const { user } = tgService()
         const bot = this.$route.params.id
-        //this.defineUser({chatId: user?.id, botId: bot})
-        this.defineUser({chatId: '268451766', botId: bot})
+        this.defineUser({chatId: user?.id, botId: bot})
+        //this.defineUser({chatId: '268451766', botId: bot})
     }
 }
 </script>
