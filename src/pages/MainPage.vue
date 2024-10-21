@@ -6,7 +6,7 @@
             <v-col class="v-col-12 d-flex flex-column align-center justify-center">
                 <v-card class="pb-alert-card pa-4">
                     <v-card-text>
-                        {{ getUserPersData }}
+                        {{ showTestText }}
                         <p>Для корректной работы бота, поделитесь своим номером телефона</p>
                     </v-card-text>
                     <v-card-actions class="d-flex flex-column align-center justify-center">
@@ -202,6 +202,7 @@ export default {
     data: () => ({
         loading: false,
         botId: '',
+        testText: '',
         //loading: false,
         //avatar: false,
         qrDialog: false,
@@ -225,6 +226,7 @@ export default {
             this.loading = !this.loading
             const { requestContact } = tgService()
             requestContact(() => {
+                this.testText = 'Отправлено'
                 login()
             })
 
@@ -237,7 +239,10 @@ export default {
             getUserPersData: 'userData/getUserPersData',
             getBackBtn: 'appState/getBackBtn',
             getColors: 'appState/getColors'
-        })
+        }),
+        showTestText() {
+            return this.testText
+        }
     },
     async beforeMount() {
         const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
