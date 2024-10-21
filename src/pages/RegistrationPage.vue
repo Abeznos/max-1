@@ -5,6 +5,10 @@
         >
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
                 <h2 class="pb-6">Анкета регистрации</h2>
+                <div>
+                    <p>{{ getUserChatId }}</p>
+                    <p>{{ getBotId }}</p>
+                </div>                
                 <v-form class="w-100" validate-on="submit lazy" ref="form" @submit.prevent>
                     <v-text-field
                         v-if="getFormFields.nameField.display"
@@ -91,14 +95,48 @@
                     >
                         Далее
                     </VBtn>
-                </v-form>
+                </v-form>                
             </v-col>
         </v-row>
         <v-row
             v-if="personaldataSend"
             class="h-100"
         >
-            <p>Заполните даты важных событий или дни рождения близких людей, и перед праздником мы пришлем вам напоминание и подарок.</p>
+            <v-col class="v-col-12 align-center">
+                <v-row>
+                    <v-col>
+                        <p>Заполните даты важных событий или дни рождения близких людей, и перед праздником мы пришлем вам напоминание и подарок.</p>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col>
+                        <VBtnOutline
+                            class="mt-2 pb-text-bt"
+                            block
+                            size="large"
+                            variant="flat"
+                            type="submit"
+                            :loading="loading"
+                            @click="sendForm"
+                        >
+                            Не сейчас
+                        </VBtnOutline>
+                    </v-col>
+                    <v-col>
+                        <VBtn
+                            class="mt-2 pb-primary-bt"
+                            block
+                            size="large"
+                            variant="flat"
+                            type="submit"
+                            :loading="loading"
+                            @click="sendForm"
+                        >
+                            Заполнить
+                        </VBtn>
+                    </v-col>
+                </v-row>
+            </v-col>
         </v-row>
     </v-container>
 </template>
@@ -124,7 +162,7 @@ export default {
             if (response) {
                 setTimeout(() => (this.loading = !this.loading), 2000)
                 setTimeout(() => (this.personaldataSend = true), 2000)
-
+                console.log(response)
             } else {
                 this.loading = !this.loading
             }
@@ -133,14 +171,16 @@ export default {
     computed: {
         ...mapGetters({
             getFormFields: 'appState/getFormFields',
-            getRules: 'appState/getRules'
-        }),
+            getRules: 'appState/getRules',
+            getUserChatId: 'userData/getUserChatId',
+            getBotId: 'userData/getBotId'
+        })
     },
     beforeMount() {
         const { user } = tgService()
         const bot = this.$route.params.id
-        this.defineUser({chatId: user?.id, botId: bot})
-        //this.defineUser({chatId: '268451766', botId: bot})
+        //this.defineUser({chatId: user?.id, botId: bot})
+        this.defineUser({chatId: '268451766', botId: bot})
     }
 }
 </script>

@@ -76,7 +76,6 @@
                                         icon="$qr"
                                         size="large"
                                         variant="flat"
-                                        color="#000000"
                                         v-bind="activatorProps"
                                     ></v-btn>
                                 </v-card>
