@@ -4,42 +4,14 @@
   />
   <v-container class="main-container pa-0 h-100">
     <RouterView />
-    <!--
     <v-layout
-      v-if="showBottomNavigation"
+      v-if="getBackBtn"
       class="overflow-visible" style="height: 3.5rem"
     >
-      <v-bottom-navigation
-        active
-        color="deep-purple-accent-4"
-      >
-          <v-btn
-            data-link="homeLink"
-            @click="pushToPage"
-          >
-            <v-icon icon="$home"></v-icon>
-          </v-btn>
-          <v-btn
-            data-link="locationLink"
-            @click="pushToPage"
-          >
-            <v-icon icon="$location"></v-icon>
-          </v-btn>
-          <v-btn
-            data-link="accountLink"
-            @click="pushToPage"
-          >
-            <v-icon icon="$account"></v-icon>
-          </v-btn>
-          <v-btn
-            data-link="regLink"
-            @click="pushToPage"
-          >
-            <v-icon></v-icon>
-          </v-btn>
+      <v-bottom-navigation>
+        <v-btn @click="goBack" size="small">Назад</v-btn>
       </v-bottom-navigation>
     </v-layout>
-    -->
   </v-container>
 </template>
 <script>
@@ -55,8 +27,14 @@ export default {
   components: {loader},
   methods: {
     ...mapActions({
-      loadingToggle: 'appState/loadingToggle'
+      loadingToggle: 'appState/loadingToggle',
+      setBackBtn: 'appState/setBackBtn'
     }),
+
+    goBack() {
+      this.$router.go(-1)
+      this.setBackBtn()
+    },
 
     pushToPage(event) {
       switch (event.currentTarget.dataset.link) {
@@ -79,16 +57,11 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getLoading: 'appState/getLoading'
+      getLoading: 'appState/getLoading',
+      getBackBtn: 'appState/getBackBtn'
     }),
-
-    showBottomNavigation() {
-      const path = this.$route.fullPath
-      return path != '/registration' ? true : false
-    }
   },
   beforeMount() {
-    //  his.loadingToggle
     const {setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
     setHeaderColor('var(--primary-color)')
     disableVerticalSwipes()
@@ -107,19 +80,6 @@ export default {
     //this.login()
     //this.expandApp
     //console.log(queryParams)
-  },
-  mounted() {
-    const {isExpanded, viewportStableHeight} = tgService()
-    const body = document.querySelector('body')
-    console.log(body)
-
-
-
-    if(isExpanded) {
-      console.log(isExpanded)
-      body.style.height = `${viewportStableHeight}px`
-    }
-
   }
 }
 </script>

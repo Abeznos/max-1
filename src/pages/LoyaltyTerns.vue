@@ -1,5 +1,5 @@
 <template>
-    <v-container class="h-100">
+    <v-container>
         <v-sheet>
             Как получить скидку?
 Зарегистрируйте карту лояльности в боте
@@ -20,21 +20,33 @@
 </template>
 <script>
 import {tgService} from '@/services/tgService.js'
+import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
     name: 'LoyaltyTerns',
     methods: {
+        ...mapActions ({
+            setBackBtn: 'appState/setBackBtn'
+        }),
         back() {
             const { backButton } = tgService()
-            backButton.onClick(function() { 
+            
+                alert('нажали')
                 this.$router.go(-1)
-            })
+            
+            console.log(backButton.onClick())
         }
     },
-    beforeMount() {
-        const { backButton } = tgService()
-        backButton.show()
-        console.log(backButton)
+    computed: {
+        ...mapGetters ({
+            getBackBtn: 'appState/getBackBtn'
+        })
+    },
+    mounted() {
+        if(!this.getBackBtn) {
+            this.setBackBtn()
+        }
+        //console.log(this.getBackBtn)
     }
 }
 </script>

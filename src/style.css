@@ -72,3 +72,12 @@ html, body {
 .v-sheet {
   background-color: var(--surface-color) !important;
 }
+
+.v-layout .v-bottom-navigation {
+  left: 50% !important;
+  width: 100px !important;
+  transform: translateX(-50%) !important;
+  border-radius: 2rem !important;
+  bottom: 1rem !important;
+  height: 2.5rem !important;
+}

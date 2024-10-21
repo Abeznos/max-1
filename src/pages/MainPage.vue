@@ -87,7 +87,7 @@
                                             block
                                             size="large"
                                             variant="flat"
-                                            color="deep-purple-accent-4"
+                                            color="var(--primary-color)"
                                             @click="qrDialog = false"
                                         ></v-btn>
                                     </template>
@@ -179,7 +179,8 @@ export default {
     methods: {
         ...mapActions ({
             defineUser: 'userData/defineUser',
-            login: 'userData/login'
+            login: 'userData/login',
+            backBtnToggle: 'appState/backBtnToggle'
         }),
         openLink(url) {
             const { openLink } = tgService()
@@ -190,7 +191,8 @@ export default {
         ...mapGetters ({
             getBotId: 'userData/getBotId',
             getUserChatId: 'userData/getUserChatId',
-            getUserPersData: 'userData/getUserPersData'
+            getUserPersData: 'userData/getUserPersData',
+            getBackBtn: 'appState/getBackBtn'
         })
     },
     beforeMount() {
@@ -205,6 +207,12 @@ export default {
         //const { user } = tgService()
         //this.setChatId(user?.id)
         //this.botId = this.$route.params.id
+    },
+    mounted() {
+        if(this.getBackBtn) {
+            this.setBackBtn()
+        }
+        //console.log(this.getBackBtn)
     }
 }
 </script>

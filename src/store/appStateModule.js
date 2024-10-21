@@ -3,6 +3,7 @@ import { ru } from "vuetify/locale"
 export const appStateModule = {
     state: () => ({
         loading: false,
+        backBtn: false,
         settings: {
             registrationForm: {
                 nameField: {
@@ -109,11 +110,17 @@ export const appStateModule = {
                 rules.push(state.formRules[rule])
             })
             return rules
+        },
+        getBackBtn(state) {
+            return state.backBtn
         }
     },
     mutations: {
         setLoading(state) {
             state.loading = !state.loading
+        },
+        backBtnToggle(state) {
+            state.backBtn = !state.backBtn
         }
     },
     actions: {
@@ -123,6 +130,9 @@ export const appStateModule = {
         async getDItyId({state, commit, getters, dispatch}, city) {
             const cityId = getters.getFormFields.city.citys.filter(el => el.name == city)
             return cityId[0].id
+        },
+        setBackBtn({ commit }) {
+            commit('backBtnToggle')
         }
     },
     namespaced: true
