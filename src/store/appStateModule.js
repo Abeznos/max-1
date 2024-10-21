@@ -95,6 +95,10 @@ export const appStateModule = {
                 }
                 return true
             }
+        },
+        colors: {
+            surface:'#f1f3f9',
+            primary: '#ef4d64'
         }
     }),
     getters: {
@@ -117,6 +121,9 @@ export const appStateModule = {
         },
         getShowAlert(state) {
             return state.showAlert
+        },
+        getColors(state) {
+            return state.colors
         }
     },
     mutations: {

@@ -53,12 +53,12 @@ export const userDataModule = {
             dispatch('appState/loadingToggle', null, { root: true })
             try {
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
-                
+
                 if(userData.data.success === false) {
                     dispatch('appState/showAllertToggle', null, { root: true })
-                    console.log(userData.data.success)
+                    console.log(userData.data)
                 }
-                
+
                 return userData
 
                 //if(userData.data) {

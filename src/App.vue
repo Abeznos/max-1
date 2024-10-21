@@ -2,7 +2,7 @@
   <loader
     v-if="getLoading"
   />
-  <div 
+  <div
     v-if="getShowAlert"
     class="alert-card"
   >
@@ -42,6 +42,10 @@ export default {
       defineUser: 'userData/defineUser'
     }),
 
+    color() {
+      console.log('var(--surface-color)')
+    },
+
     goBack() {
       this.$router.go(-1)
       this.setBackBtn()
@@ -56,9 +60,11 @@ export default {
   },
   mounted() {
     const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
+    console.log('--surface-color')
     setBackgroundColor('var(--surface-color)')
     setHeaderColor('var(--primary-color)')
     disableVerticalSwipes()
+    this.color()
   }
 }
 </script>
