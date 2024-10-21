@@ -10,16 +10,16 @@ export const appStateModule = {
                     display: true,
                     placeholder: 'Иван',
                     label: 'Имя',
-                    rules: ['name']
+                    rules: ['required', 'name']
                 },
                 surnameField: {
-                    display: true,
+                    display: false,
                     placeholder: 'Иванов',
                     label: 'Фамилия',
                     rules: ['name']
                 },
                 middleName: {
-                    display: true,
+                    display: false,
                     placeholder: 'Иванович',
                     label: 'Отчество',
                     rules: ['name']
@@ -34,10 +34,10 @@ export const appStateModule = {
                     display: true,
                     placeholder: 'ivan@email.ru',
                     label: 'Email',
-                    rules: ['email']
+                    rules: ['required', 'email']
                 },
                 city: {
-                    display: true,
+                    display: false,
                     placeholder: '',
                     label: 'Город',
                     items: [
@@ -54,7 +54,7 @@ export const appStateModule = {
                     display: true,
                     placeholder: 'дд.мм.гггг',
                     label: 'Дата рождения',
-                    rules: ['birthDate']
+                    rules: ['required', 'birthDate']
                 },
             }
         },

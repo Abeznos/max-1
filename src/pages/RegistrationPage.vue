@@ -39,8 +39,8 @@
                         inline
                         :rules="getRules(getFormFields.gender.rules)"
                     >
-                        <v-radio label="Мужчина" value="male" color="deep-purple-accent-4"></v-radio>
-                        <v-radio label="Женщина" value="female" color="deep-purple-accent-4"></v-radio>
+                        <v-radio label="Мужчина" value="male" color="var(--primary-color)"></v-radio>
+                        <v-radio label="Женщина" value="female" color="var(--primary-color)"></v-radio>
                     </v-radio-group>
                     <v-text-field
                         v-if="getFormFields.birthDate.display"
@@ -69,7 +69,7 @@
                         :label="getFormFields.city.label"
                         :rules="getRules(getFormFields.city.rules)"
                     ></v-select>
-                    <v-checkbox v-model="userData.advertizing" color="deep-purple-accent-4">
+                    <v-checkbox color="deep-purple-accent-4">
                         <template v-slot:label>
                             <a
                                 href="https://vuetifyjs.com"
@@ -80,18 +80,17 @@
                             </a>
                         </template>
                     </v-checkbox>
-                    <v-btn
+                    <VBtn
                         class="mt-2"
                         block
                         size="large"
                         variant="flat"
-                        color="deep-purple-accent-4"
                         type="submit"
                         :loading="loading"
                         @click="sendForm"
                     >
                         Далее
-                    </v-btn>
+                    </VBtn>
                 </v-form>
             </v-col>
         </v-row>
@@ -140,8 +139,8 @@ export default {
     beforeMount() {
         const { user } = tgService()
         const bot = this.$route.params.id
-        //this.defineUser({chatId: user?.id, botId: bot})
-        this.defineUser({chatId: '268451766', botId: bot})
+        this.defineUser({chatId: user?.id, botId: bot})
+        //this.defineUser({chatId: '268451766', botId: bot})
     }
 }
 </script>

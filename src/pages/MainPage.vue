@@ -2,7 +2,9 @@
     <v-container class="pb-12">
         <v-row class="ma-0 align-center w-100">
             <v-col class="v-col-4 pa-0">
+                <!--
                 <router-link :to="`account/${getBotId}`" class="pb-nav-link">
+                -->
                     <v-row class="ma-0 align-center flex-nowrap">
                         <v-col class="pa-0">
                             <v-avatar size="36px">
@@ -22,7 +24,9 @@
                             {{ getUserPersData.name }}
                         </v-col>
                     </v-row>
+                <!--
                 </router-link>
+                -->
             </v-col>
             <v-col
                 class="v-col pa-0 text-right">
@@ -98,7 +102,10 @@
                 </v-row>
             </v-col>
         </v-row>
-        <v-row class="ma-0 mt-4 pa-0">
+        <v-row 
+            v-if="actions"
+            class="ma-0 mt-4 pa-0"
+        >
             <v-col class="text-left pa-0">
                 <div>Действия</div>
                 <v-row class="ma-0 mt-2 pa-0">      
@@ -198,11 +205,11 @@ export default {
     beforeMount() {
         const { user } = tgService()
         const bot = this.$route.params.id
-        //this.defineUser({chatId: user?.id, botId: bot})
-        this.defineUser({chatId: '268451766', botId: bot})
+        this.defineUser({chatId: user?.id, botId: bot})
+        //this.defineUser({chatId: '268451766', botId: bot})
 
         if(this.getBotId && this.getUserChatId) {
-            //this.login()
+            this.login()
         }
         //const { user } = tgService()
         //this.setChatId(user?.id)
