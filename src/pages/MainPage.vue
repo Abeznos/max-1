@@ -215,7 +215,7 @@ export default {
         //}
 
         setBackgroundColor(this.getColors.surface)
-        setHeaderColor(this.getColors.surface)
+        setHeaderColor(this.getColors.primary)
         disableVerticalSwipes()
     },
     mounted() {
