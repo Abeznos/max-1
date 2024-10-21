@@ -1,8 +1,26 @@
 <template>
     <v-container class="pb-12">
+        <v-layout
+            class="alert w-100 h-100"
+        >
+            <v-col class="v-col-12 d-flex flex-column align-center justify-center">
+                <v-card class="pb-alert-card pa-4">
+                    <v-card-text>
+                        <p>Для корректной работы бота, поделитесь своим номером телефона</p>
+                    </v-card-text>
+                    <v-card-actions>
+                        <VBtn
+                            block
+                            @v-clicl="closeApp"
+                        >
+                            Закрыть
+                        </VBtn>
+                    </v-card-actions>
+                </v-card>
+            </v-col>
+        </v-layout>
         <v-row class="ma-0 align-center w-100">
             <v-col class="v-col-4 pa-0">
-
                 <router-link :to="`registration/${getBotId}`" class="pb-nav-link">
 
                     <v-row class="ma-0 align-center flex-nowrap">
@@ -24,9 +42,7 @@
                             {{ getUserPersData.name }}
                         </v-col>
                     </v-row>
-
                 </router-link>
-
             </v-col>
             <v-col
                 class="v-col pa-0 text-right">
@@ -191,6 +207,10 @@ export default {
         openLink(url) {
             const { openLink } = tgService()
             openLink(url)
+        },
+        closeApp() {
+            const { closeApp } = tgService()
+            closeApp()
         }
     },
     computed: {
@@ -287,5 +307,25 @@ export default {
     .v-card-actions > div {
         font-weight: 500;
         color: #fff;
+    }
+
+    .alert {
+        position: fixed;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        left: 0;
+        top: 0;
+        background-color: var(--surface-color);
+        z-index: 999;
+    }
+
+    .alert .v-card {
+        background-color: var(--secondary-color);
+    }
+
+    .alert .v-card-text {
+        font-size: 1.25rem;
     }
 </style>

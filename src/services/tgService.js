@@ -26,6 +26,10 @@ export function tgService() {
         tg.isExpanded
     }
 
+    const closeApp = () => {
+        tg.close()
+    }
+
     const ab = () => {
         console.log('ab')
     }
@@ -49,6 +53,7 @@ export function tgService() {
         isExpanded: tg.isExpanded,
         viewportStableHeight: tg.viewportStableHeight,
         appReady,
+        closeApp,
         expandApp,
         user: tg.initDataUnsafe?.user
     }

@@ -2,17 +2,7 @@
   <loader
     v-if="getLoading"
   />
-  <div
-    v-if="getShowAlert"
-    class="alert-card"
-  >
-
-  </div>
   <v-container class="main-container pa-0 h-100">
-    <div>
-      <p>{{ getBotId }}</p>
-      <p>{{ getUserChatId }}</p>
-    </div>
     <RouterView />
     <v-layout
       v-if="getBackBtn"
