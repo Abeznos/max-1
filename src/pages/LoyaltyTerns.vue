@@ -19,8 +19,20 @@
     </v-container>
 </template>
 <script>
+import {tgService} from '@/services/tgService.js'
+
 export default {
-    name: 'LoyaltyTerns'
+    name: 'LoyaltyTerns',
+    methods: {
+        back() {
+            const { backBtn } = tgService()
+
+        }
+    },
+    beforeMount() {
+        const { backBtn } = tgService()
+        backBtn.show()
+    }
 }
 </script>
 <style>

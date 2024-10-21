@@ -34,6 +34,10 @@ export function tgService() {
         tg.openLink(url)
     }
 
+    const backButton = () => {
+        tg.BackButton.show
+    }
+
     return {
         test: 'test',
         ab,
