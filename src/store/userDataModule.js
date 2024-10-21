@@ -84,8 +84,6 @@ export const userDataModule = {
                 formData.city = city
             }
 
-
-
             try {
                 const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
             } catch(error) {

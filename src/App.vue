@@ -90,7 +90,7 @@ export default {
   beforeMount() {
     //  his.loadingToggle
     const {setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
-    setHeaderColor('#4527A0')
+    setHeaderColor('var(--primary-color)')
     disableVerticalSwipes()
     setBackgroundColor('#F1F3F9')
 

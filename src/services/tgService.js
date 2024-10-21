@@ -31,7 +31,7 @@ export function tgService() {
     }
 
     const openLink = (url) => {
-        tg.openTelegramLink(url)
+        tg.openLink(url)
     }
 
     return {
