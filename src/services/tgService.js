@@ -30,12 +30,17 @@ export function tgService() {
         console.log('ab')
     }
 
+    const openLink = (url) => {
+        tg.openTelegramLink(url)
+    }
+
     return {
         test: 'test',
         ab,
         disableVerticalSwipes,
         setBackgroundColor,
         setHeaderColor,
+        openLink,
         isExpanded: tg.isExpanded,
         viewportStableHeight: tg.viewportStableHeight,
         appReady,

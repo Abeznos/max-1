@@ -137,7 +137,7 @@
                     height="150" 
                     variant="flat"
                     image="https://www.prostocvet.ru/upload/iblock/67e/ws7tjn7iehef8ufxlzwpgg3czl5leumm.jpg"
-                    @click="tgService().openLink('https://www.prostocvet.ru/')"
+                    @click="openLink('https://www.prostocvet.ru/')"
                 >
                     <v-card-actions class="pa-4">
                         <div>Заказать доставку</div>
@@ -171,7 +171,11 @@ export default {
         ...mapActions ({
             defineUser: 'userData/defineUser',
             login: 'userData/login'
-        })
+        }),
+        openLink(url) {
+            const { openLink } = tgService()
+            openLink(url)
+        }
     },
     computed: {
         ...mapGetters ({
