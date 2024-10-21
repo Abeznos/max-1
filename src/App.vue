@@ -2,8 +2,7 @@
   <loader
     v-if="getLoading"
   />
-  <v-container class="main-container pa-0">
-    <div>{{ viewportStableHeight }}</div>
+  <v-container class="main-container pa-0 h-100">
     <RouterView />
     <!--
     <v-layout
@@ -89,7 +88,7 @@ export default {
     }
   },
   beforeMount() {
-    this.loadingToggle
+    //  his.loadingToggle
     const {setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
     setHeaderColor('#4527A0')
     disableVerticalSwipes()
@@ -113,6 +112,8 @@ export default {
     const {isExpanded, viewportStableHeight} = tgService()
     const body = document.querySelector('body')
     console.log(body)
+
+
 
     if(isExpanded) {
       console.log(isExpanded)

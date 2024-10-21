@@ -50,7 +50,7 @@ export const userDataModule = {
         async login({state, commit, getters, dispatch}) {
             const { appReady, expandApp } = tgService()
             //dispatch('appState/loadingToggle', null, { root: true })
-            try{
+            try {
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
                 if(userData.data) {
                     commit('userPersData', userData.data)
@@ -66,22 +66,32 @@ export const userDataModule = {
                 dispatch('appState/loadingToggle', null, { root: true })
             }
         },
-        async registrationUser({state, commit, getters, dispatch}, data){
-            const formData = data
+        async registrationUser({state, commit, getters, dispatch}, form){
+            const formData = { ...form.data }
+            const { valid } = await form.ref.validate()
 
-            if(formData.birth_date) {
-                formData.birth_date = formData.birth_date.toISOString().slice(0, 10)
+            if (!valid) return false
+
+            if (form.data.birth_date) {
+                let birth_date = form.data.birth_date.split('.')
+                birth_date = new Date([...birth_date].reverse())
+
+                formData.birth_date = birth_date.toISOString().slice(0, 10)
             }
 
-            if(formData.city) {
-                const citys = await dispatch('appState/getDItyId', formData.city , { root: true })
-
-                console.log(citys)
+            if (form.data.city) {
+                const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
+                formData.city = city
             }
 
 
-            console.log(formData)
 
+            try {
+                const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+            } catch(error) {
+                console.log(error)
+            }
+            return true
         }
     },
     namespaced: true

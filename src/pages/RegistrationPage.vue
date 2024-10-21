@@ -1,11 +1,11 @@
 <template>
-    <v-container>
+    <v-container class="h-100">
         <v-row
             v-if="!personaldataSend"
-            class="h-100"
         >
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
-                <v-form class="w-100">
+                <h2 class="pb-6">Анкета регистрации</h2>
+                <v-form class="w-100" validate-on="submit lazy" ref="form" @submit.prevent>
                     <v-text-field
                         v-if="getFormFields.nameField.display"
                         class="pb-text-field rounded-lg"
@@ -13,6 +13,7 @@
                         variant="outlined"
                         :label="getFormFields.nameField.label"
                         :placeholder="getFormFields.nameField.placeholder"
+                        :rules="getRules(getFormFields.nameField.rules)"
                     ></v-text-field>
                     <v-text-field
                         v-if="getFormFields.surnameField.display"
@@ -21,6 +22,7 @@
                         variant="outlined"
                         :label="getFormFields.surnameField.label"
                         :placeholder="getFormFields.surnameField.placeholder"
+                        :rules="getRules(getFormFields.surnameField.rules)"
                     ></v-text-field>
                     <v-text-field
                         v-if="getFormFields.middleName.display"
@@ -29,11 +31,13 @@
                         variant="outlined"
                         :label="getFormFields.middleName.label"
                         :placeholder="getFormFields.middleName.placeholder"
+                        :rules="getRules(getFormFields.middleName.rules)"
                     ></v-text-field>
                     <v-radio-group
                         v-if="getFormFields.gender.display"
                         v-model="userData.gender"
                         inline
+                        :rules="getRules(getFormFields.gender.rules)"
                     >
                         <v-radio label="Мужчина" value="male" color="deep-purple-accent-4"></v-radio>
                         <v-radio label="Женщина" value="female" color="deep-purple-accent-4"></v-radio>
@@ -45,6 +49,7 @@
                         variant="outlined"
                         :label="getFormFields.birthDate.label"
                         :placeholder="getFormFields.birthDate.placeholder"
+                        :rules="getRules(getFormFields.birthDate.rules)"
                     ></v-text-field>
                     <v-text-field
                         v-if="getFormFields.email.display"
@@ -53,6 +58,7 @@
                         variant="outlined"
                         :label="getFormFields.email.label"
                         :placeholder="getFormFields.email.placeholder"
+                        :rules="getRules(getFormFields.email.rules)"
                     ></v-text-field>
                     <v-select
                         v-if="getFormFields.city.display"
@@ -61,6 +67,7 @@
                         variant="outlined"
                         :items="getFormFields.city.items"
                         :label="getFormFields.city.label"
+                        :rules="getRules(getFormFields.city.rules)"
                     ></v-select>
                     <v-checkbox v-model="userData.advertizing" color="deep-purple-accent-4">
                         <template v-slot:label>
@@ -79,7 +86,9 @@
                         size="large"
                         variant="flat"
                         color="deep-purple-accent-4"
-                        @click="registrationUser(userData)"
+                        type="submit"
+                        :loading="loading"
+                        @click="sendForm"
                     >
                         Далее
                     </v-btn>
@@ -96,27 +105,43 @@
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+import {tgService} from '@/services/tgService.js'
 
 export default {
     name: 'RegistrationPage',
     data: () => ({
+        loading: false,
         personaldataSend: false,
         userData: {}
     }),
     methods: {
         ...mapActions({
+            defineUser: 'userData/defineUser',
             registrationUser: 'userData/registrationUser'
-        })
+        }),
+        async sendForm() {
+            this.loading = !this.loading
+            const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
+            if (response) {
+                setTimeout(() => (this.loading = !this.loading), 2000)
+                setTimeout(() => (this.personaldataSend = true), 2000)
+
+            } else {
+                this.loading = !this.loading
+            }
+        }
     },
     computed: {
         ...mapGetters({
-            getUserFromTg: 'tgData/getUserFromTg',
-            getUserBalance: 'userData/getUserBalance',
-            getOrderCode: 'userData/getOrderCode',
-            getUserChatId: 'userData/getUserChatId',
-            geBotId: 'userData/geBotId',
-            getFormFields: 'appState/getFormFields'
+            getFormFields: 'appState/getFormFields',
+            getRules: 'appState/getRules'
         }),
+    },
+    beforeMount() {
+        const { user } = tgService()
+        const bot = this.$route.params.id
+        //this.defineUser({chatId: user?.id, botId: bot})
+        this.defineUser({chatId: '268451766', botId: bot})
     }
 }
 </script>
