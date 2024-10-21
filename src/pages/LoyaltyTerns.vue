@@ -26,7 +26,7 @@ export default {
     methods: {
         back() {
             const { backButton } = tgService()
-            backButton.onClick( () => this.$router.go(-1) )
+            backButton.onClick(this.$router.go(-1))
         }
     },
     beforeMount() {
