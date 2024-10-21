@@ -16,9 +16,6 @@
 Бонусные баллы не применяются к товарам с перечеркнутыми ценами.
 Прямо сейчас регистрируйтесь в программе лояльности, копите баллы, оплачивайте ими часть покупок. Подробнее о том, как списать бонусные баллы, можно прочитать здесь (https://www.prostocvet.ru/blog/novosti/programma-loyalnosti/).
         </v-sheet>
-        <v-btn @click="back">
-            Назад
-        </v-btn>
     </v-container>
 </template>
 <script>
@@ -29,9 +26,7 @@ export default {
     methods: {
         back() {
             const { backButton } = tgService()
-            backButton.onClick( () => {
-                this.$router.go(-1)
-            })
+            backButton.onClick( () => this.$router.go(-1) )
         }
     },
     beforeMount() {
