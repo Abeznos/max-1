@@ -15,6 +15,7 @@
                         variant="outlined"
                         :label="getFormFields.nameField.label"
                         density="compact"
+                        inputmode="text"
                         :placeholder="getFormFields.nameField.placeholder"
                         :rules="getRules(getFormFields.nameField.rules)"
                     ></v-text-field>
@@ -54,6 +55,7 @@
                         variant="outlined"
                         :label="getFormFields.birthDate.label"
                         density="compact"
+                        inputmode="numeric"
                         :placeholder="getFormFields.birthDate.placeholder"
                         :rules="getRules(getFormFields.birthDate.rules)"
                     ></v-text-field>
@@ -64,6 +66,7 @@
                         variant="outlined"
                         :label="getFormFields.email.label"
                         density="compact"
+                        inputmode="email"
                         :placeholder="getFormFields.email.placeholder"
                         :rules="getRules(getFormFields.email.rules)"
                     ></v-text-field>
