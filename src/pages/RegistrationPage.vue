@@ -1,5 +1,5 @@
 <template>
-    <v-container 
+    <v-container
         v-if="!personaldataSend"
         class="h-100"
     >
@@ -7,6 +7,7 @@
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
                 <h2 class="pb-6 pt-6">Анкета регистрации</h2>
                 <v-form class="w-100" validate-on="submit lazy" ref="form" @submit.prevent>
+                    <input type="text" class="v-input v-text-field border-sm rounded-md w-100" name="personaldata">
                     <v-text-field
                         v-if="getFormFields.nameField.display"
                         class="pb-text-field rounded-lg"
@@ -101,9 +102,9 @@
             </v-col>
         </v-row>
     </v-container>
-    
+
     <div v-else>
-        <v-container 
+        <v-container
             v-if="!showImportantDates"
             class="d-flex flex-column justify-center"
         >
@@ -150,7 +151,7 @@
             class="d-flex flex-column"
         >
             <v-form class="w-100 d-flex flex-column justify-start ga-4" validate-on="submit lazy" ref="datesForm" @submit.prevent>
-                <v-card 
+                <v-card
                     v-for="n in fieldsCount"
                     class="pa-4"
                     flat
@@ -184,7 +185,7 @@
                             @click="removeField(fieldsCount)"
                             text="Удалить дату"
                             :disabled="isMinFieldsCount"
-                        ></VBtnOutline>                        
+                        ></VBtnOutline>
                     </v-card-actions>
                 </v-card>
                 <VBtn
@@ -204,7 +205,7 @@
                     :loading="loading"
                     @click="sendImportantDatesForm"
                     text="Сохранить"
-                ></VBtn>                
+                ></VBtn>
             </v-form>
         </v-container>
     </div>
@@ -263,7 +264,7 @@ export default {
             } else {
                 this.loading = !this.loading
             }
-        }        
+        }
     },
     computed: {
         ...mapGetters({
