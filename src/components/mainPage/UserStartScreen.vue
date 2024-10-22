@@ -2,7 +2,9 @@
     <v-container class="pb-12 h-100">
         <v-row class="ma-0 align-center w-100">
             <v-col class="v-col-4 pa-0">
+                <!--
                 <router-link :to="`registration/${getBotId}`" class="pb-nav-link">
+                -->
                     <v-row class="ma-0 align-center flex-nowrap">
                         <v-col class="pa-0">
                             <v-avatar size="36px">
@@ -22,7 +24,9 @@
                             {{ getUserPersData.name }}
                         </v-col>
                     </v-row>
+                <!--
                 </router-link>
+                -->
             </v-col>
             <v-col
                 class="v-col pa-0 text-right">
@@ -201,32 +205,7 @@ export default {
             getBotUserAlert: 'appState/getBotUserAlert',
             getPbUserAlert: 'appState/getPbUserAlert'
 
-        }),
-        showTestText() {
-            return this.testText
-        }
-    },
-    async beforeMount() {
-        const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
-        const botId = this.$route.params.id
-        const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
-        this.defineUser({chatId, botId})
-
-        const loginStatus = await this.login()
-        //console.log(loginStatus)
-        //if(this.getBotId && this.getUserChatId) {
-        //    this.login()
-        //}
-
-        setBackgroundColor(this.getColors.surface)
-        setHeaderColor(this.getColors.primary)
-        disableVerticalSwipes()
-    },
-    mounted() {
-        if(this.getBackBtn) {
-            this.setBackBtn()
-        }
-        //console.log(this.getBackBtn)
+        })
     }
 }
 </script>

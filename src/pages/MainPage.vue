@@ -1,6 +1,8 @@
 <template>   
-    <UserStartScreen v-if="getUserPersData"/>
-    <NotUserStartScreen v-else/>
+    <div v-if="!getLoading">
+        <UserStartScreen v-if="getUserPersData"/>
+        <NotUserStartScreen v-else/>
+    </div>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
