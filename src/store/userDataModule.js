@@ -50,9 +50,12 @@ export const userDataModule = {
             dispatch('appState/loadingToggle', null, { root: true })
             try {
                 //console.log({ botId: getters.getBotId, chatId: getters.getUserChatId})
+                const { appReady, expandApp } = tgService()
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
                 console.log(userData)
-                
+                appReady()
+                expandApp()
+
                 if(userData.data.isBotUser === false) {
                     dispatch('appState/showUserAllertToggle', null, { root: true })
                     console.log(userData.data)
@@ -66,10 +69,7 @@ export const userDataModule = {
                 }
 
                 commit('userPersData', userData.data)
-
-                const { appReady, expandApp } = tgService()
-                appReady()
-                expandApp()
+                return true
             } catch(error) {
                 console.log(error)
             } finally {
