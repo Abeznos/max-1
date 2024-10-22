@@ -91,6 +91,7 @@
                             </a>
                         </template>
                     </v-checkbox>
+                    <!--
                     <VBtn
                         class="mt-2"
                         block
@@ -101,6 +102,7 @@
                         @click="sendForm"
                         text="Далее"
                     ></VBtn>
+                    -->
                 </v-form>
             </v-col>
         </v-row>
@@ -298,6 +300,7 @@ export default {
 
         backButton.show()
         backButton.onClick( () => this.$router.go(-1) )
+        backButton.offClick( () => backButton.hide() )
 
         setBottomBarColor(this.getColors.surface)
         mainBtn.show()
