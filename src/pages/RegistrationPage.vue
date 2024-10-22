@@ -252,12 +252,14 @@ export default {
         async sendForm() {
             const { mainBtn} = tgService()
             alert('нажали 3')
-            mainBtn.hide()
-            //const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
-            //if (response) {
-            //    this.personaldataSend = true
-            //    console.log(response)
-            //}
+            mainBtn.disable()
+            const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
+            if (response) {
+                this.personaldataSend = true
+                mainBtn.hide()
+                console.log(response)
+            }
+            mainBtn.enable()
         },
         async sendImportantDatesForm() {
             this.loading = !this.loading
@@ -300,7 +302,6 @@ export default {
 
         backButton.show()
         backButton.onClick( () => this.$router.go(-1) )
-        backButton.offClick( () => backButton.hide() )
 
         setBottomBarColor(this.getColors.surface)
         mainBtn.show()

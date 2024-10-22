@@ -48,7 +48,7 @@ export default {
         }
     },
     beforeMount() {
-        const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
+        const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor, backButton} = tgService()
         const botId = this.$route.params.id
         const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
@@ -58,6 +58,10 @@ export default {
         setBackgroundColor(this.getColors.surface)
         setHeaderColor(this.getColors.primary)
         disableVerticalSwipes()
+
+        if(backButton.isVisible) {
+            backButton.hide()
+        }
     },
     mounted() {
 
