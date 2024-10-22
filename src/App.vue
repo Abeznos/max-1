@@ -3,6 +3,8 @@
     v-if="getLoading"
   />
   <v-container class="main-container pa-0 h-100">
+    <NotUserAlert v-if="getBotUserAlert"/>
+    <NotPbUserAlert v-if="getPbUserAlert"/> 
     <RouterView />
     <v-layout
       v-if="getBackBtn"
@@ -18,23 +20,21 @@
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 import {tgService} from '@/services/tgService.js'
 import loader from '@/components/ui/Loader.vue'
+import NotUserAlert from '@/components/ui/NotUserAlert.vue'
+import NotPbUserAlert from '@/components/ui/NotPbUserAlert.vue'
 
 export default {
   name: 'App',
   data: () => ({
     viewportStableHeight: tgService().viewportStableHeight,
   }),
-  components: {loader},
+  components: {loader, NotUserAlert, NotPbUserAlert},
   methods: {
     ...mapActions({
       loadingToggle: 'appState/loadingToggle',
       setBackBtn: 'appState/setBackBtn',
       defineUser: 'userData/defineUser'
     }),
-
-    color() {
-      console.log('var(--surface-color)')
-    },
 
     goBack() {
       this.$router.go(-1)
@@ -45,16 +45,12 @@ export default {
     ...mapGetters({
       getLoading: 'appState/getLoading',
       getBackBtn: 'appState/getBackBtn',
-      getShowAlert: 'appState/getShowAlert'
+      getBotUserAlert: 'appState/getBotUserAlert',
+      getPbUserAlert: 'appState/getPbUserAlert'
     }),
   },
   mounted() {
-    const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
-    console.log('--surface-color')
-    setBackgroundColor('var(--surface-color)')
-    setHeaderColor('var(--primary-color)')
-    disableVerticalSwipes()
-    this.color()
+
   }
 }
 </script>

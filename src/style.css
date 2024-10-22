@@ -82,3 +82,23 @@ html, body {
   bottom: 1rem !important;
   height: 2.5rem !important;
 }
+
+.alert {
+  position: fixed;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  background-color: var(--surface-color);
+  z-index: 999;
+}
+
+.alert .v-card {
+  background-color: var(--secondary-color);
+}
+
+.alert .v-card-text {
+  font-size: 1rem !important;
+}

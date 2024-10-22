@@ -4,8 +4,7 @@ import {tgService} from '@/services/tgService.js'
 export const userDataModule = {
     state: () => ({
         botId: '',
-        chatId: '',
-        userPersData: {}
+        chatId: ''
     }),
     getters: {
         getUserBalance(state) {
@@ -52,7 +51,8 @@ export const userDataModule = {
             try {
                 //console.log({ botId: getters.getBotId, chatId: getters.getUserChatId})
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
-
+                console.log(userData)
+                
                 if(userData.data.isBotUser === false) {
                     dispatch('appState/showUserAllertToggle', null, { root: true })
                     console.log(userData.data)
@@ -100,6 +100,15 @@ export const userDataModule = {
                 console.log(error)
             }
             return true
+        },
+
+        async updateUserData({state, commit, getters, dispatch}, form) {
+            const formData = { ...form.data }
+            const { valid } = await form.ref.validate()
+
+            if (!valid) return false
+
+            console.log(form)
         }
     },
     namespaced: true
