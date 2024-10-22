@@ -5,8 +5,8 @@
     >
         <v-row>
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
-                <h2 class="pb-6 pt-6">Анкета регистрации1</h2>
-                <v-form class="w-100" @keypress.enter.prevent>
+                <h2 class="pb-6 pt-6">Анкета регистрации</h2>
+                <v-form class="w-100" validate-on="submit" ref="form" @submit.prevent>
                     <v-text-field
                         v-if="getFormFields.nameField.display"
                         class="pb-text-field rounded-lg rounded-xl"
