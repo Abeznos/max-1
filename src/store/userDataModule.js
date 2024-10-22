@@ -5,8 +5,7 @@ export const userDataModule = {
     state: () => ({
         botId: '',
         chatId: '',
-        userPersData: {},
-        orderCode: '123456'
+        userPersData: {}
     }),
     getters: {
         getUserBalance(state) {
@@ -49,7 +48,6 @@ export const userDataModule = {
             commit('setBotId', id)
         },
         async login({state, commit, getters, dispatch}) {
-            const { appReady, expandApp } = tgService()
             dispatch('appState/loadingToggle', null, { root: true })
             try {
                 //console.log({ botId: getters.getBotId, chatId: getters.getUserChatId})
@@ -58,25 +56,20 @@ export const userDataModule = {
                 if(userData.data.isBotUser === false) {
                     dispatch('appState/showUserAllertToggle', null, { root: true })
                     console.log(userData.data)
+                    return
                 }
 
                 if(userData.data.isPbUser === false) {
                     dispatch('appState/showPbUserAllertToggle', null, { root: true })
                     console.log(userData.data)
+                    return
                 }
 
-                console.log()
+                commit('userPersData', userData.data)
 
-                return userData
-
-                //if(userData.data) {
-                //    commit('userPersData', userData.data)
-                //}
-                //appReady()
-                //expandApp()
-//
-                //dispatch('tgData/appReady', null, { root: true })
-                //dispatch('tgData/expandApp', null, { root: true })
+                const { appReady, expandApp } = tgService()
+                appReady()
+                expandApp()
             } catch(error) {
                 console.log(error)
             } finally {

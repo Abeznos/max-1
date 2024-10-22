@@ -8,6 +8,7 @@
                     <p>Для корректной работы бота, поделитесь своим номером телефона</p>
                 </v-card-text>
                 <v-card-actions class="d-flex flex-column align-center justify-center">
+                    <!--
                     <VBtn
                         :loading="loading"
                         block
@@ -15,6 +16,7 @@
                     >
                         Поделиться контактом
                     </VBtn>
+                    -->
                     <VBtn
                         block
                         @click="closeApp"

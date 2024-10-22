@@ -17,7 +17,7 @@
                     <VBtnOutline
                         class="pb-text-bt"
                         block
-                        @click=""
+                        @click="showPbUserAllertToggle"
                         text="Не сейчас"
                     ></VBtnOutline>
                 </v-card-actions>
@@ -32,6 +32,9 @@ import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
     name: 'NotPbUserAlert',
     methods: {
+        ...mapActions({
+            showPbUserAllertToggle: 'appState/showPbUserAllertToggle'
+        }),
         closeApp() {
             const { closeApp } = tgService()
             closeApp()
