@@ -1,20 +1,15 @@
 <template>
-  <loader
+  <v-layout class="w-100">
+    <loader
       v-if="getLoading"
-  /> 
-  <v-container class="main-container pa-0 h-100">
-    <NotUserAlert v-if="getBotUserAlert"/>
-    <NotPbUserAlert v-if="getPbUserAlert"/> 
-    <RouterView />
-    <v-layout
-      v-if="getBackBtn"
-      class="overflow-visible" style="height: 3.5rem"
-    >
-      <v-bottom-navigation>
-        <v-btn @click="goBack" size="small">Назад</v-btn>
-      </v-bottom-navigation>
-    </v-layout>
-  </v-container>
+    />
+    <v-main class="pa-4">
+      <RouterView />
+    </v-main>
+    <v-bottom-navigation v-if="getBackBtn">
+      <v-btn @click="goBack" size="small" text="Назад"/>
+    </v-bottom-navigation>
+  </v-layout>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
@@ -52,6 +47,11 @@ export default {
 }
 </script>
 <style>
+  .main-container {
+    min-height: 100%;
+    padding-bottom: 3rem !important;
+  }
+
   .bottom-nav {
     position: fixed;
     bottom: -32px;

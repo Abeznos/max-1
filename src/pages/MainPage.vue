@@ -1,8 +1,6 @@
-<template>   
-    <div v-if="!getLoading">
-        <UserStartScreen v-if="getUserPersData"/>
-        <NotUserStartScreen v-else/>
-    </div>
+<template>
+    <UserStartScreen v-if="getUserPersData"/>
+    <NotUserStartScreen v-else/>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
@@ -62,7 +60,7 @@ export default {
         disableVerticalSwipes()
     },
     mounted() {
-        
+
         if(this.getBackBtn) {
             this.setBackBtn()
         }
