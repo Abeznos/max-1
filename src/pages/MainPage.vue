@@ -1,4 +1,4 @@
-<template>
+<template>   
     <UserStartScreen v-if="getUserPersData"/>
     <NotUserStartScreen v-else/>
 </template>
@@ -16,17 +16,15 @@ export default {
     data: () => ({
         loading: false,
         botId: '',
-        testText: '',
-        //loading: false,
-        //avatar: false,
         qrDialog: false,
-        //mlmDialog: false
+        mlmDialog: false
     }),
     methods: {
         ...mapActions ({
             defineUser: 'userData/defineUser',
             login: 'userData/login',
-            backBtnToggle: 'appState/backBtnToggle'
+            backBtnToggle: 'appState/backBtnToggle',
+            loadingToggle: 'appState/loadingToggle'
         }),
         openLink(url) {
             const { openLink } = tgService()
@@ -35,6 +33,7 @@ export default {
     },
     computed: {
         ...mapGetters ({
+            getLoading: 'appState/getLoading',
             getBotId: 'userData/getBotId',
             getUserChatId: 'userData/getUserChatId',
             getUserPersData: 'userData/getUserPersData',
@@ -48,23 +47,23 @@ export default {
             return this.testText
         }
     },
-    async beforeMount() {
+    beforeMount() {
         const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor} = tgService()
         const botId = this.$route.params.id
         const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
 
-        const loginStatus = await this.login()
+        this.login()
 
         setBackgroundColor(this.getColors.surface)
         setHeaderColor(this.getColors.primary)
         disableVerticalSwipes()
     },
     mounted() {
+        
         if(this.getBackBtn) {
             this.setBackBtn()
         }
-        //console.log(this.getBackBtn)
     }
 }
 </script>

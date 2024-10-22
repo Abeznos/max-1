@@ -47,12 +47,12 @@ export const userDataModule = {
             commit('setBotId', id)
         },
         async login({state, commit, getters, dispatch}) {
-            dispatch('appState/loadingToggle', null, { root: true })
             try {
                 //console.log({ botId: getters.getBotId, chatId: getters.getUserChatId})
+                dispatch('appState/loadingToggle', null, { root: true })
                 const { appReady, expandApp } = tgService()
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
-                console.log(userData)
+                //console.log(userData)
                 appReady()
                 expandApp()
 
@@ -69,11 +69,10 @@ export const userDataModule = {
                 }
 
                 commit('userPersData', userData.data)
+                dispatch('appState/loadingToggle', null, { root: true })
                 return true
             } catch(error) {
                 console.log(error)
-            } finally {
-                dispatch('appState/loadingToggle', null, { root: true })
             }
         },
         async registrationUser({state, commit, getters, dispatch}, form){

@@ -1,7 +1,7 @@
 <template>
   <loader
-    v-if="getLoading"
-  />
+      v-if="getLoading"
+  /> 
   <v-container class="main-container pa-0 h-100">
     <NotUserAlert v-if="getBotUserAlert"/>
     <NotPbUserAlert v-if="getPbUserAlert"/> 
@@ -26,7 +26,7 @@ import NotPbUserAlert from '@/components/ui/NotPbUserAlert.vue'
 export default {
   name: 'App',
   data: () => ({
-    viewportStableHeight: tgService().viewportStableHeight,
+
   }),
   components: {loader, NotUserAlert, NotPbUserAlert},
   methods: {
@@ -48,9 +48,6 @@ export default {
       getBotUserAlert: 'appState/getBotUserAlert',
       getPbUserAlert: 'appState/getPbUserAlert'
     }),
-  },
-  mounted() {
-
   }
 }
 </script>

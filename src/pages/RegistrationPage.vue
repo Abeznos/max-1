@@ -6,10 +6,6 @@
         <v-row>
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
                 <h2 class="pb-6 pt-6">Анкета регистрации</h2>
-                <div>
-                    <p>{{ getUserChatId }}</p>
-                    <p>{{ getBotId }}</p>
-                </div>
                 <v-form class="w-100" validate-on="submit lazy" ref="form" @submit.prevent>
                     <v-text-field
                         v-if="getFormFields.nameField.display"
@@ -106,52 +102,52 @@
         </v-row>
     </v-container>
     
-    <div v-else class="h-100">
+    <div v-else>
         <v-container 
             v-if="!showImportantDates"
-            class="h-100 d-flex flex-column justify-center"
+            class="d-flex flex-column justify-center"
         >
-            <div>
-            <v-row>
-                <v-col class="v-col-12 align-center">
-                    <v-row>
-                        <v-col>
-                            <p>Заполните даты важных событий или дни рождения близких людей, и перед праздником мы пришлем вам напоминание и подарок.</p>
-                        </v-col>
-                    </v-row>
-                    <v-row>
-                        <v-col>
-                            <VBtnOutline
-                                class="mt-2 pb-text-bt"
-                                block
-                                size="large"
-                                variant="flat"
-                                type="submit"
-                                :loading="loading"
-                                @click="$router.push(`/${getBotId}`)"
-                                text="Не сейчас"
-                            ></VBtnOutline>
-                        </v-col>
-                        <v-col>
-                            <VBtn
-                                class="mt-2 pb-primary-bt"
-                                block
-                                size="large"
-                                variant="flat"
-                                type="submit"
-                                :loading="loading"
-                                @click="showImportantDates = !showImportantDates"
-                                text="Заполнить"
-                            ></VBtn>
-                        </v-col>
-                    </v-row>
+            <v-layout
+                class="alert w-100 h-100"
+            >
+                <v-col class="v-col-12 d-flex flex-column justify-center">
+                    <v-card class="pb-alert-card pa-4" variant="flat">
+                        <v-card-text>
+                            <p>Заполните даты важных событий или дни рождения близких людей, и&nbsp;перед праздником мы&nbsp;пришлем вам напоминание и&nbsp;подарок.</p>
+                        </v-card-text>
+                        <v-card-actions class=" w-100 d-flex flex-row align-center justify-center">
+                            <v-col>
+                                <VBtnOutline
+                                    class="mt-2 pb-text-bt"
+                                    block
+                                    size="large"
+                                    variant="flat"
+                                    type="submit"
+                                    :loading="loading"
+                                    @click="$router.push(`/${getBotId}`)"
+                                    text="Не сейчас"
+                                ></VBtnOutline>
+                            </v-col>
+                            <v-col>
+                                <VBtn
+                                    class="mt-2 pb-primary-bt"
+                                    block
+                                    size="large"
+                                    variant="flat"
+                                    type="submit"
+                                    :loading="loading"
+                                    @click="showImportantDates = !showImportantDates"
+                                    text="Заполнить"
+                                ></VBtn>
+                            </v-col>
+                        </v-card-actions>
+                    </v-card>
                 </v-col>
-            </v-row>
-            </div>    
+            </v-layout>
         </v-container>
         <v-container
             v-else
-            class="h-100 d-flex flex-column"
+            class="d-flex flex-column"
         >
             <v-form class="w-100 d-flex flex-column justify-start ga-4" validate-on="submit lazy" ref="datesForm" @submit.prevent>
                 <v-card 
