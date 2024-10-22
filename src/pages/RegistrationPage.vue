@@ -291,10 +291,12 @@ export default {
         }
     },
     beforeMount() {
-        const { user } = tgService()
+        const { user, mainBtn } = tgService()
         const botId = this.$route.params.id
         const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
+
+        mainBtn.show()
     },
     mounted() {
         if(!this.getBackBtn) {

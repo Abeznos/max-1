@@ -57,6 +57,7 @@ export function tgService() {
         backButton: tg.BackButton,
         isExpanded: tg.isExpanded,
         viewportStableHeight: tg.viewportStableHeight,
+        mainBtn: tg.MainButton,
         appReady,
         closeApp,
         expandApp,
