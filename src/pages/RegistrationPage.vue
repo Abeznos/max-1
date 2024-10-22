@@ -275,7 +275,8 @@ export default {
             getRules: 'appState/getRules',
             getUserChatId: 'userData/getUserChatId',
             getBotId: 'userData/getBotId',
-            getBackBtn: 'appState/getBackBtn'
+            getBackBtn: 'appState/getBackBtn',
+            getColors: 'appState/getColors'
         }),
         isMaxFieldsCount() {
             if (this.fieldsCount === 4) {
@@ -297,6 +298,10 @@ export default {
         this.defineUser({chatId, botId})
 
         mainBtn.show()
+        mainBtn.color = this.getColors.primary
+        mainBtn.setText('Далее')
+        mainBtn.textСщдщк = '#ffffff'
+        mainBtn.onClick( () => alert('Нажали'))
     },
     mounted() {
         if(!this.getBackBtn) {
