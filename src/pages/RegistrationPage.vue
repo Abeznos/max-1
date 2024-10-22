@@ -7,14 +7,12 @@
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
                 <h2 class="pb-6 pt-6">Анкета регистрации</h2>
                 <v-form class="w-100" validate-on="submit lazy" ref="form" @submit.prevent>
-                    <input type="text" class="v-input v-text-field border-sm rounded-md w-100" name="personaldata">
                     <v-text-field
                         v-if="getFormFields.nameField.display"
-                        class="pb-text-field rounded-lg"
+                        class="pb-text-field rounded-lg rounded-xl"
                         v-model="userData.name"
                         variant="outlined"
                         :label="getFormFields.nameField.label"
-                        density="compact"
                         inputmode="text"
                         :placeholder="getFormFields.nameField.placeholder"
                         :rules="getRules(getFormFields.nameField.rules)"
