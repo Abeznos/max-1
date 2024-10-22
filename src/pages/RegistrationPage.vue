@@ -248,15 +248,16 @@ export default {
             delete this.importantDates[`child${el}_birth_date`]
         },
         async sendForm() {
-            this.loading = !this.loading
-            const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
-            if (response) {
-                setTimeout(() => (this.loading = !this.loading), 2000)
-                setTimeout(() => (this.personaldataSend = true), 2000)
-                console.log(response)
-            } else {
-                this.loading = !this.loading
-            }
+            alert('Нажали 2')
+            //this.loading = !this.loading
+            //const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
+            //if (response) {
+            //    setTimeout(() => (this.loading = !this.loading), 2000)
+            //    setTimeout(() => (this.personaldataSend = true), 2000)
+            //    console.log(response)
+            //} else {
+            //    this.loading = !this.loading
+            //}
         },
         async sendImportantDatesForm() {
             this.loading = !this.loading
@@ -292,16 +293,17 @@ export default {
         }
     },
     beforeMount() {
-        const { user, mainBtn } = tgService()
+        const { user, mainBtn, setBottomBarColor } = tgService()
         const botId = this.$route.params.id
         const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
 
+        setBottomBarColor(this.getColors.surface)
         mainBtn.show()
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Далее')
         mainBtn.textСщдщк = '#ffffff'
-        mainBtn.onClick( () => alert('Нажали'))
+        mainBtn.onClick( () => this.sendForm() )
     },
     mounted() {
         if(!this.getBackBtn) {

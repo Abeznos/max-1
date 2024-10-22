@@ -46,6 +46,10 @@ export function tgService() {
         tg.requestContact()
     }
 
+    const setBottomBarColor = (color) => {
+        tg.setBottomBarColor(color)
+    }
+
     return {
         test: 'test',
         ab,
@@ -58,6 +62,7 @@ export function tgService() {
         isExpanded: tg.isExpanded,
         viewportStableHeight: tg.viewportStableHeight,
         mainBtn: tg.MainButton,
+        setBottomBarColor,
         appReady,
         closeApp,
         expandApp,
