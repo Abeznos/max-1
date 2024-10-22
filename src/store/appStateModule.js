@@ -121,7 +121,7 @@ export const appStateModule = {
         getBackBtn(state) {
             return state.backBtn
         },
-        getBotUserAlert(state) {
+        getBotUserAlert(state, rootGetters) {
             return state.showBotUserAlert
         },
         getPbUserAlert(state) {

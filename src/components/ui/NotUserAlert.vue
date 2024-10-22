@@ -27,10 +27,14 @@
     </v-layout>
 </template>
 <script>
+import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 import {tgService} from '@/services/tgService.js'
 
 export default {
     name: 'NotUserAlert',
+    data: () => ({
+        loading: false,
+    }),
     methods: {
         ...mapActions ({
             login: 'userData/login'
@@ -42,9 +46,9 @@ export default {
         requestContact() {
             this.loading = !this.loading
             const { requestContact } = tgService()
-            //requestContact()
+            requestContact()
 
-            setTimeout(() => (this.login), 3000)
+            setTimeout(() => (location.reload()), 3000)
         }
     }
 }
