@@ -248,15 +248,13 @@ export default {
             delete this.importantDates[`child${el}_birth_date`]
         },
         async sendForm() {
-            alert('Нажали 2')
-            //this.loading = !this.loading
+            const { mainBtn} = tgService()
+            alert('нажали 3')
+            mainBtn.hide()
             //const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
             //if (response) {
-            //    setTimeout(() => (this.loading = !this.loading), 2000)
-            //    setTimeout(() => (this.personaldataSend = true), 2000)
+            //    this.personaldataSend = true
             //    console.log(response)
-            //} else {
-            //    this.loading = !this.loading
             //}
         },
         async sendImportantDatesForm() {
@@ -293,10 +291,13 @@ export default {
         }
     },
     beforeMount() {
-        const { user, mainBtn, setBottomBarColor } = tgService()
+        const { user, mainBtn, setBottomBarColor, backButton } = tgService()
         const botId = this.$route.params.id
         const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
+
+        backButton.show()
+        backButton.onClick( () => this.$router.go(-1) )
 
         setBottomBarColor(this.getColors.surface)
         mainBtn.show()

@@ -38,10 +38,6 @@ export function tgService() {
         tg.openLink(url)
     }
 
-    const backButton = () => {
-        tg.BackButton
-    }
-
     const requestContact = () => {
         tg.requestContact()
     }
