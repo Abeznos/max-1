@@ -1,15 +1,5 @@
 <template>
-  <v-layout class="w-100">
-    <loader
-      v-if="getLoading"
-    />
-    <v-main class="pa-4">
-      <RouterView />
-    </v-main>
-    <v-bottom-navigation v-if="getBackBtn">
-      <v-btn @click="goBack" size="small" text="Назад"/>
-    </v-bottom-navigation>
-  </v-layout>
+<input type="text" class="w-100 border-sm">
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'

@@ -14,6 +14,7 @@
                         autofocus
                         variant="outlined"
                         :label="getFormFields.nameField.label"
+                        density="compact"
                         inputmode="text"
                         :placeholder="getFormFields.nameField.placeholder"
                         :rules="getRules(getFormFields.nameField.rules)"
