@@ -106,15 +106,12 @@
         </v-row>
     </v-container>
     
-    <div v-else>
-
-
-    <v-container 
-        class="h-100 d-flex flex-column justify-center"
-    >   
-        <div
+    <div v-else class="h-100">
+        <v-container 
             v-if="!showImportantDates"
+            class="h-100 d-flex flex-column justify-center"
         >
+            <div>
             <v-row>
                 <v-col class="v-col-12 align-center">
                     <v-row>
@@ -150,9 +147,11 @@
                     </v-row>
                 </v-col>
             </v-row>
-        </div>
-        <div
+            </div>    
+        </v-container>
+        <v-container
             v-else
+            class="h-100 d-flex flex-column"
         >
             <v-form class="w-100 d-flex flex-column justify-start ga-4" validate-on="submit lazy" ref="datesForm" @submit.prevent>
                 <v-card 
@@ -163,12 +162,12 @@
                     <div class="mt-2 mb-4">{{ `Важная дата ${n}`}}</div>
                     <v-text-field
                         class="pb-text-field rounded-lg"
-                        v-model="importantDates[`child${n}_name`[fieldsCount]]"
+                        v-model="importantDates[`child${n}_name`]"
                         variant="outlined"
                         label="Название"
                         density="compact"
                         placeholder="Название даты или имя близкого"
-                        :rules="getRules(getFormFields.nameField.rules)"
+                        :rules="getRules(getFormFields.importantDaysName.rules)"
                     ></v-text-field>
                     <v-text-field
                         class="pb-text-field"
@@ -179,29 +178,27 @@
                         placeholder="дд.мм.гггг"
                         :rules="getRules(getFormFields.birthDate.rules)"
                     ></v-text-field>
-                </v-card>
-                <v-row>
-                    <v-col class="v-col-6">
-                        <VBtn
+                    <v-card-actions v-if="n != 1">
+                        <VBtnOutline
                             class="mt-2 pb-primary-bt"
-                            size="large"
+                            block
+                            size="small"
+                            color="#ffffff"
                             variant="flat"
                             @click="removeField(fieldsCount)"
                             text="Удалить дату"
                             :disabled="isMinFieldsCount"
-                        ></VBtn>
-                    </v-col>
-                    <v-col class="v-col-6">
-                        <VBtn
-                            class="mt-2 pb-primary-bt"
-                            size="large"
-                            variant="flat"
-                            @click="addField"
-                            text="Добавить дату"
-                            :disabled="isMaxFieldsCount"
-                        ></VBtn>
-                    </v-col>
-                </v-row>                               
+                        ></VBtnOutline>                        
+                    </v-card-actions>
+                </v-card>
+                <VBtn
+                    class="mt-2 pb-primary-bt"
+                    size="large"
+                    variant="flat"
+                    @click="addField"
+                    text="Добавить дату"
+                    :disabled="isMaxFieldsCount"
+                ></VBtn>
                 <VBtn
                     class="mt-2 pb-primary-bt"
                     block
@@ -213,8 +210,7 @@
                     text="Сохранить"
                 ></VBtn>                
             </v-form>
-        </div>
-    </v-container>
+        </v-container>
     </div>
 </template>
 <script>
@@ -225,8 +221,8 @@ export default {
     name: 'RegistrationPage',
     data: () => ({
         loading: false,
-        personaldataSend: true,
-        showImportantDates: true,
+        personaldataSend: false,
+        showImportantDates: false,
         userData: {},
         importantDates: {},
         fieldsCount: 1
@@ -235,7 +231,8 @@ export default {
         ...mapActions({
             defineUser: 'userData/defineUser',
             registrationUser: 'userData/registrationUser',
-            updateUserData: 'userData/updateUserData'
+            updateUserData: 'userData/updateUserData',
+            setBackBtn: 'appState/setBackBtn'
         }),
         addField() {
             if(this.fieldsCount < 4) {
@@ -246,7 +243,9 @@ export default {
             if(this.fieldsCount != 1) {
                 this.fieldsCount -= 1
             }
-             
+
+            delete this.importantDates[`child${el}_name`]
+            delete this.importantDates[`child${el}_birth_date`]
         },
         async sendForm() {
             this.loading = !this.loading
@@ -275,7 +274,8 @@ export default {
             getFormFields: 'appState/getFormFields',
             getRules: 'appState/getRules',
             getUserChatId: 'userData/getUserChatId',
-            getBotId: 'userData/getBotId'
+            getBotId: 'userData/getBotId',
+            getBackBtn: 'appState/getBackBtn'
         }),
         isMaxFieldsCount() {
             if (this.fieldsCount === 4) {
@@ -295,6 +295,11 @@ export default {
         const botId = this.$route.params.id
         const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
+    },
+    mounted() {
+        if(!this.getBackBtn) {
+            this.setBackBtn()
+        }
     }
 }
 </script>

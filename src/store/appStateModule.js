@@ -58,6 +58,9 @@ export const appStateModule = {
                     label: 'Дата рождения',
                     rules: ['required', 'birthDate']
                 },
+                importantDaysName: {
+                    rules: ['required']
+                },                
             }
         },
         formRules: {
