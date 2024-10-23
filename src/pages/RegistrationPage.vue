@@ -187,7 +187,7 @@
                     height="44"
                     :disabled="isMaxFieldsCount"
                 ></VBtnOutline>
-                <!--
+                
                 <VBtn
                     class="mt-2 pb-primary-bt"
                     block
@@ -198,7 +198,7 @@
                     @click="sendImportantDatesForm"
                     text="Сохранить"
                 ></VBtn>
-                -->
+
             </v-form>
         </v-container>
     </div>
@@ -244,6 +244,7 @@ export default {
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
             if(response) {
                 console.log(response)
+                mainBtn.hideProgress()
                 mainBtn.hide()
                 this.personaldataSend = true
             }
@@ -251,10 +252,10 @@ export default {
         async sendImportantDatesForm() {
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
             if (response) {
-                alert(response)
                 console.log(response)
+                mainBtn.hideProgress()
                 mainBtn.hide()
-                setTimeout(() => this.$router.go(-1), 2000)
+                setTimeout(() => this.$router.push('/'), 2000)
             }
         }
     },
@@ -288,6 +289,7 @@ export default {
                 mainBtn.show()
                 mainBtn.setText('Сохранить')
                 mainBtn.onClick( () => this.sendImportantDatesForm() )
+                mainBtn.showProgress()
                 console.log(newVal)
             }
 
@@ -308,6 +310,7 @@ export default {
         mainBtn.setText('Далее')
         mainBtn.textColor = '#ffffff'
         mainBtn.onClick( () => this.sendForm() )
+        mainBtn.showProgress()
     }
 }
 </script>
