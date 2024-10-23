@@ -14,7 +14,6 @@
                         autofocus
                         variant="outlined"
                         :label="getFormFields.nameField.label"
-                        density="compact"
                         inputmode="text"
                         :placeholder="getFormFields.nameField.placeholder"
                         :rules="getRules(getFormFields.nameField.rules)"
@@ -25,7 +24,6 @@
                         v-model="userData.surname"
                         variant="outlined"
                         :label="getFormFields.surnameField.label"
-                        density="compact"
                         :placeholder="getFormFields.surnameField.placeholder"
                         :rules="getRules(getFormFields.surnameField.rules)"
                     ></v-text-field>
@@ -35,7 +33,6 @@
                         v-model="userData.middle_name"
                         variant="outlined"
                         :label="getFormFields.middleName.label"
-                        density="compact"
                         :placeholder="getFormFields.middleName.placeholder"
                         :rules="getRules(getFormFields.middleName.rules)"
                     ></v-text-field>
@@ -54,8 +51,7 @@
                         v-model="userData.birth_date"
                         variant="outlined"
                         :label="getFormFields.birthDate.label"
-                        density="compact"
-                        inputmode="tel"
+                        inputmode="text"
                         :placeholder="getFormFields.birthDate.placeholder"
                         :rules="getRules(getFormFields.birthDate.rules)"
                     ></v-text-field>
@@ -65,7 +61,6 @@
                         v-model="userData.email"
                         variant="outlined"
                         :label="getFormFields.email.label"
-                        density="compact"
                         inputmode="email"
                         :placeholder="getFormFields.email.placeholder"
                         :rules="getRules(getFormFields.email.rules)"
@@ -77,7 +72,6 @@
                         variant="outlined"
                         :items="getFormFields.city.items"
                         :label="getFormFields.city.label"
-                        density="compact"
                         :rules="getRules(getFormFields.city.rules)"
                     ></v-select>
                     <v-checkbox color="deep-purple-accent-4">
@@ -91,18 +85,6 @@
                             </a>
                         </template>
                     </v-checkbox>
-                    <!--
-                    <VBtn
-                        class="mt-2"
-                        block
-                        size="large"
-                        variant="flat"
-                        type="submit"
-                        :loading="loading"
-                        @click="sendForm"
-                        text="Далее"
-                    ></VBtn>
-                    -->
                 </v-form>
             </v-col>
         </v-row>
@@ -128,8 +110,6 @@
                                     block
                                     size="large"
                                     variant="flat"
-                                    type="submit"
-                                    :loading="loading"
                                     @click="$router.push(`/${getBotId}`)"
                                     text="Не сейчас"
                                 ></VBtnOutline>
@@ -140,8 +120,6 @@
                                     block
                                     size="large"
                                     variant="flat"
-                                    type="submit"
-                                    :loading="loading"
                                     @click="showImportantDates = !showImportantDates"
                                     text="Заполнить"
                                 ></VBtn>
@@ -167,7 +145,6 @@
                         v-model="importantDates[`child${n}_name`]"
                         variant="outlined"
                         label="Название"
-                        density="compact"
                         placeholder="Название даты или имя близкого"
                         :rules="getRules(getFormFields.importantDaysName.rules)"
                     ></v-text-field>
@@ -176,7 +153,6 @@
                         v-model="importantDates[`child${n}_birth_date`]"
                         variant="outlined"
                         label="Дата"
-                        density="compact"
                         placeholder="дд.мм.гггг"
                         :rules="getRules(getFormFields.birthDate.rules)"
                     ></v-text-field>
@@ -199,8 +175,10 @@
                     variant="flat"
                     @click="addField"
                     text="Добавить дату"
+                    height="44"
                     :disabled="isMaxFieldsCount"
                 ></VBtn>
+                <!--
                 <VBtn
                     class="mt-2 pb-primary-bt"
                     block
@@ -211,6 +189,7 @@
                     @click="sendImportantDatesForm"
                     text="Сохранить"
                 ></VBtn>
+                -->
             </v-form>
         </v-container>
     </div>
@@ -251,24 +230,18 @@ export default {
         },
         async sendForm() {
             const { mainBtn} = tgService()
-            mainBtn.disable()
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
             if (response) {
-                alert(response)
                 this.personaldataSend = true
                 mainBtn.hide()
                 console.log(response)
             }
-            mainBtn.enable()
         },
         async sendImportantDatesForm() {
-            this.loading = !this.loading
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
             if (response) {
-                setTimeout(() => (this.loading = !this.loading), 2000)
                 console.log(response)
-            } else {
-                this.loading = !this.loading
+                mainBtn.hide()
             }
         }
     },

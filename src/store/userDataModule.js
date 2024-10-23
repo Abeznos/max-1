@@ -109,21 +109,21 @@ export const userDataModule = {
             const { valid } = await form.ref.validate()
 
             if (!valid) return false
-
-            console.log(form.data.child1_birth_date)
-
-            let child1_birth_date = form.data.child1_birth_date.split('.')
-            child1_birth_date = new Date([...child1_birth_date].reverse())
-            formData.child1_birth_date = child1_birth_date.toLocaleString().slice(0, 10)
-
-            console.log(formData.child1_birth_date)
-
-            try {
-                const updatedUser = await api.post('/user/update-dates', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
-                console.log(updatedUser.data)
-            } catch(error) {
-                console.log(error)
-            }
+            return true
+            //console.log(form.data.child1_birth_date)
+//
+            //let child1_birth_date = form.data.child1_birth_date.split('.')
+            //child1_birth_date = new Date([...child1_birth_date].reverse())
+            //formData.child1_birth_date = child1_birth_date.toLocaleString().slice(0, 10)
+//
+            //console.log(formData.child1_birth_date)
+//
+            //try {
+            //    const updatedUser = await api.post('/user/update-dates', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+            //    console.log(updatedUser.data)
+            //} catch(error) {
+            //    console.log(error)
+            //}
         }
     },
     namespaced: true
