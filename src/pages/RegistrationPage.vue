@@ -251,6 +251,10 @@ export default {
             }
 
             mainBtn.hideProgress()
+            mainBtn.onClick( () => {
+                this.sendForm()
+                mainBtn.showProgress() 
+            })
         },
         async sendImportantDatesForm() {
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
@@ -262,12 +266,6 @@ export default {
                     this.$router.push(`/${this.getBotId}`)
                 }, 2000)
             }
-
-            mainBtn.hideProgress()
-            mainBtn.onClick( () => {
-                this.sendForm()
-                mainBtn.showProgress() 
-            })
         },
     },
     computed: {
