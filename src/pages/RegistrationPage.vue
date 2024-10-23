@@ -238,6 +238,7 @@ export default {
             const { mainBtn} = tgService()
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
             if (response) {
+                alert(response)
                 this.personaldataSend = true
                 mainBtn.hide()
                 console.log(response)
@@ -247,6 +248,7 @@ export default {
             const { mainBtn} = tgService()
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
             if (response) {
+                alert(response)
                 console.log(response)
                 mainBtn.hide()
                 setTimeout(() => this.$router.go(-1), 2000)
@@ -292,7 +294,7 @@ export default {
     beforeMount() {
         const { user, mainBtn, setBottomBarColor, backButton } = tgService()
         const botId = this.$route.params.id
-        const chatId = user?.id || '51709589' //Не забыть удалить тестовый chatId
+        const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
 
         backButton.show()

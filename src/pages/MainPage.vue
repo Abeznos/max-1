@@ -54,7 +54,7 @@ export default {
     beforeMount() {
         const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor, backButton, mainBtn} = tgService()
         const botId = this.$route.params.id
-        const chatId = user?.id || '51709589' //Не забыть удалить тестовый chatId
+        const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
 
         this.login()
