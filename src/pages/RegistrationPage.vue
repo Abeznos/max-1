@@ -243,15 +243,11 @@ export default {
             delete this.importantDates[`child${el}_birth_date`]
         },
         async sendForm() {
-            try {
-                const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
-                alert('Нажали 5')
-                mainBtn.hide()
-                this.personaldataSend = true
-                this.showResp(response)
-            } catch(error) {
-                console.log(error)
-            }
+            const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
+            alert('Нажали 5')
+            mainBtn.hide()
+            this.personaldataSend = true
+            this.showResp(response)
 
            //mainBtn.hide()
            //this.showResp(response)
