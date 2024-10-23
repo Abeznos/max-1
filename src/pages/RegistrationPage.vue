@@ -246,7 +246,8 @@ export default {
             try {
                 const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
                 alert('Нажали 5')
-                //mainBtn.hide()
+                mainBtn.hide()
+                this.personaldataSend = true
                 this.showResp(response)
             } catch(error) {
                 console.log(error)
