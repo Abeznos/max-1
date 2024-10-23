@@ -254,6 +254,7 @@ export default {
             mainBtn.disable()
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
             if (response) {
+                alert(response)
                 this.personaldataSend = true
                 mainBtn.hide()
                 console.log(response)

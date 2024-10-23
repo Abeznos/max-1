@@ -81,6 +81,7 @@ export const userDataModule = {
             const { valid } = await form.ref.validate()
 
             if (!valid) return false
+            return true
 
             //if (form.data.birth_date) {
             //    let birth_date = form.data.birth_date.split('.')
