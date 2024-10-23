@@ -270,7 +270,7 @@ export default {
     },
     watch: {
         showImportantDates(newVal) {
-            if(newVal) {
+            if(newVal === true) {
                 mainBtn.show()
                 mainBtn.setText('Сохранить')
                 mainBtn.onClick( () => this.sendImportantDatesForm() )
