@@ -239,19 +239,26 @@ export default {
             delete this.importantDates[`child${el}_birth_date`]
         },
         async sendForm() {
-            alert('Нажали 3')
-            const { mainBtn} = tgService()
-            const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
-            this.showResp(response)
-            if (response) {
-                alert(response)
-                //this.personaldataSend = true
+            alert('Нажали 4')
+            try {
+                const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
+                alert('Нажали 5')
                 mainBtn.hide()
-                console.log(response)
+                this.showResp(response)
+            } catch(error) {
+                console.log(error)
             }
+
+           //mainBtn.hide()
+           //this.showResp(response)
+           //if (response) {
+           //    alert(response)
+           //    //this.personaldataSend = true
+           //    mainBtn.hide()
+           //    console.log(response.data)
+           //}
         },
         async sendImportantDatesForm() {
-            const { mainBtn} = tgService()
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
             if (response) {
                 alert(response)

@@ -99,7 +99,7 @@ export const userDataModule = {
                 console.log(newUser.data)
                 return newUser.data
             } catch(error) {
-                //console.log(error)
+                console.log(error)
             }
             
         },
