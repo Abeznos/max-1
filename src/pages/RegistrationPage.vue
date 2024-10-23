@@ -264,7 +264,11 @@ export default {
             }
 
             mainBtn.hideProgress()
-        }
+            mainBtn.onClick( () => {
+                this.sendForm()
+                mainBtn.showProgress() 
+            })
+        },
     },
     computed: {
         ...mapGetters({
@@ -299,9 +303,7 @@ export default {
                     this.sendImportantDatesForm()
                     mainBtn.showProgress()
                 })
-                console.log(newVal)
             }
-
         }
     },
     beforeMount() {

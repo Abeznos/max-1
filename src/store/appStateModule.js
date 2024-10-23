@@ -28,13 +28,13 @@ export const appStateModule = {
                     display: true,
                     placeholder: '',
                     label: 'Пол',
-                    rules: ['name']
+                    rules: ['required', 'name']
                 },
                 email: {
                     display: true,
                     placeholder: 'ivan@email.ru',
                     label: 'Email',
-                    rules: ['email']
+                    rules: ['required', 'email']
                 },
                 city: {
                     display: false,
@@ -54,11 +54,14 @@ export const appStateModule = {
                     display: true,
                     placeholder: 'дд.мм.гггг',
                     label: 'Дата рождения',
-                    rules: ['birthDate']
+                    rules: ['required', 'birthDate']
                 },
                 importantDaysName: {
                     rules: ['required']
                 },
+                importantDate: {
+                    rules: ['required']
+                },                
                 messageAgreement: {
                     display: false,
                     text: 'Хочу получать реклманые сообщения'
@@ -78,7 +81,7 @@ export const appStateModule = {
                 return true
             },
             email: value => {
-                if (value && !/^[a-zA-Z.-]+@[a-zA-Z.-]+\.[a-zA-Z]+$/.test(value)) return 'Введен некорректный email'
+                if (value && !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+$/.test(value)) return 'Введен некорректный email'
                 return true
             },
             birthDate: value => {
