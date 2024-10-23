@@ -242,8 +242,11 @@ export default {
         },
         async sendForm() {
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
-            mainBtn.hide()
-            this.personaldataSend = true
+            if(response) {
+                console.log(response)
+                mainBtn.hide()
+                this.personaldataSend = true
+            }
         },
         async sendImportantDatesForm() {
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
