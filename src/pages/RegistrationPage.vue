@@ -85,7 +85,7 @@
                             </a>
                         </template>
                     </v-checkbox>
-                    <!--
+
                     <v-btn
                         class="mt-4"
                         block
@@ -93,7 +93,6 @@
                         color="primary"
                         @click="sendForm"
                     ></v-btn>
-                    -->
                 </v-form>
             </v-col>
         </v-row>
@@ -293,7 +292,7 @@ export default {
     beforeMount() {
         const { user, mainBtn, setBottomBarColor, backButton } = tgService()
         const botId = this.$route.params.id
-        const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
+        const chatId = user?.id || '51709589' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
 
         backButton.show()
