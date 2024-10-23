@@ -55,7 +55,7 @@
                         variant="outlined"
                         :label="getFormFields.birthDate.label"
                         density="compact"
-                        inputmode="numeric"
+                        inputmode="tel"
                         :placeholder="getFormFields.birthDate.placeholder"
                         :rules="getRules(getFormFields.birthDate.rules)"
                     ></v-text-field>
@@ -294,6 +294,13 @@ export default {
             return false
         }
     },
+    watch: {
+        showImportantDates() {
+            mainBtn.show()
+            mainBtn.setText('Сохранить')
+            mainBtn.onClick( () => this.sendImportantDatesForm() )
+        }
+    },
     beforeMount() {
         const { user, mainBtn, setBottomBarColor, backButton } = tgService()
         const botId = this.$route.params.id
@@ -307,7 +314,7 @@ export default {
         mainBtn.show()
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Далее')
-        mainBtn.textСщдщк = '#ffffff'
+        mainBtn.textColor = '#ffffff'
         mainBtn.onClick( () => this.sendForm() )
     }
 }
