@@ -34,14 +34,14 @@ export default {
             getBackBtn: 'appState/getBackBtn'
         })
     },
-    mounted() {
-        if(!this.getBackBtn) {
-            this.setBackBtn()
-        }
-        //console.log(this.getBackBtn)
-    }
+    beforeMount() {
+        const { backButton } = tgService()
+
+        backButton.show()
+        backButton.onClick( () => this.$router.go(-1) )
+    },
 }
 </script>
 <style>
-    
+
 </style>

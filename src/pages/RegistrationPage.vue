@@ -251,7 +251,6 @@ export default {
         },
         async sendForm() {
             const { mainBtn} = tgService()
-            alert('нажали 3')
             mainBtn.disable()
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
             if (response) {
@@ -309,11 +308,6 @@ export default {
         mainBtn.setText('Далее')
         mainBtn.textСщдщк = '#ffffff'
         mainBtn.onClick( () => this.sendForm() )
-    },
-    mounted() {
-        if(!this.getBackBtn) {
-            this.setBackBtn()
-        }
     }
 }
 </script>
