@@ -95,8 +95,11 @@ export const userDataModule = {
             }
 
             const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
-            console.log(newUser.data)
-            return true
+            
+            if (newUser.data.success) {
+                console.log(newUser.data)
+                return true
+            }
             
         },
 
