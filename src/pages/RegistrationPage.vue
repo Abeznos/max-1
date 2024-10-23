@@ -239,7 +239,7 @@ export default {
             delete this.importantDates[`child${el}_birth_date`]
         },
         async sendForm() {
-            alert('Нажали 2')
+            alert('Нажали 3')
             const { mainBtn} = tgService()
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
             this.showResp(response)
