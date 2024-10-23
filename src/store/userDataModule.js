@@ -97,10 +97,11 @@ export const userDataModule = {
             try {
                 const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
                 console.log(newUser.data)
+                return newUser.data
             } catch(error) {
-                console.log(error)
+                //console.log(error)
             }
-            return true
+            
         },
 
         async updateUserData({state, commit, getters, dispatch}, form) {

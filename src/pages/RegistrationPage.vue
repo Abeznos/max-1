@@ -2,7 +2,8 @@
     <v-container
         v-if="!personaldataSend"
         class="h-100"
-    >
+    >   
+        {{ resp }}
         <v-row>
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
                 <h2 class="pb-6 pt-6">Анкета регистрации</h2>
@@ -212,7 +213,8 @@ export default {
         showImportantDates: false,
         userData: {},
         importantDates: {},
-        fieldsCount: 1
+        fieldsCount: 1,
+        resp: {}
     }),
     methods: {
         ...mapActions({
@@ -237,9 +239,10 @@ export default {
         async sendForm() {
             const { mainBtn} = tgService()
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
+            this.showResp(response)
             if (response) {
                 alert(response)
-                this.personaldataSend = true
+                //this.personaldataSend = true
                 mainBtn.hide()
                 console.log(response)
             }
@@ -254,6 +257,9 @@ export default {
                 setTimeout(() => this.$router.go(-1), 2000)
 
             }
+        },
+        showResp(resp) {
+            this.resp = resp
         }
     },
     computed: {
