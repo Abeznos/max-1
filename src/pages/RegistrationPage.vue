@@ -239,6 +239,7 @@ export default {
         async sendImportantDatesForm() {
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
             if (response) {
+                alert(response)
                 console.log(response)
                 mainBtn.hide()
                 this.$router.go(-1)
