@@ -81,27 +81,26 @@ export const userDataModule = {
             const { valid } = await form.ref.validate()
 
             if (!valid) return false
-            return true
 
-            //if (form.data.birth_date) {
-            //    let birth_date = form.data.birth_date.split('.')
-            //    birth_date = new Date([...birth_date].reverse())
-//
-            //    formData.birth_date = birth_date.toISOString().slice(0, 10)
-            //}
-//
-            //if (form.data.city) {
-            //    const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
-            //    formData.city = city
-            //}
-//
-            //try {
-            //    const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
-            //    console.log(newUser.data)
-            //} catch(error) {
-            //    console.log(error)
-            //}
-            //return true
+            if (form.data.birth_date) {
+                let birth_date = form.data.birth_date.split('.')
+                birth_date = new Date([...birth_date].reverse())
+
+                formData.birth_date = birth_date.toISOString().slice(0, 10)
+            }
+
+            if (form.data.city) {
+                const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
+                formData.city = city
+            }
+
+            try {
+                const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+                console.log(newUser.data)
+            } catch(error) {
+                console.log(error)
+            }
+            return true
         },
 
         async updateUserData({state, commit, getters, dispatch}, form) {
@@ -109,21 +108,23 @@ export const userDataModule = {
             const { valid } = await form.ref.validate()
 
             if (!valid) return false
-            return true
+
             //console.log(form.data.child1_birth_date)
-//
-            //let child1_birth_date = form.data.child1_birth_date.split('.')
-            //child1_birth_date = new Date([...child1_birth_date].reverse())
-            //formData.child1_birth_date = child1_birth_date.toLocaleString().slice(0, 10)
-//
+
+            let child1_birth_date = form.data.child1_birth_date.split('.')
+            child1_birth_date = new Date([...child1_birth_date].reverse())
+            formData.child1_birth_date = child1_birth_date.toLocaleString().slice(0, 10)
+
             //console.log(formData.child1_birth_date)
-//
-            //try {
-            //    const updatedUser = await api.post('/user/update-dates', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
-            //    console.log(updatedUser.data)
-            //} catch(error) {
-            //    console.log(error)
-            //}
+
+            try {
+                const updatedUser = await api.post('/user/update-dates', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+                console.log(updatedUser.data)
+            } catch(error) {
+                console.log(error)
+            }
+
+            return true
         }
     },
     namespaced: true

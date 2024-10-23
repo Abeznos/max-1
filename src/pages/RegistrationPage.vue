@@ -85,11 +85,17 @@
                             </a>
                         </template>
                     </v-checkbox>
+                    <v-btn
+                        class="mt-4"
+                        block
+                        size="large"
+                        color="primary"
+                        @click="sendForm"
+                    ></v-btn>
                 </v-form>
             </v-col>
         </v-row>
     </v-container>
-
     <div v-else>
         <v-container
             v-if="!showImportantDates"
@@ -177,7 +183,7 @@
                     height="44"
                     :disabled="isMaxFieldsCount"
                 ></VBtnOutline>
-                <!--
+
                 <VBtn
                     class="mt-2 pb-primary-bt"
                     block
@@ -188,7 +194,7 @@
                     @click="sendImportantDatesForm"
                     text="Сохранить"
                 ></VBtn>
-                -->
+
             </v-form>
         </v-container>
     </div>
@@ -242,7 +248,8 @@ export default {
             if (response) {
                 console.log(response)
                 mainBtn.hide()
-                this.$router.go(-1)
+                setTimeout(() => this.$router.go(-1), 2000)
+
             }
         }
     },
