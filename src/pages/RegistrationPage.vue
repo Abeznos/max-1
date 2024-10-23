@@ -288,8 +288,10 @@ export default {
             if(newVal) {
                 mainBtn.show()
                 mainBtn.setText('Сохранить')
-                mainBtn.onClick( () => this.sendImportantDatesForm() )
-                mainBtn.showProgress()
+                mainBtn.onClick( () => {
+                    this.sendImportantDatesForm()
+                    mainBtn.showProgress()
+                })
                 console.log(newVal)
             }
 
@@ -309,8 +311,11 @@ export default {
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Далее')
         mainBtn.textColor = '#ffffff'
-        mainBtn.onClick( () => this.sendForm() )
-        mainBtn.showProgress()
+        mainBtn.onClick( () => {
+            this.sendForm()
+            mainBtn.showProgress() 
+        })
+
     }
 }
 </script>
