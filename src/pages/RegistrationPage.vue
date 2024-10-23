@@ -11,7 +11,6 @@
                         v-if="getFormFields.nameField.display"
                         class="pb-text-field rounded-lg rounded-xl"
                         v-model="userData.name"
-                        autofocus
                         variant="outlined"
                         :label="getFormFields.nameField.label"
                         inputmode="text"
