@@ -57,7 +57,7 @@
                     <v-text-field
                         v-if="getFormFields.email.display"
                         class="pb-text-field"
-                        v-model="userData.email"
+                        v-model.trim="userData.email"
                         variant="outlined"
                         :label="getFormFields.email.label"
                         inputmode="email"
@@ -159,7 +159,7 @@
                     ></v-text-field>
                     <v-text-field
                         class="pb-text-field"
-                        v-model="importantDates[`child${n}_birth_date`]"
+                        v-model.trim="importantDates[`child${n}_birth_date`]"
                         variant="outlined"
                         label="Дата"
                         placeholder="дд.мм.гггг"
@@ -243,10 +243,14 @@ export default {
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
             if(response) {
                 console.log(response)
-                mainBtn.hideProgress()
-                mainBtn.hide()
-                this.personaldataSend = true
+                setTimeout(() => {
+                    mainBtn.hideProgress()
+                    mainBtn.hide()
+                    this.personaldataSend = true
+                }, 2000)
             }
+
+            mainBtn.hideProgress()
         },
         async sendImportantDatesForm() {
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
@@ -258,6 +262,8 @@ export default {
                     this.$router.push(`/${this.getBotId}`)
                 }, 2000)
             }
+
+            mainBtn.hideProgress()
         }
     },
     computed: {

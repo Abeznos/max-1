@@ -78,7 +78,7 @@ export const appStateModule = {
                 return true
             },
             email: value => {
-                if (value && !/^[a-z.-]+@[a-z.-]+\.[a-z]+$/.test(value)) return 'Введен некорректный email'
+                if (value && !/^[a-zA-Z.-]+@[a-zA-Z.-]+\.[a-zA-Z]+$/.test(value)) return 'Введен некорректный email'
                 return true
             },
             birthDate: value => {
