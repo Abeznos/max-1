@@ -253,9 +253,11 @@ export default {
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
             if (response) {
                 console.log(response)
-                mainBtn.hideProgress()
-                mainBtn.hide()
-                setTimeout(() => this.$router.push(`/${this.getBotId}`), 2000)
+                setTimeout(() => {
+                    mainBtn.hideProgress()
+                    mainBtn.hide()
+                    this.$router.push(`/${this.getBotId}`)
+                }, 2000)
             }
         }
     },
