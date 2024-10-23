@@ -30,13 +30,13 @@ export const appStateModule = {
                     display: true,
                     placeholder: '',
                     label: 'Пол',
-                    rules: ['required','name']
+                    rules: ['name']
                 },
                 email: {
                     display: true,
                     placeholder: 'ivan@email.ru',
                     label: 'Email',
-                    rules: ['required', 'email']
+                    rules: ['email']
                 },
                 city: {
                     display: false,
@@ -56,7 +56,7 @@ export const appStateModule = {
                     display: true,
                     placeholder: 'дд.мм.гггг',
                     label: 'Дата рождения',
-                    rules: ['required', 'birthDate']
+                    rules: ['birthDate']
                 },
                 importantDaysName: {
                     rules: ['required']

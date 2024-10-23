@@ -239,7 +239,6 @@ export default {
             delete this.importantDates[`child${el}_birth_date`]
         },
         async sendForm() {
-            //alert('Нажали 4')
             try {
                 const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
                 alert('Нажали 5')
