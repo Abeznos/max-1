@@ -3,15 +3,10 @@
         v-if="!personaldataSend"
         class="h-100"
     >   
-        <div>
-            {{ getBotId }}
-            {{ getUserChatId }}
-        </div>        
-        {{ resp }}
         <v-row>
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
                 <h2 class="pb-6 pt-6">Анкета регистрации</h2>
-                <v-form class="w-100" validate-on="submit" ref="form" @submit.prevent>
+                <v-form class="w-100" validate-on="submit lazzy" ref="form" @submit.prevent>
                     <v-text-field
                         v-if="getFormFields.nameField.display"
                         class="pb-text-field rounded-lg rounded-xl"
@@ -79,18 +74,20 @@
                         :label="getFormFields.city.label"
                         :rules="getRules(getFormFields.city.rules)"
                     ></v-select>
-                    <v-checkbox color="deep-purple-accent-4">
+                    <v-checkbox 
+                        v-if="getFormFields.messageAgreement.display"
+                        color="var(--primary-color)"
+                    >
                         <template v-slot:label>
                             <a
                                 href="https://vuetifyjs.com"
                                 target="_blank"
                                 @click.stop
-                            >
-                                Хочу получать реклманые сообщения
-                            </a>
+                                :text="getFormFields.messageAgreement.text"
+                            ></a>
                         </template>
                     </v-checkbox>
-
+                    <!--
                     <v-btn
                         class="mt-4"
                         block
@@ -98,25 +95,26 @@
                         color="primary"
                         @click="sendForm"
                     ></v-btn>
+                    -->
                 </v-form>
             </v-col>
         </v-row>
     </v-container>
-    <div v-else>
+    <div v-else class="h-100">
         <v-container
             v-if="!showImportantDates"
-            class="d-flex flex-column justify-center"
+            class="d-flex flex-column justify-center w-100 pa-0 h-100"
         >
             <v-layout
                 class="alert w-100 h-100"
             >
-                <v-col class="v-col-12 d-flex flex-column justify-center">
-                    <v-card class="pb-alert-card pa-4" variant="flat">
-                        <v-card-text>
+                <v-col class="v-col-12 d-flex flex-column justify-center pa-0">
+                    <v-card class="pb-alert-card" variant="flat">
+                        <v-card-text class="pb-0">
                             <p>Заполните даты важных событий или дни рождения близких людей, и&nbsp;перед праздником мы&nbsp;пришлем вам напоминание и&nbsp;подарок.</p>
                         </v-card-text>
                         <v-card-actions class=" w-100 d-flex flex-row align-center justify-center">
-                            <v-col>
+                            <v-col class="">
                                 <VBtnOutline
                                     class="mt-2 pb-text-bt"
                                     block
@@ -126,7 +124,7 @@
                                     text="Не сейчас"
                                 ></VBtnOutline>
                             </v-col>
-                            <v-col>
+                            <v-col class="p">
                                 <VBtn
                                     class="mt-2 pb-primary-bt"
                                     block
@@ -143,7 +141,7 @@
         </v-container>
         <v-container
             v-else
-            class="d-flex flex-column"
+            class="d-flex flex-column pa-0"
         >
             <v-form class="w-100 d-flex flex-column justify-start ga-4" validate-on="submit lazy" ref="datesForm" @submit.prevent>
                 <v-card
@@ -189,7 +187,7 @@
                     height="44"
                     :disabled="isMaxFieldsCount"
                 ></VBtnOutline>
-
+                <!--
                 <VBtn
                     class="mt-2 pb-primary-bt"
                     block
@@ -200,27 +198,27 @@
                     @click="sendImportantDatesForm"
                     text="Сохранить"
                 ></VBtn>
-
+                -->
             </v-form>
         </v-container>
     </div>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+import UserRegistration from '@/components/registrationPage/UserRegistration.vue'
 const { user, mainBtn, setBottomBarColor, backButton } = tgService()
 
 import {tgService} from '@/services/tgService.js'
 
 export default {
     name: 'RegistrationPage',
+    components: { UserRegistration },
     data: () => ({
-        loading: false,
         personaldataSend: false,
         showImportantDates: false,
         userData: {},
         importantDates: {},
         fieldsCount: 1,
-        resp: {}
     }),
     methods: {
         ...mapActions({
@@ -244,19 +242,8 @@ export default {
         },
         async sendForm() {
             const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
-            alert('Нажали 5')
             mainBtn.hide()
             this.personaldataSend = true
-            this.showResp(response)
-
-           //mainBtn.hide()
-           //this.showResp(response)
-           //if (response) {
-           //    alert(response)
-           //    //this.personaldataSend = true
-           //    mainBtn.hide()
-           //    console.log(response.data)
-           //}
         },
         async sendImportantDatesForm() {
             const response = await this.updateUserData({ref: this.$refs.datesForm, data: this.importantDates})
@@ -265,11 +252,7 @@ export default {
                 console.log(response)
                 mainBtn.hide()
                 setTimeout(() => this.$router.go(-1), 2000)
-
             }
-        },
-        showResp(resp) {
-            this.resp = resp
         }
     },
     computed: {

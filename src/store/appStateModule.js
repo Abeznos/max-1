@@ -1,5 +1,3 @@
-import { ru } from "vuetify/locale"
-
 export const appStateModule = {
     state: () => ({
         loading: false,
@@ -60,7 +58,11 @@ export const appStateModule = {
                 },
                 importantDaysName: {
                     rules: ['required']
-                },                
+                },
+                messageAgreement: {
+                    display: false,
+                    text: 'Хочу получать реклманые сообщения'
+                }           
             }
         },
         formRules: {
