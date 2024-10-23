@@ -78,29 +78,29 @@ export const userDataModule = {
         },
         async registrationUser({state, commit, getters, dispatch}, form) {
             console.log(form)
-            //const formData = { ...form.data }
-            //const { valid } = await form.ref.validate()
-//
-            //if (!valid) return false
-//
-            //if (form.data.birth_date) {
-            //    let birth_date = form.data.birth_date.split('.')
-            //    birth_date = new Date([...birth_date].reverse())
-//
-            //    formData.birth_date = birth_date.toISOString().slice(0, 10)
-            //}
-//
-            //if (form.data.city) {
-            //    const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
-            //    formData.city = city
-            //}
-//
-            //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
-            //
-            //if (newUser.data.success) {
-            //    console.log(newUser.data)
-            //    return true
-            //}
+            const formData = { ...form.data }
+            const { valid } = await form.ref.validate()
+
+            if (!valid) return false
+
+            if (form.data.birth_date) {
+                let birth_date = form.data.birth_date.split('.')
+                birth_date = new Date([...birth_date].reverse())
+
+                formData.birth_date = birth_date.toISOString().slice(0, 10)
+            }
+
+            if (form.data.city) {
+                const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
+                formData.city = city
+            }
+
+            const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+            
+            if (newUser.data.success) {
+                console.log(newUser.data)
+                return true
+            }
             
         },
 
