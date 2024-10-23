@@ -311,7 +311,7 @@ export default {
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Далее')
         mainBtn.textColor = '#ffffff'
-        mainBtn.onClick( () => this.sendForm() )
+        mainBtn.onClick( () => alert('Нажали') )
     }
 }
 </script>
