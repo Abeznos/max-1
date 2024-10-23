@@ -255,7 +255,7 @@ export default {
                 console.log(response)
                 mainBtn.hideProgress()
                 mainBtn.hide()
-                setTimeout(() => this.$router.push('/'), 2000)
+                setTimeout(() => this.$router.push(`/${getBotId}`), 2000)
             }
         }
     },
