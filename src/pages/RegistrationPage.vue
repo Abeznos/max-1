@@ -1,8 +1,9 @@
 <template>
+    <UserRegistration/>
     <v-container
         v-if="!personaldataSend"
         class="h-100"
-    >   
+    >
         <v-row>
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
                 <h2 class="pb-6 pt-6">Анкета регистрации</h2>
@@ -73,7 +74,7 @@
                         :label="getFormFields.city.label"
                         :rules="getRules(getFormFields.city.rules)"
                     ></v-select>
-                    <v-checkbox 
+                    <v-checkbox
                         v-if="getFormFields.messageAgreement.display"
                         color="var(--primary-color)"
                     >
@@ -316,7 +317,7 @@ export default {
         mainBtn.textColor = '#ffffff'
         mainBtn.onClick( () => {
             this.sendForm()
-            mainBtn.showProgress() 
+            mainBtn.showProgress()
         })
 
     }

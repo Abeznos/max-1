@@ -27,7 +27,7 @@ a {
 
 html, body {
 	position: fixed;
-	height: 100% !important;
+	height: var(--tg-viewport-stable-height);
   display: flex;
   place-content: center;
   width: 100%;
@@ -101,4 +101,9 @@ html, body {
 
 .alert .v-card-text {
   font-size: 1rem !important;
+}
+
+.v-radio-group .v-input__details {
+  min-height: .25rem !important;
+  padding-top: 0px !important;
 }
