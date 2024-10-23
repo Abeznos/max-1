@@ -244,8 +244,8 @@ export default {
             if(response) {
                 console.log(response)
                 setTimeout(() => {
-                    mainBtn.hideProgress()
                     mainBtn.hide()
+                    mainBtn.hideProgress()
                     this.personaldataSend = true
                 }, 2000)
             }
@@ -257,8 +257,8 @@ export default {
             if (response) {
                 console.log(response)
                 setTimeout(() => {
-                    mainBtn.hideProgress()
                     mainBtn.hide()
+                    mainBtn.hideProgress()
                     this.$router.push(`/${this.getBotId}`)
                 }, 2000)
             }
