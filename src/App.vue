@@ -1,9 +1,8 @@
 <template>
   <v-layout class="w-100">
-    <loader
-      v-if="getLoading"
-    />
+    <loader v-if="getLoading"/>
     <v-main class="pa-4">
+      <NotUserAlert v-if="getBotUserAlert"/>
       <RouterView />
     </v-main>
   </v-layout>
