@@ -1,14 +1,16 @@
 <template>
-    <UserStartScreen v-if="getUserPersData"/>
+    <UserStartScreen v-if="getUserPersData?.is_registered"/>
     <NotUserStartScreen v-else/>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
-import {tgService} from '@/services/tgService.js'
 import NotUserAlert from '@/components/ui/NotUserAlert.vue'
 import NotPbUserAlert from '@/components/ui/NotPbUserAlert.vue'
 import UserStartScreen from '@/components/mainPage/UserStartScreen.vue'
 import NotUserStartScreen from '@/components/mainPage/NotUserStartScreen.vue'
+
+import {tgService} from '@/services/tgService.js'
+const { openLink, mainBtn, backButton } = tgService()
 
 export default {
     name: 'MainPage',
@@ -25,11 +27,7 @@ export default {
             login: 'userData/login',
             backBtnToggle: 'appState/backBtnToggle',
             loadingToggle: 'appState/loadingToggle'
-        }),
-        openLink(url) {
-            const { openLink } = tgService()
-            openLink(url)
-        }
+        })
     },
     computed: {
         ...mapGetters ({
@@ -42,22 +40,19 @@ export default {
             getBotUserAlert: 'appState/getBotUserAlert',
             getPbUserAlert: 'appState/getPbUserAlert'
 
-        }),
-        showTestText() {
-            return this.testText
-        }
+        })
     },
     beforeMount() {
-        const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor, backButton, mainBtn} = tgService()
-        const botId = this.$route.params.id
-        const chatId = user?.id || '000011' //Не забыть удалить тестовый chatId
-        this.defineUser({chatId, botId})
+        //const {user, setBackgroundColor, disableVerticalSwipes, setHeaderColor, backButton, mainBtn} = tgService()
+        //const botId = this.$route.params.id
+        //const chatId = user?.id || '000011' //Не забыть удалить тестовый chatId
+        //this.defineUser({chatId, botId})
 
-        this.login()
+        //this.login()
 
-        setBackgroundColor(this.getColors.surface)
-        setHeaderColor(this.getColors.primary)
-        disableVerticalSwipes()
+        //setBackgroundColor(this.getColors.surface)
+        //setHeaderColor(this.getColors.primary)
+        //disableVerticalSwipes()
 
         if(backButton.isVisible) {
             backButton.hide()

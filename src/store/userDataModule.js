@@ -36,7 +36,6 @@ export const userDataModule = {
     },
     actions: {
         async defineUser ({state, commit, dispatch}, data) {
-            //console.log(data)
             commit('setChatId', data.chatId)
             commit('setBotId', data.botId)
         },
@@ -45,6 +44,9 @@ export const userDataModule = {
         },
         async setBotId({state, commit, dispatch}, id) {
             commit('setBotId', id)
+        },
+        async setUserData({state, commit, dispatch}, data) {
+            commit('userPersData', data)
         },
         async login({state, commit, getters, dispatch}) {
             try {
@@ -96,12 +98,12 @@ export const userDataModule = {
             }
 
             const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
-            
+
             if (newUser.data.success) {
                 console.log(newUser.data)
                 return true
             }
-            
+
         },
 
         async updateUserData({state, commit, getters, dispatch}, form) {

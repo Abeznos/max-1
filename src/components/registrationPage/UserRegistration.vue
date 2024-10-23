@@ -88,7 +88,7 @@
                 </template>
             </v-checkbox>
             <v-btn
-                v-if="getUserChatId === '268451766'"
+                v-if="getUserChatId === '000011'"
                 class="mt-4"
                 block
                 size="large"
@@ -97,13 +97,14 @@
             ></v-btn>
         </v-form>
         <div>
-            {{ getUserChatId }}
-            {{ getBotId }}
+            <p>{{ getUserChatId }}</p>
+            <p>{{ getBotId }}</p>
         </div>
     </v-container>
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+
 import {tgService} from '@/services/tgService.js'
 const { user, mainBtn, setBottomBarColor, backButton } = tgService()
 

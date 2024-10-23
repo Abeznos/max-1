@@ -2,10 +2,10 @@
     <v-layout
         class="alert w-100 h-100"
     >
-        <v-col class="v-col-12 d-flex flex-column align-center justify-center">
+        <v-col class="v-col-12 d-flex flex-column align-center justify-center pa-0">
             <v-card class="pb-alert-card pa-4">
                 <v-card-text>
-                    <p>Для корректной работы бота, поделитесь своим номером телефона</p>
+                    <p>Для корректной работы, поделитесь с&nbsp;ботом своим номером телефона</p>
                 </v-card-text>
                 <v-card-actions class="d-flex flex-column align-center justify-center">
                     <!--
