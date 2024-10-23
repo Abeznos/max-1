@@ -3,6 +3,10 @@
         v-if="!personaldataSend"
         class="h-100"
     >   
+        <div>
+            {{ getBotId }}
+            {{ getUserChatId }}
+        </div>        
         {{ resp }}
         <v-row>
             <v-col class="v-col-12 d-flex flex-column justify-center align-center">
