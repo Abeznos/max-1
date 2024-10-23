@@ -96,6 +96,10 @@
                 @click="pbBuyerRegistration()"
             ></v-btn>
         </v-form>
+        <div>
+            {{ getUserChatId }}
+            {{ getBotId }}
+        </div>
     </v-container>
 </template>
 <script>
@@ -124,6 +128,7 @@ export default {
             getRules: 'appState/getRules',
             getColors: 'appState/getColors',
             getUserChatId: 'userData/getUserChatId',
+            getBotId: 'userData/getBotId'
         }),
     },
     beforeMount() {

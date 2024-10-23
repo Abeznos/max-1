@@ -1,5 +1,6 @@
 <template>
     <UserRegistration/>
+    <!---
     <v-container
         v-if="!personaldataSend"
         class="h-100"
@@ -87,7 +88,7 @@
                             ></a>
                         </template>
                     </v-checkbox>
-                    <!--
+
                     <v-btn
                         class="mt-4"
                         block
@@ -95,7 +96,7 @@
                         color="primary"
                         @click="sendForm"
                     ></v-btn>
-                    -->
+
                 </v-form>
             </v-col>
         </v-row>
@@ -187,7 +188,7 @@
                     height="44"
                     :disabled="isMaxFieldsCount"
                 ></VBtnOutline>
-                <!--
+
                 <VBtn
                     class="mt-2 pb-primary-bt"
                     block
@@ -198,10 +199,11 @@
                     @click="sendImportantDatesForm"
                     text="Сохранить"
                 ></VBtn>
-                -->
+
             </v-form>
         </v-container>
     </div>
+-->
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
@@ -304,7 +306,7 @@ export default {
     beforeMount() {
         //const { user, mainBtn, setBottomBarColor, backButton } = tgService()
         const botId = this.$route.params.id
-        const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
+        const chatId = user?.id || '000011' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
 
         backButton.show()
