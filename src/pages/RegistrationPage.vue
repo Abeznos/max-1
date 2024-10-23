@@ -203,6 +203,8 @@
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+const { user, mainBtn, setBottomBarColor, backButton } = tgService()
+
 import {tgService} from '@/services/tgService.js'
 
 export default {
@@ -238,15 +240,15 @@ export default {
         },
         async sendForm() {
             alert('Нажали 2')
-            //const { mainBtn} = tgService()
-            //const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
-            //this.showResp(response)
-            //if (response) {
-            //    alert(response)
-            //    //this.personaldataSend = true
-            //    mainBtn.hide()
-            //    console.log(response)
-            //}
+            const { mainBtn} = tgService()
+            const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
+            this.showResp(response)
+            if (response) {
+                alert(response)
+                //this.personaldataSend = true
+                mainBtn.hide()
+                console.log(response)
+            }
         },
         async sendImportantDatesForm() {
             const { mainBtn} = tgService()
@@ -299,7 +301,7 @@ export default {
         }
     },
     beforeMount() {
-        const { user, mainBtn, setBottomBarColor, backButton } = tgService()
+        //const { user, mainBtn, setBottomBarColor, backButton } = tgService()
         const botId = this.$route.params.id
         const chatId = user?.id || '268451766' //Не забыть удалить тестовый chatId
         this.defineUser({chatId, botId})
