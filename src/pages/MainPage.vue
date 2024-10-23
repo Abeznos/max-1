@@ -1,8 +1,4 @@
 <template>
-    <div>
-        {{ getBotId }}
-        {{ getUserChatId }}
-    </div>
     <UserStartScreen v-if="getUserPersData"/>
     <NotUserStartScreen v-else/>
 </template>

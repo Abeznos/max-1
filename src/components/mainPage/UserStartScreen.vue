@@ -2,7 +2,9 @@
     <v-container class="w-100 pa-0 d-flex flex-column justify-start ga-6">
         <v-row class="ma-0 align-center w-100">
             <v-col class="v-col-4 pa-0">
+                <!--
                 <router-link :to="`registration/${getBotId}`" class="pb-nav-link">
+                -->                    
                     <v-row class="ma-0 align-center flex-nowrap">
                         <v-col class="pa-0">
                             <v-avatar size="36px">
@@ -22,7 +24,9 @@
                             {{ getUserPersData?.name }}
                         </v-col>
                     </v-row>
+                <!--
                 </router-link>
+                -->
             </v-col>
             <v-col class="v-col pa-0 text-right">
                 {{ getUserPersData?.group_name }}
