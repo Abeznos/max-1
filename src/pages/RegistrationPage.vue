@@ -237,15 +237,16 @@ export default {
             delete this.importantDates[`child${el}_birth_date`]
         },
         async sendForm() {
-            const { mainBtn} = tgService()
-            const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
-            this.showResp(response)
-            if (response) {
-                alert(response)
-                //this.personaldataSend = true
-                mainBtn.hide()
-                console.log(response)
-            }
+            alert('Нажали 2')
+            //const { mainBtn} = tgService()
+            //const response = await this.registrationUser({ref: this.$refs.form, data: this.userData})
+            //this.showResp(response)
+            //if (response) {
+            //    alert(response)
+            //    //this.personaldataSend = true
+            //    mainBtn.hide()
+            //    console.log(response)
+            //}
         },
         async sendImportantDatesForm() {
             const { mainBtn} = tgService()
@@ -311,7 +312,7 @@ export default {
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Далее')
         mainBtn.textColor = '#ffffff'
-        mainBtn.onClick( () => alert('Нажали') )
+        mainBtn.onClick( () => this.sendForm() )
     }
 }
 </script>
