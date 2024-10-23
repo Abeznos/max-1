@@ -242,6 +242,7 @@ export default {
             if (response) {
                 console.log(response)
                 mainBtn.hide()
+                this.$router.go(-1)
             }
         }
     },
@@ -268,10 +269,12 @@ export default {
         }
     },
     watch: {
-        showImportantDates() {
-            mainBtn.show()
-            mainBtn.setText('Сохранить')
-            mainBtn.onClick( () => this.sendImportantDatesForm() )
+        showImportantDates(newVal) {
+            if(newVal) {
+                mainBtn.show()
+                mainBtn.setText('Сохранить')
+                mainBtn.onClick( () => this.sendImportantDatesForm() )
+            }
         }
     },
     beforeMount() {
