@@ -270,11 +270,15 @@ export default {
     },
     watch: {
         showImportantDates(newVal) {
-            if(newVal === true) {
+            const { mainBtn } = tgService()
+
+            if(newVal) {
                 mainBtn.show()
                 mainBtn.setText('Сохранить')
                 mainBtn.onClick( () => this.sendImportantDatesForm() )
+                console.log(newVal)
             }
+
         }
     },
     beforeMount() {
