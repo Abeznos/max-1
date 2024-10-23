@@ -169,15 +169,14 @@
                         ></VBtnOutline>
                     </v-card-actions>
                 </v-card>
-                <VBtn
-                    class="mt-2 pb-primary-bt"
+                <VBtnOutline
+                    class="pb-text-bt"
                     size="large"
-                    variant="flat"
                     @click="addField"
                     text="Добавить дату"
                     height="44"
                     :disabled="isMaxFieldsCount"
-                ></VBtn>
+                ></VBtnOutline>
                 <!--
                 <VBtn
                     class="mt-2 pb-primary-bt"
