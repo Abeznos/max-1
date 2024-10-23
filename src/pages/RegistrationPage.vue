@@ -85,6 +85,7 @@
                             </a>
                         </template>
                     </v-checkbox>
+                    <!--
                     <v-btn
                         class="mt-4"
                         block
@@ -92,6 +93,7 @@
                         color="primary"
                         @click="sendForm"
                     ></v-btn>
+                    -->
                 </v-form>
             </v-col>
         </v-row>
