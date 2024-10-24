@@ -129,6 +129,11 @@ export default {
 
             //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
 
+            
+            mainBtn.hideProgress()
+            mainBtn.hide()
+            this.hidUserForm()
+
             return true
         },
     },
@@ -156,11 +161,6 @@ export default {
                 mainBtn.hideProgress()
                 return
             }
-
-            alert(pbResponse)
-            mainBtn.hideProgress()
-            mainBtn.hide()
-            this.hidUserForm()
             return
         })
     }
