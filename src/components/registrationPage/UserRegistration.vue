@@ -113,7 +113,8 @@ export default {
     methods: {
         ...mapActions({
             registrationUser: 'userData/registrationUser',
-            hideUserForm: 'appState/hideUserForm'
+            hideUserForm: 'appState/hideUserForm',
+            login: 'userData/login'
         }),
 
         async sendForm() {
@@ -130,12 +131,17 @@ export default {
 
             const newUser = await api.post('/user/registration', {botId: this.getBotId, chatId: this.getUserChatId, formData})
 
-            console.log(newUser)
+            if(newUser.data.is_registered) {
+                const user = await this.login()
 
-            mainBtn.hideProgress()
-            mainBtn.hide()
-            this.hideUserForm()
-            return true
+                console.log(newUser)
+
+                mainBtn.hideProgress()
+                mainBtn.hide()
+                this.hideUserForm()
+                return true
+            }
+
         },
     },
     computed: {

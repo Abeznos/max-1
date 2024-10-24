@@ -50,32 +50,15 @@ export const userDataModule = {
         },
         async login({state, commit, getters, dispatch}) {
             try {
-                //console.log({ botId: getters.getBotId, chatId: getters.getUserChatId})
-                dispatch('appState/loadingToggle', null, { root: true })
-                const { appReady, expandApp } = tgService()
+
                 const userData = await api.post('/user/login', { botId: getters.getBotId, chatId: getters.getUserChatId})
-                //console.log(userData)
-                appReady()
-                expandApp()
-
-                if(userData.data.isBotUser === false) {
-                    dispatch('appState/showUserAllertToggle', null, { root: true })
-                    console.log(userData.data)
-                    return
-                }
-
-                if(userData.data.isPbUser === false) {
-                    dispatch('appState/showPbUserAllertToggle', null, { root: true })
-                    console.log(userData.data)
-                    return
-                }
 
                 commit('userPersData', userData.data)
                 return true
             } catch(error) {
                 console.log(error)
             } finally {
-                dispatch('appState/loadingToggle', null, { root: true })
+
             }
         },
         async registrationUser({state, commit, getters, dispatch}, form) {

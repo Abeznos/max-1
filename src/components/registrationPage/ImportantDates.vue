@@ -17,7 +17,7 @@
                             size="large"
                             height="48"                            
                             variant="flat"
-                            @click="$router.push(`/${getBotId}`)"
+                            @click="this.$router.push(`/${this.getBotId}`)"
                             text="Не сейчас"
                         ></VBtnOutline>
                     </v-col>
@@ -140,6 +140,7 @@ export default {
 
             mainBtn.hideProgress()
             mainBtn.hide()
+
             this.$router.push(`/${this.getBotId}`)
 
             return true
