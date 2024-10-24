@@ -160,7 +160,7 @@ export default {
             return false
         }        
     },
-    mounted() {
+    beforeMount() {
         setBottomBarColor(this.getColors.surface)
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Сохранить')

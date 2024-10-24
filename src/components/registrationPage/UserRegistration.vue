@@ -129,7 +129,10 @@ export default {
             
             //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
 
-            return true
+
+            mainBtn.hideProgress()
+            mainBtn.hide()
+            this.hideUserForm()
         },
     },
     computed: {
@@ -141,7 +144,7 @@ export default {
             getBotId: 'userData/getBotId'
         }),
     },
-    mounted() {
+    beforeMount() {
         setBottomBarColor(this.getColors.surface)
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Далее')
@@ -156,10 +159,6 @@ export default {
                 mainBtn.hideProgress()
                 return
             }
-
-            mainBtn.hideProgress()
-            mainBtn.hide()
-            this.hidUserForm()
             return
         })
     }
