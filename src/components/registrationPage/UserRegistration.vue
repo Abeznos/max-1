@@ -126,6 +126,7 @@ export default {
             //    formData.city = city
             //}
 
+
             //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
 
             return true
@@ -156,6 +157,7 @@ export default {
                 return
             }
 
+            alert(pbResponse)
             mainBtn.hideProgress()
             mainBtn.hide()
             this.hidUserForm()
