@@ -120,7 +120,10 @@ export default {
 
         async pbBuyerRegistration() {
             const { valid } = await this.$refs.form.validate()
-            return valid
+            if (!valid) {
+                return false
+            }
+            return true
         },
     },
     computed: {
@@ -139,6 +142,7 @@ export default {
         mainBtn.textColor = '#ffffff'
         mainBtn.show()
         mainBtn.onClick(  () => {
+            mainBtn.showProgress()
             const pbResponse = this.pbBuyerRegistration()
             alert(pbResponse)
         })
