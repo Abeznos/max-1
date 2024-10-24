@@ -54,7 +54,7 @@ export default {
   },
   async beforeMount() {
     const url = new URL(window.location.href)
-    this.botId = url.pathname.slice(1)
+    this.botId = url.pathname.slice(1).match('[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')[0]
     this.chatId = user?.id || '000011'
     this.defineUser({ botId: this.botId, chatId: this.chatId })
 

@@ -4,6 +4,17 @@ export const appStateModule = {
         backBtn: false,
         showBotUserAlert: false,
         showPbUserAlert: false,
+        registration: {
+            userFormSend: false,
+            importantDates: {
+                showBanner: {
+                    display: true,
+                    text: 'Заполните даты важных событий или дни рождения близких людей, и&nbsp;перед праздником мы&nbsp;пришлем вам напоминание и&nbsp;подарок.'
+                },
+                display: true,
+                required: false
+            }
+        },
         settings: {
             registrationForm: {
                 nameField: {
@@ -140,6 +151,21 @@ export const appStateModule = {
         },
         getBrand(state) {
             return state.brand
+        },
+        getRegistration(state) {
+            return state.registration
+        },
+        getimportantDates(state) {
+            if(state.registration.importantDates.display && state.registration.userFormSend) {
+                return true
+            }
+            return false
+        },
+        showImportantDatesBanner(state) {
+            return state.registration.importantDates.showBanner.display
+        },
+        isImportantDatesRequired(state) {
+            return state.registration.importantDates.required
         }
     },
     mutations: {
@@ -154,7 +180,13 @@ export const appStateModule = {
         },
         setPbUserAlert(state) {
             state.showPbUserAlert = !state.showPbUserAlert
-        }
+        },
+        setUserFormSend(state) {
+            state.registration.userFormSend = true
+        },
+        setImporatntDaysBanner(state) {
+            state.registration.importantDates.showBanner.display = false
+        }      
     },
     actions: {
         loadingToggle({ commit }) {
@@ -172,6 +204,12 @@ export const appStateModule = {
         },
         showPbUserAllertToggle({ commit }) {
             commit('setPbUserAlert')
+        },
+        hideUserForm({ commit }) {
+            commit('setUserFormSend')
+        },
+        hideImporatntDaysBanner({ commit }) {
+            commit('setImporatntDaysBanner')
         }
     },
     namespaced: true

@@ -1,7 +1,7 @@
 <template>
     <v-container class="w-100 pa-0 d-flex flex-column justify-start ga-6">
         <h2 class="pb-6 pt-6 text-center">Анкета регистрации</h2>
-        <v-form class="w-100 d-flex flex-column ga-1" validate-on="submit lazzy" ref="form" @submit.prevent>
+        <v-form class="w-100 d-flex flex-column ga-1" validate-on="submit lazzy" ref="userForm" @submit.prevent>
             <v-text-field
                 v-if="getFormFields.nameField.display"
                 class="pb-text-field rounded-lg rounded-xl"
@@ -83,7 +83,7 @@
                         href="https://vuetifyjs.com"
                         target="_blank"
                         @click.stop
-                        text="Хочу получать реклманые сообщения"
+                        :text="getFormFields.messageAgreement.text"
                     ></a>
                 </template>
             </v-checkbox>
@@ -93,7 +93,7 @@
                 block
                 size="large"
                 color="primary"
-                @click="pbBuyerRegistration()"
+                @click="sendForm"
             ></v-btn>
         </v-form>
     </v-container>
@@ -112,19 +112,21 @@ export default {
     methods: {
         ...mapActions({
             registrationUser: 'userData/registrationUser',
+            hideUserForm: 'appState/hideUserForm'
         }),
 
-        async pbBuyerRegistration() {
-            const { valid } = await this.$refs.form.validate()
+        async sendForm() {
+            const { valid } = await this.$refs.userForm.validate()
             if (!valid) return false
 
             const formData = { ...this.userData }
+            console.log(formData)
+            //if (formData?.city) {
+            //    const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
+            //    formData.city = city
+            //}
 
-            if (formData?.city) {
-                const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
-                formData.city = city
-            }
-
+            this.hideUserForm()
             //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
 
             return true
@@ -147,18 +149,21 @@ export default {
         mainBtn.show()
         mainBtn.onClick( async () => {
             mainBtn.showProgress()
-            const pbResponse = await this.pbBuyerRegistration()
 
-            if(!pbResponse) {
+            try {
+                const pbResponse = await this.sendForm()
+
+                if(!pbResponse) {
+                    this.hidUserForm()
+                    mainBtn.hideProgress()
+                    return
+                }
+
+                mainBtn.hide()
                 mainBtn.hideProgress()
-                return
+            } catch(error) {
+                console.log(error)
             }
-
-            mainBtn.hide()
-            mainBtn.hideProgress()
-
-
-            alert(pbResponse)
         })
     }
 }

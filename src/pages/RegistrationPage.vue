@@ -1,6 +1,7 @@
 <template>
-    <UserRegistration/>
-    <!---
+    <UserRegistration v-if="!getRegistration.userFormSend"/>
+    <ImportantDates v-if="getimportantDates"/>
+    <!--
     <v-container
         v-if="!personaldataSend"
         class="h-100"
@@ -203,18 +204,19 @@
             </v-form>
         </v-container>
     </div>
--->
+    -->
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 import UserRegistration from '@/components/registrationPage/UserRegistration.vue'
+import ImportantDates from '@/components/registrationPage/ImportantDates.vue'
 
 import {tgService} from '@/services/tgService.js'
 const { user, mainBtn, setBottomBarColor, backButton } = tgService()
 
 export default {
     name: 'RegistrationPage',
-    components: { UserRegistration },
+    components: { UserRegistration, ImportantDates },
     data: () => ({
         personaldataSend: false,
         showImportantDates: false,
@@ -274,7 +276,9 @@ export default {
             getUserChatId: 'userData/getUserChatId',
             getBotId: 'userData/getBotId',
             getBackBtn: 'appState/getBackBtn',
-            getColors: 'appState/getColors'
+            getColors: 'appState/getColors',
+            getRegistration: 'appState/getRegistration',
+            getimportantDates: 'appState/getimportantDates'
         }),
         isMaxFieldsCount() {
             if (this.fieldsCount === 4) {
