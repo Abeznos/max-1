@@ -101,6 +101,7 @@
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+import api from '@/http'
 
 import {tgService} from '@/services/tgService.js'
 const { user, mainBtn, setBottomBarColor, backButton } = tgService()
@@ -134,7 +135,7 @@ export default {
             const formData = { ...this.importantDates }
             console.log(formData)
 
-            const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+            const user = await api.post('/user/update-dates', {botId: this.getBotId, chatId: this.getUserChatId, formData})
 
             mainBtn.hideProgress()
             mainBtn.hide()

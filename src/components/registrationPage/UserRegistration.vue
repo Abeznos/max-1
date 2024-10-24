@@ -88,7 +88,7 @@
                 </template>
             </v-checkbox>
             <v-btn
-                v-if="getUserChatId === '000011'"
+                v-if="getUserChatId === '268451766'"
                 class="mt-4"
                 block
                 size="large"
@@ -100,6 +100,7 @@
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+import api from '@/http'
 
 import {tgService} from '@/services/tgService.js'
 const { user, mainBtn, setBottomBarColor, backButton } = tgService()
@@ -127,11 +128,14 @@ export default {
                 formData.city = city
             }
 
-            const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+            const newUser = await api.post('/user/registration', {botId: this.getBotId, chatId: this.getUserChatId, formData})
+
+            console.log(newUser)
 
             mainBtn.hideProgress()
             mainBtn.hide()
             this.hideUserForm()
+            return true
         },
     },
     computed: {

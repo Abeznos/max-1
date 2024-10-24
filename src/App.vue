@@ -9,7 +9,7 @@
 </template>
 <script>
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
-import api from '@/http';
+import api from '@/http'
 import loader from '@/components/ui/Loader.vue'
 import NotUserAlert from '@/components/ui/NotUserAlert.vue'
 import NotPbUserAlert from '@/components/ui/NotPbUserAlert.vue'
@@ -51,7 +51,7 @@ export default {
   async beforeMount() {
     const url = new URL(window.location.href)
     this.botId = url.pathname.slice(1).match('[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')[0]
-    this.chatId = user?.id || '000011'
+    this.chatId = user?.id || '268451766'
     this.defineUser({ botId: this.botId, chatId: this.chatId })
 
     try {
