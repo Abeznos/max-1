@@ -79,7 +79,7 @@
                 </v-card-actions>                
             </v-card>
             <VBtn
-                v-if="getUserChatId === '000011'"
+                v-if="getUserChatId === '268451766'"
                 class="mt-2 pb-primary-bt"
                 block
                 size="large"
@@ -136,6 +136,7 @@ export default {
             console.log(formData)
 
             const user = await api.post('/user/update-dates', {botId: this.getBotId, chatId: this.getUserChatId, formData})
+            console.log(user.data)
 
             mainBtn.hideProgress()
             mainBtn.hide()
@@ -147,6 +148,7 @@ export default {
     computed: {
         ...mapGetters({
             getUserChatId: 'userData/getUserChatId',
+            getBotId: 'userData/getBotId',
             getFormFields: 'appState/getFormFields',
             getRules: 'appState/getRules',
             isImportantDatesRequired: 'appState/isImportantDatesRequired',
@@ -169,7 +171,6 @@ export default {
     watch: {
         showMainBtn(newVal) {
             if(newVal !== true) {
-                console.log('работает')
                 mainBtn.setText('Сохранить')
                 mainBtn.show()
                 mainBtn.onClick( async () => {
