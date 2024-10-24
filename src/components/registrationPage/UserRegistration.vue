@@ -151,10 +151,12 @@ export default {
 
             if(!pbResponse) {
                 mainBtn.hideProgress()
+                return
             }
 
             mainBtn.hide()
             mainBtn.hideProgress()
+
 
             alert(pbResponse)
         })
