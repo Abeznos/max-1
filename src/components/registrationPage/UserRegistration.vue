@@ -154,13 +154,13 @@ export default {
                 const pbResponse = await this.sendForm()
 
                 if(!pbResponse) {
-                    this.hidUserForm()
                     mainBtn.hideProgress()
                     return
                 }
 
                 mainBtn.hide()
                 mainBtn.hideProgress()
+                this.hidUserForm()
             } catch(error) {
                 console.log(error)
             }
