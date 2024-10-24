@@ -28,7 +28,7 @@
                             size="large"
                             height="48"
                             variant="flat"
-                            @click="hideImporatntDaysBanner"
+                            @click="hideImporatntDaysBanner(), showMainBtn = false"
                             text="Заполнить"
                         ></VBtn>
                     </v-col>
@@ -109,7 +109,8 @@ export default {
     name: 'ImportantDates',
     data: () => ({
         fieldsCount: 1,
-        importantDates: {}
+        importantDates: {},
+        showMainBtn: false
     }),
     methods: {
         ...mapActions({
@@ -134,6 +135,11 @@ export default {
             console.log(formData)
 
             //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+
+            
+            mainBtn.hideProgress()
+            mainBtn.hide()
+            this.$router.push(`/${this.getBotId}`)
 
             return true
         }
@@ -160,28 +166,30 @@ export default {
             return false
         }        
     },
+    watch: {
+        showMainBtn(newVal) {
+            if(newVal !== true) {
+                console.log('работает')
+                mainBtn.setText('Сохранить')
+                mainBtn.show()
+                mainBtn.onClick( async () => {
+                    mainBtn.showProgress()
+                    const pbResponse = await this.sendForm()
+
+                    if(!pbResponse) {
+                        mainBtn.hideProgress()
+                        return
+                    }                    
+                    return
+                })
+            }
+        }
+    },
     beforeMount() {
         setBottomBarColor(this.getColors.surface)
         mainBtn.color = this.getColors.primary
-        mainBtn.setText('Сохранить')
-        mainBtn.textColor = '#ffffff'
-        mainBtn.show()
-        mainBtn.onClick( async () => {
-        mainBtn.showProgress()
 
-            const pbResponse = await this.sendForm()
-
-            if(!pbResponse) {
-                mainBtn.hideProgress()
-                this.$router.push(`/${this.getBotId}`)
-                return
-            }
-
-            mainBtn.hideProgress()
-            mainBtn.hide()
-
-            return
-        })
+        this.showMainBtn = this.showImportantDatesBanner
     }
 }
 </script>
