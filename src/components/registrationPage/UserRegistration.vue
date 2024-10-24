@@ -120,6 +120,7 @@ export default {
 
         async pbBuyerRegistration() {
             const { valid } = await this.$refs.form.validate()
+            alert(valid)
             return valid
         },
     },
@@ -132,15 +133,14 @@ export default {
             getBotId: 'userData/getBotId'
         }),
     },
-    beforeMount() {
+    async beforeMount() {
         setBottomBarColor(this.getColors.surface)
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Далее')
         mainBtn.textColor = '#ffffff'
         mainBtn.show()
-        mainBtn.onClick( () => {
-            const pbResponse = pbBuyerRegistration()
-            alert(pbResponse)
+        mainBtn.onClick(  () => {
+            pbBuyerRegistration()
         })
     }
 }
