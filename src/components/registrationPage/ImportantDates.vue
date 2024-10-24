@@ -160,7 +160,7 @@ export default {
             return false
         }        
     },
-    beforeMount() {
+    mounted() {
         setBottomBarColor(this.getColors.surface)
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Сохранить')
@@ -178,8 +178,8 @@ export default {
                     return
                 }
 
-                mainBtn.hide()
                 mainBtn.hideProgress()
+                mainBtn.hide()
             } catch(error) {
                 console.log(error)
             }

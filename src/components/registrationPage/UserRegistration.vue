@@ -141,7 +141,7 @@ export default {
             getBotId: 'userData/getBotId'
         }),
     },
-    beforeMount() {
+    mounted() {
         setBottomBarColor(this.getColors.surface)
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Далее')
@@ -158,8 +158,8 @@ export default {
                     return
                 }
 
-                mainBtn.hide()
                 mainBtn.hideProgress()
+                mainBtn.hide()
                 this.hidUserForm()
             } catch(error) {
                 console.log(error)
