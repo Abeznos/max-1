@@ -126,7 +126,6 @@ export default {
             //    formData.city = city
             //}
 
-            this.hideUserForm()
             //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
 
             return true

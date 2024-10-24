@@ -134,7 +134,7 @@ export default {
             console.log(formData)
 
             //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
-            this.$router.push(`/${this.getBotId}`)
+
             return true
         }
     },
