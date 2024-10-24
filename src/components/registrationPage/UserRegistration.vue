@@ -150,21 +150,17 @@ export default {
         mainBtn.onClick( async () => {
             mainBtn.showProgress()
 
-            try {
-                const pbResponse = await this.sendForm()
+            const pbResponse = await this.sendForm()
 
-                if(!pbResponse) {
-                    mainBtn.hideProgress()
-                    return
-                }
-
+            if(!pbResponse) {
                 mainBtn.hideProgress()
-                mainBtn.hide()
-                this.hidUserForm()
                 return
-            } catch(error) {
-                console.log(error)
             }
+
+            mainBtn.hideProgress()
+            mainBtn.hide()
+            this.hidUserForm()
+            return
         })
     }
 }

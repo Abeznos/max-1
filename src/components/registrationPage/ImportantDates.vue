@@ -96,7 +96,7 @@
             text="Добавить дату"
             height="44"
             :disabled="isMaxFieldsCount"
-        ></VBtnOutline>        
+        ></VBtnOutline>
     </v-container>
 </template>
 <script>
@@ -167,24 +167,20 @@ export default {
         mainBtn.textColor = '#ffffff'
         mainBtn.show()
         mainBtn.onClick( async () => {
-            mainBtn.showProgress()
+        mainBtn.showProgress()
 
-            try {
-                const pbResponse = await this.sendForm()
+            const pbResponse = await this.sendForm()
 
-                if(!pbResponse) {
-                    mainBtn.hideProgress()
-                    this.$router.push(`/${this.getBotId}`)
-                    return
-                }
-
+            if(!pbResponse) {
                 mainBtn.hideProgress()
-                mainBtn.hide()
-
+                this.$router.push(`/${this.getBotId}`)
                 return
-            } catch(error) {
-                console.log(error)
             }
+
+            mainBtn.hideProgress()
+            mainBtn.hide()
+
+            return
         })
     }
 }
