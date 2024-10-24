@@ -137,9 +137,9 @@ export default {
         mainBtn.setText('Далее')
         mainBtn.textColor = '#ffffff'
         mainBtn.show()
-        mainBtn.onClick( () => {
+        mainBtn.onClick( async () => {
             mainBtn.showProgress()
-            const pbResponse = async () => await this.pbBuyerRegistration()
+            const pbResponse = await this.pbBuyerRegistration()
             alert(pbResponse)
         })
     }
