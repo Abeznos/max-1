@@ -96,10 +96,6 @@
                 @click="pbBuyerRegistration()"
             ></v-btn>
         </v-form>
-        <div>
-            <p>{{ getUserChatId }}</p>
-            <p>{{ getBotId }}</p>
-        </div>
     </v-container>
 </template>
 <script>
@@ -135,15 +131,15 @@ export default {
             getBotId: 'userData/getBotId'
         }),
     },
-    async beforeMount() {
+    beforeMount() {
         setBottomBarColor(this.getColors.surface)
         mainBtn.color = this.getColors.primary
         mainBtn.setText('Далее')
         mainBtn.textColor = '#ffffff'
         mainBtn.show()
-        mainBtn.onClick(  () => {
+        mainBtn.onClick( () => {
             mainBtn.showProgress()
-            const pbResponse = this.pbBuyerRegistration()
+            const pbResponse = async () => await this.pbBuyerRegistration()
             alert(pbResponse)
         })
     }
