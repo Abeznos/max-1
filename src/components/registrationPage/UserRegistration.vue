@@ -161,6 +161,7 @@ export default {
                 mainBtn.hideProgress()
                 mainBtn.hide()
                 this.hidUserForm()
+                return
             } catch(error) {
                 console.log(error)
             }

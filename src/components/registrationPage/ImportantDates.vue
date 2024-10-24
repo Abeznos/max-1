@@ -180,6 +180,8 @@ export default {
 
                 mainBtn.hideProgress()
                 mainBtn.hide()
+
+                return
             } catch(error) {
                 console.log(error)
             }
