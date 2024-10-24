@@ -116,9 +116,17 @@ export default {
 
         async pbBuyerRegistration() {
             const { valid } = await this.$refs.form.validate()
-            if (!valid) {
-                return false
+            if (!valid) return false
+
+            const formData = { ...this.userData }
+
+            if (formData?.city) {
+                const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
+                formData.city = city
             }
+
+            //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+
             return true
         },
     },
@@ -140,6 +148,14 @@ export default {
         mainBtn.onClick( async () => {
             mainBtn.showProgress()
             const pbResponse = await this.pbBuyerRegistration()
+
+            if(!pbResponse) {
+                mainBtn.hideProgress()
+            }
+
+            mainBtn.hide()
+            mainBtn.hideProgress()
+
             alert(pbResponse)
         })
     }
