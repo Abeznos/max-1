@@ -129,10 +129,10 @@ export default {
 
             //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
 
-            
+
             mainBtn.hideProgress()
             mainBtn.hide()
-            this.hidUserForm()
+            this.hidUserForm
 
             return true
         },
