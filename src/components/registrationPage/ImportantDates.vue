@@ -134,9 +134,8 @@ export default {
             const formData = { ...this.importantDates }
             console.log(formData)
 
-            //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
+            const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
 
-            
             mainBtn.hideProgress()
             mainBtn.hide()
             this.$router.push(`/${this.getBotId}`)

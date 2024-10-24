@@ -121,14 +121,13 @@ export default {
 
             const formData = { ...this.userData }
             console.log(formData)
-            //if (formData?.city) {
-            //    const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
-            //    formData.city = city
-            //}
+           
+            if (formData?.city) {
+                const city = await dispatch('appState/getDItyId', form.data.city, { root: true })
+                formData.city = city
+            }
 
-            
-            //const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
-
+            const newUser = await api.post('/user/registration', {botId: getters.getBotId, chatId: getters.getUserChatId, formData})
 
             mainBtn.hideProgress()
             mainBtn.hide()

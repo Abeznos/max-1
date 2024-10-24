@@ -4,10 +4,6 @@
     <v-main class="pa-4">
       <NotUserAlert v-if="getBotUserAlert"/>
       <RouterView />
-      <div>
-        <p>{{ botId }}</p>
-        <p>{{ chatId }}</p>
-      </div>
     </v-main>
   </v-layout>
 </template>
