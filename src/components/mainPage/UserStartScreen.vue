@@ -2,9 +2,7 @@
     <v-container class="w-100 pa-0 d-flex flex-column justify-start ga-6">
         <v-row class="ma-0 align-center w-100">
             <v-col class="v-col-4 pa-0">
-                <!--
-                <router-link :to="`registration/${getBotId}`" class="pb-nav-link">
-                -->                    
+                <router-link :to="`account/${getBotId}`" class="pb-nav-link">           
                     <v-row class="ma-0 align-center flex-nowrap">
                         <v-col class="pa-0">
                             <v-avatar size="36px">
@@ -24,9 +22,7 @@
                             {{ getUserPersData?.name }}
                         </v-col>
                     </v-row>
-                <!--
                 </router-link>
-                -->
             </v-col>
             <v-col class="v-col pa-0 text-right">
                 {{ getUserPersData?.group_name }}
@@ -35,7 +31,7 @@
         <v-card
             class="pb-user-card"
             subtitle="Баланс"
-            :text="getUserPersData?.balance"
+            :text="aggregateBalance"
             variant="flat"
             height="120"
         ></v-card>
@@ -154,8 +150,12 @@ export default {
             getColors: 'appState/getColors',
             getBotUserAlert: 'appState/getBotUserAlert',
             getPbUserAlert: 'appState/getPbUserAlert'
+        }),
+        aggregateBalance() {
+            const { balance_bonus_present, balance_bonus_action, balance_bonus_accumulated } = this.getUserPersData
 
-        })
+            return parseFloat(balance_bonus_present) + parseFloat(balance_bonus_action) + parseFloat(balance_bonus_accumulated)
+        }
     }
 }
 </script>
@@ -198,6 +198,11 @@ export default {
         font-size: 2.5rem;
         line-height: 1.15;
         text-align: center;
+    }
+
+    .qr-button {
+        width: 5rem !important;
+        height: 5rem !important;
     }
 
     .qr-button i.v-icon {
