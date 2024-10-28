@@ -34,6 +34,10 @@ export function tgService() {
         tg.openLink(url)
     }
 
+    const openTgLink = (url) => {
+        openTelegramLink(url)
+    }
+
     const requestContact = () => {
         tg.requestContact()
     }
@@ -47,6 +51,7 @@ export function tgService() {
         setBackgroundColor,
         setHeaderColor,
         openLink,
+        openTgLink,
         requestContact,
         backButton: tg.BackButton,
         isExpanded: tg.isExpanded,
