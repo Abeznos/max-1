@@ -151,7 +151,7 @@ export default {
             const newUser = await api.post('/user/update-dates', {botId: this.getBotId, chatId: this.getUserChatId, formData})
 
             if(newUser.data.is_registered) {
-                //const user = await this.login()
+                const user = await this.login()
 
                 console.log(newUser)
 

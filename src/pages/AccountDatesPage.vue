@@ -6,6 +6,7 @@
                 <v-btn size="x-small" :icon="isUserFormEdit ? '$editOff' : '$edit'" @click="userFormEdit = !userFormEdit"></v-btn>
             </v-container>
             <v-card
+                v-for="n in cardCount"
                 class="user-data-card w-100 pt-4"
                 flat
             >
@@ -19,14 +20,16 @@
                     >
                         <v-row>
                             <v-col class="pb-0 pt-0">
+                                <v-card-title class="pa-0 mb-4 text-subtitle-1">{{ `Важная дата ${n}` }}</v-card-title>
                                 <v-text-field
                                     class="pb-text-field rounded-lg rounded-xl"
-                                    v-model="user.name"
+                                    v-model="user[`child${n}_name`]"
                                     variant="outlined"
                                     density="compact"
                                     label="Имя"
                                     inputmode="text"
                                     placeholder="Иван"
+                                    :clearable="isUserFormEdit"
                                     :rules="getRules(getFormFields.nameField.rules)"
                                 ></v-text-field>
                             </v-col>
@@ -35,11 +38,12 @@
                             <v-col class="pb-0 pt-0">
                                 <v-text-field
                                     class="pb-text-field rounded-lg rounded-xl"
-                                    v-model="user.birth_date"
+                                    v-model="user[`child${n}_birth_date`]"
                                     variant="outlined"
                                     density="compact"
                                     label="Дата рождения"
                                     inputmode="text"
+                                    :clearable="isUserFormEdit"
                                     placeholder="дд.мм.гггг"
                                     :rules="getRules(getFormFields.birthDate.rules)"
                                 ></v-text-field>
@@ -47,50 +51,7 @@
                         </v-row>
                     </v-form>
                 </v-card-text>
-            </v-card>
-            <v-card
-                class="user-data-card w-100 pt-4"
-                flat
-            >
-                <v-card-title/>
-                <v-card-text>
-                    <v-form
-                        validate-on="submit lazzy"
-                        ref="userAccount"
-                        @submit.prevent
-                        :disabled="!isUserFormEdit"
-                    >
-                        <v-row>
-                            <v-col class="pb-0 pt-0">
-                                <v-text-field
-                                    class="pb-text-field rounded-lg rounded-xl"
-                                    v-model="user.name"
-                                    variant="outlined"
-                                    density="compact"
-                                    label="Имя"
-                                    inputmode="text"
-                                    placeholder="Иван"
-                                    :rules="getRules(getFormFields.nameField.rules)"
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                        <v-row>
-                            <v-col class="pb-0 pt-0">
-                                <v-text-field
-                                    class="pb-text-field rounded-lg rounded-xl"
-                                    v-model="user.birth_date"
-                                    variant="outlined"
-                                    density="compact"
-                                    label="Дата рождения"
-                                    inputmode="text"
-                                    placeholder="дд.мм.гггг"
-                                    :rules="getRules(getFormFields.birthDate.rules)"
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
-                    </v-form>
-                </v-card-text>
-            </v-card>
+            </v-card>               
         </v-sheet>
     </v-container>
 </template>
@@ -105,11 +66,10 @@ export default {
     data: () => ({
         user: {
             name: '',
-            surname: '',
-            middle_name: '',
             birth_date: ''
         },
-        userFormEdit: false
+        userFormEdit: false,
+        cardCount: 4
     }),
     methods: {
         ...mapActions ({
@@ -136,7 +96,7 @@ export default {
                 formData.city = city
             }
 
-            const newUser = await api.post('/user/registration', {botId: this.getBotId, chatId: this.getUserChatId, formData})
+            const newUser = await api.post('/user/update-dates', {botId: this.getBotId, chatId: this.getUserChatId, formData})
 
             if(newUser.data.is_registered) {
                 const user = await this.login()
@@ -145,10 +105,8 @@ export default {
 
                 mainBtn.hideProgress()
                 mainBtn.hide()
-                this.hideUserForm()
                 return true
             }
-
         }
     },
     computed: {
@@ -175,9 +133,11 @@ export default {
     },
     async beforeMount() {
         this.user.name = await this.getUserPersData.name
-        this.user.surname = await this.getUserPersData.surname
-        this.user.middle_name = await this.getUserPersData.middle_name
-        this.user.birth_date = new Date(await this.getUserPersData.birth_date).toLocaleString().slice(0, 10)
+
+        for(let n = 1; n <= 4; n++) {
+            this.user[`child${n}_name`] = this.getUserPersData[`child${n}_name`]
+            this.user[`child${n}_birth_date`] = this.getUserPersData[`child${n}_birth_date`] ? new Date(this.getUserPersData[`child${n}_birth_date`]).toLocaleString().slice(0, 10) : ''
+        }
 
         setBottomBarColor(this.getColors.surface)
         mainBtn.color = this.getColors.primary
