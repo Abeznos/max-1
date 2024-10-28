@@ -9,10 +9,8 @@
                 variant="flat"
                 color="var(--primary-color)"
             >
-                <v-card-text
-                    class="text-center font-weight-medium"
-                    color="var(--on-primary-color)"
-                >
+                <v-card-text class="avatar-text text-center font-weight-medium">
+                    {{ avatar }}
                 </v-card-text>
             </v-card>
         </v-sheet>
@@ -133,7 +131,8 @@ export default {
             middle_name: '',
             birth_date: ''
         },
-        userFormEdit: false
+        userFormEdit: false,
+        avatar: ''
     }),
     methods: {
         ...mapActions ({
@@ -142,12 +141,6 @@ export default {
         }),
         updateUserData(field, data) {
             this.updateStoreData({key: field, value: data})
-        },
-        showTgButton() {
-            mainBtn.show()
-        },
-        hideTgButton() {
-            mainBtn.hide()
         },
         async sendForm() {
             const { valid } = await this.$refs.userAccount.validate()
@@ -222,6 +215,8 @@ export default {
             }
             return
         })
+
+        this.avatar = this.getUserPersData.name[0]
     },
     mounted() {
         backButton.show()
@@ -230,5 +225,7 @@ export default {
 }
 </script>
 <style>
-
+    .avatar-text {
+        color: var(--on-primary-color)
+    }
 </style>
