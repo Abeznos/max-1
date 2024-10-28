@@ -114,12 +114,26 @@
                     text="Условия программы лояльности"
                 ></VBtnOutline>
             </router-link>
+            <!--
+            <a class="pb-link" href="https://t.me/prostocvet">
+                -->
+                <VBtnOutline
+                    class="pb-text-bt"
+                    block
+                    text="Чат с менеджером"
+                    @click="openTgLink('https://t.me/prostocvet')"
+                ></VBtnOutline>
+                <!--
+            </a>      
+            -->  
         </div>
     </v-container>
 </template>
 <script>
-import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+import {mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 import {tgService} from '@/services/tgService.js'
+
+const {openTgLink} = tgService()
 
 export default {
     name: 'UserStartScreen',
@@ -160,6 +174,10 @@ export default {
 }
 </script>
 <style>
+    .pb-link {
+        text-decoration: none;
+    }
+
     .pb-user-card {
         background-color: var(--secondary-color);
     }
