@@ -121,7 +121,7 @@
                     class="pb-text-bt"
                     block
                     text="Чат с менеджером"
-                    @click="openTgLink('https://t.me/prostocvet')"
+                    @click="openTgLink('@Prostocvetbot')"
                 ></VBtnOutline>
                 <!--
             </a>      
