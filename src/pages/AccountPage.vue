@@ -8,8 +8,12 @@
                 rounded="circle"
                 variant="flat"
                 color="var(--primary-color)"
+                :image="avatarImg ? avatarImg : ''"
             >
-                <v-card-text class="avatar-text text-center font-weight-medium">
+                <v-card-text 
+                    v-if="!avatarImg"    
+                    class="avatar-text text-center font-weight-medium"
+                >
                     {{ avatar }}
                 </v-card-text>
             </v-card>
@@ -132,7 +136,8 @@ export default {
             birth_date: ''
         },
         userFormEdit: false,
-        avatar: ''
+        avatar: '',
+        avatarImg: ''
     }),
     methods: {
         ...mapActions ({
@@ -217,6 +222,8 @@ export default {
         })
 
         this.avatar = this.getUserPersData.name[0]
+
+        this.avatarImg = user?.photo_url
     },
     mounted() {
         backButton.show()

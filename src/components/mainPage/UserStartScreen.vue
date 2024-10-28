@@ -114,7 +114,7 @@
                     text="Условия программы лояльности"
                 ></VBtnOutline>
             </router-link>
-            <a class="pb-link" href="https://t.me/prostocvet">
+            <a class="pb-link" href="https://t.me/Prostocvetbot">
                 <VBtnOutline
                     class="pb-text-bt"
                     block
