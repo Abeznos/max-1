@@ -149,7 +149,6 @@ export default {
 
         backButton.show()
         backButton.onClick( () => this.$router.go(-1) )
-        alert(backButton)
 
         this.user.name = await this.getUserPersData.name
 
