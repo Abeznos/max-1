@@ -1,26 +1,9 @@
 <template>
     <v-container class="w-100 h-100 pa-0 d-flex flex-column justify-start ga-8 pb-8">
-        <v-sheet class="d-flex flex-column align-center justify-center mt-8">
-            <v-card
-                class="text-center"
-                height="88"
-                width="88"
-                rounded="circle"
-                variant="flat"
-                color="var(--primary-color)"
-            >
-                <v-card-text
-                    class="text-center font-weight-medium"
-                    color="var(--on-primary-color)"
-                >
-                </v-card-text>
-            </v-card>
-        </v-sheet>
         <v-sheet class="d-flex flex-column align-center justify-center ga-4">
-            <v-container class="pa-0 d-flex justify-space-between align-center">
-                <div class="text-h6 w-100 text-left align-center">Ваши данные</div>
+            <v-container class="pa-0 d-flex justify-space-between align-center mt-8">
+                <div class="text-h6 w-100 text-left align-center">Ваши важные даты</div>
                 <v-btn size="x-small" :icon="isUserFormEdit ? '$editOff' : '$edit'" @click="userFormEdit = !userFormEdit"></v-btn>
-
             </v-container>
             <v-card
                 class="user-data-card w-100 pt-4"
@@ -52,26 +35,41 @@
                             <v-col class="pb-0 pt-0">
                                 <v-text-field
                                     class="pb-text-field rounded-lg rounded-xl"
-                                    v-model="user.surname"
+                                    v-model="user.birth_date"
                                     variant="outlined"
                                     density="compact"
-                                    label="Фамилия"
+                                    label="Дата рождения"
                                     inputmode="text"
-                                    placeholder="Иванов"
-                                    :rules="getRules(getFormFields.nameField.rules)"
+                                    placeholder="дд.мм.гггг"
+                                    :rules="getRules(getFormFields.birthDate.rules)"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
+                    </v-form>
+                </v-card-text>
+            </v-card>
+            <v-card
+                class="user-data-card w-100 pt-4"
+                flat
+            >
+                <v-card-title/>
+                <v-card-text>
+                    <v-form
+                        validate-on="submit lazzy"
+                        ref="userAccount"
+                        @submit.prevent
+                        :disabled="!isUserFormEdit"
+                    >
                         <v-row>
                             <v-col class="pb-0 pt-0">
                                 <v-text-field
                                     class="pb-text-field rounded-lg rounded-xl"
-                                    v-model="user.middle_name"
+                                    v-model="user.name"
                                     variant="outlined"
                                     density="compact"
-                                    label="Отчество"
+                                    label="Имя"
                                     inputmode="text"
-                                    placeholder="Иванович"
+                                    placeholder="Иван"
                                     :rules="getRules(getFormFields.nameField.rules)"
                                 ></v-text-field>
                             </v-col>
@@ -83,7 +81,6 @@
                                     v-model="user.birth_date"
                                     variant="outlined"
                                     density="compact"
-                                    mask="##.##.####"
                                     label="Дата рождения"
                                     inputmode="text"
                                     placeholder="дд.мм.гггг"
@@ -95,15 +92,6 @@
                 </v-card-text>
             </v-card>
         </v-sheet>
-        <div class="pb-button-group d-flex flex-column ga-4">
-            <router-link :to="`dates/${getBotId}`" class="pb-nav-link">
-                <VBtnOutline
-                    class="pb-text-bt"
-                    block
-                    text="Важные даты"
-                ></VBtnOutline>
-            </router-link>
-        </div>
     </v-container>
 </template>
 <script>
@@ -148,15 +136,16 @@ export default {
                 formData.city = city
             }
 
-            const newUser = await api.post('/user/update-dates', {botId: this.getBotId, chatId: this.getUserChatId, formData})
+            const newUser = await api.post('/user/registration', {botId: this.getBotId, chatId: this.getUserChatId, formData})
 
             if(newUser.data.is_registered) {
-                //const user = await this.login()
+                const user = await this.login()
 
                 console.log(newUser)
 
                 mainBtn.hideProgress()
                 mainBtn.hide()
+                this.hideUserForm()
                 return true
             }
 
@@ -167,9 +156,7 @@ export default {
             getUserPersData: 'userData/getUserPersData',
             getFormFields: 'appState/getFormFields',
             getRules: 'appState/getRules',
-            getColors: 'appState/getColors',
-            getBotId: 'userData/getBotId',
-            getUserChatId: 'userData/getUserChatId',
+            getColors: 'appState/getColors'
         }),
         isUserFormEdit() {
             return this.userFormEdit

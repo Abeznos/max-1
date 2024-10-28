@@ -2,7 +2,7 @@
     <v-container class="w-100 pa-0 d-flex flex-column justify-start ga-6">
         <v-row class="ma-0 align-center w-100">
             <v-col class="v-col-4 pa-0">
-                <router-link :to="`account/${getBotId}`" class="pb-nav-link">           
+                <router-link :to="`account/${getBotId}`" class="pb-nav-link">
                     <v-row class="ma-0 align-center flex-nowrap">
                         <v-col class="pa-0">
                             <v-avatar size="36px">
@@ -206,8 +206,8 @@ export default {
     }
 
     .qr-button i.v-icon {
-        width: 2rem;
-        height: 2rem;
+        width: 3rem !important;
+        height: 3rem !important;
     }
 
     .promotion-link a {

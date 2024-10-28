@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@maskito/core": "^3.1.2",
+    "@maskito/vue": "^3.1.2",
     "axios": "^1.7.7",
+    "v-mask": "^2.3.0",
     "vue": "^3.5.10",
     "vue-router": "^4.4.5",
     "vuetify": "^3.7.2",

@@ -6,6 +6,7 @@ import AccountPage from '@/pages/AccountPage.vue'
 import LocationPage from '@/pages/LocationPage.vue'
 import PromotionPage from '@/pages/PromotionPage.vue'
 import LoyaltyTerns from '@/pages/LoyaltyTerns.vue'
+import AccountDatesPage from '@/pages/AccountDatesPage.vue'
 
 const routes = [
     {
@@ -18,7 +19,11 @@ const routes = [
     },
     {
         path: "/account/:id",
-        component: AccountPage
+        component: AccountPage,
+    },
+    {
+        path: "/account/dates/:id",
+        component: AccountDatesPage
     },
     {
         path: "/location/:id",
@@ -31,7 +36,7 @@ const routes = [
     {
         path: "/loyalty-terms/:id",
         component: LoyaltyTerns
-    }    
+    }
 ]
 
 const router = createRouter({
