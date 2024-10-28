@@ -201,6 +201,9 @@ export default {
         }
     },
     async beforeMount() {
+        backButton.show()
+        backButton.onClick( () => this.$router.go(-1) )
+                
         this.user.name = await this.getUserPersData.name
         this.user.surname = await this.getUserPersData.surname
         this.user.middle_name = await this.getUserPersData.middle_name
@@ -222,9 +225,6 @@ export default {
             }
             return
         })
-
-        backButton.show()
-        backButton.onClick( () => this.$router.go(-1) )
     }
 }
 </script>

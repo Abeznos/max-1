@@ -78,14 +78,6 @@ export default {
       expandApp()
       this.loadingToggle()
     }
-
-    if(this.$route.fullPath !== `/${this.getBotId}`) {
-      console.log('Показать кнопку назад')
-    }
-
-    console.log(this.$route)
-    
-    backButton
   }
 }
 </script>

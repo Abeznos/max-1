@@ -145,6 +145,10 @@ export default {
         }
     },
     async beforeMount() {
+        backButton.show()
+        backButton.onClick( () => this.$router.go(-1) )
+        alert(backButton)
+
         this.user.name = await this.getUserPersData.name
 
         for(let n = 1; n <= 4; n++) {
@@ -168,10 +172,6 @@ export default {
             }
             return
         })
-
-        backButton.show()
-        backButton.onClick( () => this.$router.go(-1) )
-
     }
 }
 </script>
