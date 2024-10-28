@@ -21,9 +21,7 @@ export default {
     },
     beforeMount() {
         backButton.show()
-        backButton.onClick( () => {
-            this.$router.go(-1)
-        })
+        backButton.onClick( () => this.$router.go(-1) )
 
     }
 }
