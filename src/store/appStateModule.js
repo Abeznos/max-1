@@ -77,6 +77,35 @@ export const appStateModule = {
                     display: false,
                     text: 'Хочу получать реклманые сообщения'
                 }           
+            },
+            updateUserData: {
+                nameField: {
+                    display: true,
+                    placeholder: 'Иван',
+                    label: 'Имя',
+                    rules: ['name']
+                },
+                surnameField: {
+                    display: false,
+                    placeholder: 'Иванов',
+                    label: 'Фамилия',
+                    rules: ['name']
+                },
+                middleName: {
+                    display: false,
+                    placeholder: 'Иванович',
+                    label: 'Отчество',
+                    rules: ['name']
+                },
+                birthDate: {
+                    display: true,
+                    placeholder: 'дд.мм.гггг',
+                    label: 'Дата рождения',
+                    rules: ['birthDate']
+                },
+                importantDaysName: {
+                    rules: []
+                },                                         
             }
         },
         formRules: {
@@ -129,6 +158,9 @@ export const appStateModule = {
         getFormFields(state) {
             return state.settings.registrationForm
         },
+        getUpdatetDataFields(state) {
+            return state.settings.updateUserData
+        },        
         getRules: (state) => (fieldRules) => {
             let rules = []
 

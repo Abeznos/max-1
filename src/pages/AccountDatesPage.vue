@@ -5,19 +5,19 @@
                 <div class="text-h6 w-100 text-left align-center">Ваши важные даты</div>
                 <v-btn size="x-small" :icon="isUserFormEdit ? '$editOff' : '$edit'" @click="userFormEdit = !userFormEdit"></v-btn>
             </v-container>
-            <v-card
-                v-for="n in cardCount"
-                class="user-data-card w-100 pt-4"
-                flat
-            >
-                <v-card-title/>
-                <v-card-text>
-                    <v-form
-                        validate-on="submit lazzy"
-                        ref="userAccount"
-                        @submit.prevent
-                        :disabled="!isUserFormEdit"
-                    >
+                <v-form
+                    class="w-100 d-flex flex-column align-center justify-center ga-8"
+                    validate-on="submit lazzy"
+                    ref="userDates"
+                    @submit.prevent
+                    :disabled="!isUserFormEdit"
+                >            
+                <v-card
+                    v-for="n in cardCount"
+                    class="user-data-card w-100 pt-4"
+                    flat
+                >
+                    <v-card-text>
                         <v-row>
                             <v-col class="pb-0 pt-0">
                                 <v-card-title class="pa-0 mb-4 text-subtitle-1">{{ `Важная дата ${n}` }}</v-card-title>
@@ -30,7 +30,7 @@
                                     inputmode="text"
                                     placeholder="Иван"
                                     :clearable="isUserFormEdit"
-                                    :rules="getRules(getFormFields.nameField.rules)"
+                                    :rules="getRules(getUpdatetDataFields.nameField.rules)"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -45,13 +45,21 @@
                                     inputmode="text"
                                     :clearable="isUserFormEdit"
                                     placeholder="дд.мм.гггг"
-                                    :rules="getRules(getFormFields.birthDate.rules)"
+                                    :rules="getRules(getUpdatetDataFields.birthDate.rules)"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
-                    </v-form>
-                </v-card-text>
-            </v-card>               
+                    </v-card-text>
+                </v-card>  
+                <v-btn
+                    v-if="getUserChatId === '268451766'"
+                    class="mt-4"
+                    block
+                    size="large"
+                    color="primary"
+                    @click="sendForm"
+                ></v-btn>   
+            </v-form>          
         </v-sheet>
     </v-container>
 </template>
@@ -73,7 +81,8 @@ export default {
     }),
     methods: {
         ...mapActions ({
-            updateStoreData: 'userData/updateStoreData'
+            updateStoreData: 'userData/updateStoreData',
+            login: 'userData/login'
         }),
         updateUserData(field, data) {
             this.updateStoreData({key: field, value: data})
@@ -85,10 +94,10 @@ export default {
             mainBtn.hide()
         },
         async sendForm() {
-            const { valid } = await this.$refs.userForm.validate()
+            const { valid } = await this.$refs.userDates.validate()
             if (!valid) return false
 
-            const formData = { ...this.userData }
+            const formData = { ...this.user }
             console.log(formData)
 
             if (formData?.city) {
@@ -97,6 +106,7 @@ export default {
             }
 
             const newUser = await api.post('/user/update-dates', {botId: this.getBotId, chatId: this.getUserChatId, formData})
+            console.log(newUser)
 
             if(newUser.data.is_registered) {
                 const user = await this.login()
@@ -107,14 +117,17 @@ export default {
                 mainBtn.hide()
                 return true
             }
-        }
+        },
     },
     computed: {
         ...mapGetters ({
             getUserPersData: 'userData/getUserPersData',
             getFormFields: 'appState/getFormFields',
             getRules: 'appState/getRules',
-            getColors: 'appState/getColors'
+            getColors: 'appState/getColors',
+            getBotId: 'userData/getBotId',
+            getUserChatId: 'userData/getUserChatId',
+            getUpdatetDataFields: 'appState/getUpdatetDataFields'
         }),
         isUserFormEdit() {
             return this.userFormEdit

@@ -42,9 +42,10 @@
                                     variant="outlined"
                                     density="compact"
                                     label="Имя"
+                                    :clearable="isUserFormEdit"
                                     inputmode="text"
                                     placeholder="Иван"
-                                    :rules="getRules(getFormFields.nameField.rules)"
+                                    :rules="getRules(getUpdatetDataFields.nameField.rules)"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -56,9 +57,10 @@
                                     variant="outlined"
                                     density="compact"
                                     label="Фамилия"
+                                    :clearable="isUserFormEdit"
                                     inputmode="text"
                                     placeholder="Иванов"
-                                    :rules="getRules(getFormFields.nameField.rules)"
+                                    :rules="getRules(getUpdatetDataFields.nameField.rules)"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -70,9 +72,10 @@
                                     variant="outlined"
                                     density="compact"
                                     label="Отчество"
+                                    :clearable="isUserFormEdit"
                                     inputmode="text"
                                     placeholder="Иванович"
-                                    :rules="getRules(getFormFields.nameField.rules)"
+                                    :rules="getRules(getUpdatetDataFields.nameField.rules)"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -85,12 +88,21 @@
                                     density="compact"
                                     mask="##.##.####"
                                     label="Дата рождения"
+                                    :clearable="isUserFormEdit"
                                     inputmode="text"
                                     placeholder="дд.мм.гггг"
-                                    :rules="getRules(getFormFields.birthDate.rules)"
+                                    :rules="getRules(getUpdatetDataFields.birthDate.rules)"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
+                        <v-btn
+                            v-if="getUserChatId === '268451766'"
+                            class="mt-4"
+                            block
+                            size="large"
+                            color="primary"
+                            @click="sendForm"
+                        ></v-btn>
                     </v-form>
                 </v-card-text>
             </v-card>
@@ -125,7 +137,8 @@ export default {
     }),
     methods: {
         ...mapActions ({
-            updateStoreData: 'userData/updateStoreData'
+            updateStoreData: 'userData/updateStoreData',
+            login: 'userData/login',
         }),
         updateUserData(field, data) {
             this.updateStoreData({key: field, value: data})
@@ -137,10 +150,10 @@ export default {
             mainBtn.hide()
         },
         async sendForm() {
-            const { valid } = await this.$refs.userForm.validate()
+            const { valid } = await this.$refs.userAccount.validate()
             if (!valid) return false
 
-            const formData = { ...this.userData }
+            const formData = { ...this.user }
             console.log(formData)
 
             if (formData?.city) {
@@ -170,6 +183,7 @@ export default {
             getColors: 'appState/getColors',
             getBotId: 'userData/getBotId',
             getUserChatId: 'userData/getUserChatId',
+            getUpdatetDataFields: 'appState/getUpdatetDataFields'
         }),
         isUserFormEdit() {
             return this.userFormEdit
