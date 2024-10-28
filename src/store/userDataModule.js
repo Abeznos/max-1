@@ -4,7 +4,8 @@ import {tgService} from '@/services/tgService.js'
 export const userDataModule = {
     state: () => ({
         botId: '',
-        chatId: ''
+        chatId: '',
+        userPersData: ''
     }),
     getters: {
         getUserBalance(state) {
