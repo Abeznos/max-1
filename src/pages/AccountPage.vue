@@ -224,6 +224,7 @@ export default {
         })
     },
     mounted() {
+        alert('adaw')
         backButton.show()
         backButton.onClick( () => this.$router.go(-1) )
     }
