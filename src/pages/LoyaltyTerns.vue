@@ -24,16 +24,7 @@ import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
     name: 'LoyaltyTerns',
-    methods: {
-        ...mapActions ({
-            setBackBtn: 'appState/setBackBtn'
-        })
-    },
-    computed: {
-        ...mapGetters ({
-            getBackBtn: 'appState/getBackBtn'
-        })
-    },
+
     beforeMount() {
         const { backButton } = tgService()
 

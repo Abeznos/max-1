@@ -57,10 +57,6 @@ export default {
         if(backButton.isVisible) {
             backButton.hide()
         }
-
-        if(mainBtn.isVisible) {
-            mainBtn.hide()
-        }
     }
 }
 </script>

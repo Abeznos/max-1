@@ -66,6 +66,7 @@
 <script>
 import {tgService} from '@/services/tgService.js'
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+
 const { user, mainBtn, setBottomBarColor, backButton } = tgService()
 import api from '@/http'
 
@@ -145,6 +146,10 @@ export default {
         }
     },
     async beforeMount() {
+
+        backButton.show()
+        backButton.onClick( () => this.$router.go(-1) )
+
         this.user.name = await this.getUserPersData.name
 
         for(let n = 1; n <= 4; n++) {

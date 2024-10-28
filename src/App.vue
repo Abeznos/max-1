@@ -15,7 +15,8 @@ import NotUserAlert from '@/components/ui/NotUserAlert.vue'
 import NotPbUserAlert from '@/components/ui/NotPbUserAlert.vue'
 
 import {tgService} from '@/services/tgService.js'
-const { user, setBottomBarColor, setBackgroundColor, setHeaderColor, disableVerticalSwipes, appReady, expandApp } = tgService()
+const { user, setBottomBarColor, setBackgroundColor, setHeaderColor,
+  disableVerticalSwipes, appReady, expandApp, backButton } = tgService()
 
 export default {
   name: 'App',
@@ -42,10 +43,10 @@ export default {
   computed: {
     ...mapGetters({
       getLoading: 'appState/getLoading',
-      getBackBtn: 'appState/getBackBtn',
       getBotUserAlert: 'appState/getBotUserAlert',
       getPbUserAlert: 'appState/getPbUserAlert',
-      getColors: 'appState/getColors'
+      getColors: 'appState/getColors',
+      getBotId: 'userData/getBotId',
     }),
   },
   async beforeMount() {

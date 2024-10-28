@@ -30,10 +30,6 @@ export function tgService() {
         tg.close()
     }
 
-    const ab = () => {
-        console.log('ab')
-    }
-
     const openLink = (url) => {
         tg.openLink(url)
     }
@@ -47,8 +43,6 @@ export function tgService() {
     }
 
     return {
-        test: 'test',
-        ab,
         disableVerticalSwipes,
         setBackgroundColor,
         setHeaderColor,
