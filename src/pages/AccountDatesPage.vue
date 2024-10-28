@@ -170,10 +170,9 @@ export default {
         })
 
         backButton.show()
-        backButton.onClick( () => {
-            this.$router.go(-1)
-        }) 
-                
+        backButton.show()
+        backButton.onClick( () => this.$router.go(-1) )
+
     }
 }
 </script>
