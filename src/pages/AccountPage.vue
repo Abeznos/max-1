@@ -222,6 +222,11 @@ export default {
             }
             return
         })
+
+        backButton.show()
+        backButton.onClick( () => {
+            this.$router.go(-1)
+        })        
     }
 }
 </script>
