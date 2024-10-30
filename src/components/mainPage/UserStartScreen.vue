@@ -93,12 +93,14 @@
             class="pb-user-card pb-action-card d-flex align-end"
             height="150"
             variant="flat"
-            image="https://www.prostocvet.ru/upload/iblock/67e/ws7tjn7iehef8ufxlzwpgg3czl5leumm.jpg"
+            :image="`${baseUrl}src/assets/img/main-screen/824684cf-2596-4182-863c-b99cff324b05.jpg`"
             @click="openLink('https://www.prostocvet.ru/')"
         >
+            <!--
             <v-card-actions class="pa-4">
                 <div>Заказать доставку</div>
             </v-card-actions>
+            -->
         </v-card>
         <div class="pb-button-group d-flex flex-column ga-4">
             <VBtnOutline
@@ -135,7 +137,8 @@ export default {
         botId: '',
         //avatar: false,
         qrDialog: false,
-        //mlmDialog: false
+        //mlmDialog: false,
+        baseUrl: import.meta.env.VITE_CLIENT_URL
     }),
     methods: {
         ...mapActions ({

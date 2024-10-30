@@ -147,7 +147,7 @@ export const appStateModule = {
         },
         colors: {
             surface:'#f1f3f9',
-            primary: '#ef4d64'
+            primary: '#EA4A61'
         },
         brand: 'Просто цветы'
     }),
