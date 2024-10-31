@@ -93,7 +93,7 @@
             class="pb-user-card pb-action-card d-flex align-end"
             height="150"
             variant="flat"
-            :image="`${baseUrl}/src/assets/img/main-screen/824684cf-2596-4182-863c-b99cff324b05.jpg`"
+            image="https://popup-data.storage.yandexcloud.net/0-uploads/3d5ba7f8a61405db07d5184ad05581bde406d3f6.jpg"
             @click="openLink('https://www.prostocvet.ru/')"
         >
             <!--
